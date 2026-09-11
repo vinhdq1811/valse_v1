@@ -1,0 +1,30 @@
+# syntax=docker/dockerfile:1
+
+# Development image. The production Dockerfile (used with Kamal) is separate.
+# Usage: docker compose up --build
+
+ARG RUBY_VERSION=3.4.10
+FROM docker.io/library/ruby:$RUBY_VERSION-slim
+
+# Rails app lives here
+WORKDIR /rails
+
+# Install packages needed for development
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential git libpq-dev libyaml-dev pkg-config \
+      postgresql-client curl && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Install application gems as a cached layer; source code comes from the bind
+# mount in compose, so changing app code does not invalidate this layer.
+COPY Gemfile Gemfile.lock ./
+RUN bundle install && \
+    rm -rf "${BUNDLE_PATH}"/ruby/*/cache
+
+EXPOSE 3000
+
+ENTRYPOINT ["./bin/dev-entrypoint"]
+
+# Bind to 0.0.0.0 so the server is reachable from the host
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]

@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+# Install any missing gems (e.g. after Gemfile changes), reusing the bundle volume
+bundle check || bundle install
+
+# Remove a potentially pre-existing server.pid for Rails.
+rm -f tmp/pids/server.pid
+
+# Wait until PostgreSQL accepts connections
+until pg_isready -h "${DB_HOST:-db}" -p "${DB_PORT:-5432}" -q; do
+  echo "Waiting for PostgreSQL at ${DB_HOST:-db}:${DB_PORT:-5432}..."
+  sleep 1
+done
+
+# Create the database and run pending migrations
+./bin/rails db:prepare
+
+exec "$@"
