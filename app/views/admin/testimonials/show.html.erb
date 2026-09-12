@@ -1,0 +1,31 @@
+<div class="admin-head">
+  <h1><%= @testimonial.name %></h1>
+  <div class="admin-actions">
+    <%= link_to "Sửa", edit_admin_testimonial_path(@testimonial), class: "admin-btn" %>
+    <%= link_to "Xem trên website", testimonials_path, target: "_top", class: "admin-btn admin-btn--secondary" %>
+    <%= link_to "← Danh sách", admin_testimonials_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+</div>
+
+<p>
+  <span class="admin-badge admin-badge--<%= @testimonial.published? ? "published" : "draft" %>">
+    <%= @testimonial.published? ? "Hiện" : "Ẩn" %>
+  </span>
+  &nbsp;
+  <span class="admin-badge"><%= @testimonial.role %></span>
+  &nbsp;
+  <small>Vị trí: <%= @testimonial.position %> · Trang chủ: <%= @testimonial.show_on_home? ? "Có" : "Không" %></small>
+</p>
+
+<% if @testimonial.avatar.attached? %>
+  <p><%= image_tag @testimonial.avatar.variant(:thumb), style: "width: 96px; height: 96px; border-radius: 50%; object-fit: cover;" %></p>
+<% end %>
+
+<div class="admin-form">
+  <% if @testimonial.rating.present? %>
+    <p style="color: #c9a227; letter-spacing: 3px; font-size: 20px;"><%= "★" * @testimonial.rating %></p>
+  <% end %>
+  <blockquote style="border-left: 3px solid #ccc; margin: 0; padding-left: 16px; font-style: italic;">
+    <%= @testimonial.quote %>
+  </blockquote>
+</div>

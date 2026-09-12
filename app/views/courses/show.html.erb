@@ -1,0 +1,99 @@
+<section class="vp-hero vp-hero--detail">
+  <div class="vp-container">
+    <nav class="vp-breadcrumb vp-breadcrumb--light" aria-label="Breadcrumb">
+      <%= link_to "Trang chủ", root_path %> <span>/</span>
+      <%= link_to category_label(@product.category), courses_path(category: @product.category) %>
+    </nav>
+    <h1 class="vp-hero__title"><%= @product.name %></h1>
+    <p class="vp-hero__sub"><%= @product.summary %></p>
+    <% if @product.category_course? %>
+      <p class="vp-hero__note">Áp dụng chung 2 gói học phí — cùng mức <strong>5.000.000₫</strong></p>
+    <% elsif @product.price %>
+      <p class="vp-hero__price"><%= format_vnd(@product.price) %></p>
+    <% end %>
+  </div>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container vp-detail">
+    <div class="vp-detail__main">
+      <div class="vp-detail__media">
+        <img src="<%= @product.image %>" alt="<%= @product.name %>">
+      </div>
+
+      <h2 class="vp-detail__heading">Giới thiệu</h2>
+      <div class="vp-detail__desc"><%= simple_format(@product.description) %></div>
+
+      <% if @product.highlights.present? %>
+        <h2 class="vp-detail__heading"><%= @product.category_course? ? "Bạn sẽ nhận được gì" : "Điểm nổi bật" %></h2>
+        <ul class="vp-highlights">
+          <% @product.highlights.each do |highlight| %>
+            <li><%= highlight %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <aside class="vp-detail__side">
+      <div class="vp-sidebox">
+        <p class="vp-sidebox__label">Học phí</p>
+        <% if @product.category_course? %>
+          <p class="vp-sidebox__value">5.000.000₫</p>
+          <p class="vp-sidebox__note">Áp dụng chung cho cả 2 gói — xem chi tiết bên dưới.</p>
+          <%= link_to "Xem 2 gói học phí", "#hoc-phi", class: "vp-btn vp-btn--full vp-btn--ghost" %>
+        <% else %>
+          <p class="vp-sidebox__value"><%= format_vnd(@product.price) %></p>
+          <p class="vp-sidebox__note">Liên hệ để được tư vấn và giữ hàng.</p>
+          <%= link_to "Liên hệ đặt mua", contact_path, class: "vp-btn vp-btn--full" %>
+        <% end %>
+        <%= link_to "Gọi hotline", "tel:+84901234567", class: "vp-btn vp-btn--full vp-btn--ghost" %>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<% if @product.category_course? && @plans.present? %>
+  <section class="vp-section vp-section--alt" id="hoc-phi">
+    <div class="vp-container">
+      <p class="vp-kicker">Học phí</p>
+      <h2 class="vp-heading">Chọn gói học phù hợp với bạn</h2>
+      <p class="vp-heading__sub">Cả hai gói đều cùng mức học phí — khác nhau về cách sắp xếp thời gian học.</p>
+      <div class="vp-plans">
+        <% @plans.each do |plan| %>
+          <%= render "plan_card", plan: plan %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<% if @related.any? %>
+  <section class="vp-section">
+    <div class="vp-container">
+      <h2 class="vp-heading vp-heading--left"><%= category_label(@product.category) %> khác</h2>
+      <div class="vp-grid vp-grid--3">
+        <% @related.each do |product| %>
+          <article class="vp-card">
+            <%= link_to course_path(product), class: "vp-card__media" do %>
+              <img src="<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+              <span class="vp-card__badge vp-card__badge--<%= product.category %>"><%= category_label(product.category) %></span>
+            <% end %>
+            <div class="vp-card__body">
+              <h3 class="vp-card__title"><%= link_to product.name, course_path(product) %></h3>
+              <div class="vp-card__foot">
+                <span class="vp-card__price">
+                  <% if product.category_course? %>
+                    Từ <strong>5.000.000₫</strong>
+                  <% else %>
+                    <strong><%= format_vnd(product.price) %></strong>
+                  <% end %>
+                </span>
+                <%= link_to "Chi tiết →", course_path(product), class: "vp-card__more" %>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

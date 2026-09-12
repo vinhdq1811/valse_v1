@@ -1,0 +1,28 @@
+<div class="admin-head">
+  <h1><%= @post.title %></h1>
+  <div class="admin-actions">
+    <%= link_to "Sửa", edit_admin_post_path(@post), class: "admin-btn" %>
+    <%= link_to "Xem trên website", post_path(@post), target: "_top", class: "admin-btn admin-btn--secondary" %>
+    <%= link_to "← Danh sách", admin_posts_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+</div>
+
+<p>
+  <span class="admin-badge admin-badge--<%= @post.status %>"><%= @post.status.humanize %></span>
+  &nbsp;
+  <span class="admin-badge"><%= @post.category.name %></span>
+  &nbsp;
+  <small>Tác giả: <%= @post.author.display_name %> · Đăng: <%= @post.published_at&.strftime("%d/%m/%Y %H:%M") %></small>
+</p>
+
+<% if @post.featured_image.attached? %>
+  <p><%= image_tag @post.featured_image.variant(:card), style: "max-width: 420px; border-radius: 10px;" %></p>
+<% end %>
+
+<% if @post.excerpt.present? %>
+  <p><em><%= @post.excerpt %></em></p>
+<% end %>
+
+<div class="admin-form">
+  <%= @post.body %>
+</div>

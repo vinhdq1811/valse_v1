@@ -1,0 +1,91 @@
+<section class="vp-hero">
+  <div class="vp-container">
+    <p class="vp-hero__eyebrow">Học phí</p>
+    <h1 class="vp-hero__title">2 gói học phí, một mức giá</h1>
+    <p class="vp-hero__sub">Áp dụng chung cho tất cả khóa học piano — bạn chỉ cần chọn cách sắp xếp thời gian phù hợp.</p>
+  </div>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <div class="vp-plans">
+      <% @plans.each do |plan| %>
+        <%= render "courses/plan_card", plan: plan %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="vp-section vp-section--alt">
+  <div class="vp-container">
+    <p class="vp-kicker">So sánh</p>
+    <h2 class="vp-heading">Hai gói khác nhau ở điểm nào?</h2>
+    <div class="vp-table-wrap">
+      <table class="vp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <% @plans.each do |plan| %>
+              <th><%= plan.name %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Thời lượng khóa học</th>
+            <% @plans.each do |plan| %><td><%= plan.duration %></td><% end %>
+          </tr>
+          <tr>
+            <th>Số buổi &amp; cách đăng ký</th>
+            <% @plans.each do |plan| %><td><%= plan.session_rule %></td><% end %>
+          </tr>
+          <tr>
+            <th>Hình thức</th>
+            <% @plans.each do |plan| %><td>Học 1 kèm 1 cùng giảng viên</td><% end %>
+          </tr>
+          <tr>
+            <th>Tài liệu &amp; sheet nhạc</th>
+            <% @plans.each do |plan| %><td>Miễn phí trong khóa học</td><% end %>
+          </tr>
+          <tr class="vp-table__price">
+            <th>Học phí trọn gói</th>
+            <% @plans.each do |plan| %><td><strong><%= format_vnd(plan.price) %></strong></td><% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="vp-note">Gói Linh hoạt phù hợp với người lịch sử thay đổi thường xuyên. Gói 30 buổi phù hợp với người muốn cam kết lộ trình dài hạn và được đánh giá tiến độ định kỳ.</p>
+  </div>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container vp-faq">
+    <h2 class="vp-heading">Câu hỏi thường gặp</h2>
+    <details class="vp-faq__item">
+      <summary>Học phí đã bao gồm tài liệu chưa?</summary>
+      <p>Có. Tài liệu học tập và sheet nhạc trong khóa học đều được cung cấp miễn phí.</p>
+    </details>
+    <details class="vp-faq__item">
+      <summary>Tôi có thể đổi giữa hai gói sau khi đăng ký không?</summary>
+      <p>Có thể. Vui lòng liên hệ với trung tâm — chúng tôi sẽ hỗ trợ chuyển gói và tính học phí theo phần đã học.</p>
+    </details>
+    <details class="vp-faq__item">
+      <summary>Buổi học có được bảo lưu khi tôi bận không?</summary>
+      <p>Với Gói Linh hoạt, bạn chủ động đăng ký từng buổi trên website. Với Gói 30 buổi, lịch học được đăng ký linh hoạt từng tuần trong 6 tháng.</p>
+    </details>
+    <details class="vp-faq__item">
+      <summary>Học phí thanh toán như thế nào?</summary>
+      <p>Học phí trọn gói thanh toán một lần khi đăng ký khóa học. Vui lòng liên hệ trung tâm để được hướng dẫn chi tiết.</p>
+    </details>
+  </div>
+</section>
+
+<section class="vp-cta">
+  <div class="vp-container vp-cta__inner">
+    <div>
+      <h2 class="vp-cta__title">Sẵn sàng bắt đầu?</h2>
+      <p class="vp-cta__sub">Đặt một buổi học thử miễn phí trước khi đăng ký gói học.</p>
+    </div>
+    <%= link_to "Đặt lịch học thử", contact_path, class: "vp-btn vp-btn--light" %>
+  </div>
+</section>

@@ -1,0 +1,239 @@
+/* Valse — POSTS (PostsController: index, show)
+   Danh sách bài viết, thẻ bài viết, trang bài viết chi tiết. */
+
+/* ---------- Blog ---------- */
+.vp-posts {
+  align-items: stretch;
+}
+
+.vp-post-card {
+  background: var(--vp-white);
+  border: 1px solid #eee5da;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.vp-post-card:hover {
+  box-shadow: 0 14px 34px rgba(2, 19, 33, 0.12);
+  transform: translateY(-3px);
+}
+
+.vp-post-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--vp-cream);
+}
+
+.vp-post-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vp-post-card__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 44px;
+  color: var(--vp-gold);
+}
+
+.vp-post-card__badge {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--vp-gold);
+  color: var(--vp-white);
+  font-family: var(--vp-font-body);
+  font-size: 12.5px;
+  letter-spacing: 0.4px;
+}
+
+.vp-post-card__body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.vp-post-card__title {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.vp-post-card__title a {
+  color: var(--vp-navy);
+  text-decoration: none;
+}
+
+.vp-post-card__title a:hover {
+  color: var(--vp-gold);
+}
+
+.vp-post-card__meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--vp-font-body);
+  font-size: 13px;
+  color: var(--vp-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.vp-post-card__summary {
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--vp-text);
+  margin: 0;
+}
+
+.vp-post-card__more {
+  margin-top: auto;
+  font-family: var(--vp-font-body);
+  font-size: 14px;
+  color: var(--vp-gold);
+  text-decoration: none;
+}
+
+.vp-post-card__more:hover {
+  text-decoration: underline;
+}
+
+.vp-post-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--vp-font-body);
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--vp-muted);
+  margin-top: 6px;
+}
+
+.vp-post-meta--light {
+  color: var(--vp-gold);
+}
+
+/* ---------- Single post ---------- */
+.vp-article {
+  max-width: 800px;
+}
+
+.vp-article__figure {
+  margin: 0 0 32px;
+}
+
+.vp-article__figure img {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+}
+
+.vp-article__lead {
+  font-family: var(--vp-font-display);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--vp-navy-soft);
+  margin: 0 0 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee5da;
+}
+
+.vp-article__body {
+  font-family: var(--vp-font-body);
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--vp-text);
+}
+
+.vp-article__body h2 {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--vp-navy);
+  margin: 40px 0 16px;
+}
+
+.vp-article__body h3 {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--vp-navy);
+  margin: 32px 0 12px;
+}
+
+.vp-article__body p {
+  margin: 0 0 18px;
+}
+
+.vp-article__body img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.vp-article__body ul,
+.vp-article__body ol {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+
+.vp-article__body li {
+  margin-bottom: 8px;
+}
+
+.vp-article__body a {
+  color: var(--vp-gold);
+}
+
+.vp-article__body blockquote {
+  margin: 24px 0;
+  padding: 14px 22px;
+  border-left: 3px solid var(--vp-gold);
+  background: var(--vp-cream);
+  font-style: italic;
+}
+
+.vp-article__tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px solid #eee5da;
+}
+
+.vp-article__tags-label {
+  font-family: var(--vp-font-body);
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--vp-navy);
+}
+
+.vp-article__tag {
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--vp-cream);
+  border: 1px solid var(--vp-sand);
+  font-family: var(--vp-font-body);
+  font-size: 13.5px;
+  color: var(--vp-dark);
+}

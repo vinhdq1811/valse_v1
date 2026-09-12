@@ -1,0 +1,170 @@
+/* Valse — PAGES (PagesController: pricing, testimonials)
+   Bảng so sánh học phí, FAQ, cảm nhận học viên. */
+
+/* ---------- Comparison table ---------- */
+.vp-table-wrap {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.vp-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--vp-white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(2, 19, 33, 0.07);
+  min-width: 560px;
+}
+
+.vp-table th,
+.vp-table td {
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  text-align: left;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  color: var(--vp-text);
+}
+
+.vp-table thead th {
+  background: var(--vp-navy);
+  color: var(--vp-white);
+  font-size: 16px;
+}
+
+.vp-table tbody th {
+  font-weight: 700;
+  color: var(--vp-navy);
+  width: 30%;
+}
+
+.vp-table__price td {
+  background: var(--vp-cream);
+  color: var(--vp-gold);
+  font-size: 17px;
+}
+
+/* ---------- FAQ ---------- */
+.vp-faq {
+  max-width: 760px;
+}
+
+.vp-faq__item {
+  background: var(--vp-white);
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 16px rgba(2, 19, 33, 0.05);
+}
+
+.vp-faq__item summary {
+  font-family: var(--vp-font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--vp-navy);
+  cursor: pointer;
+}
+
+.vp-faq__item p {
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--vp-muted);
+  margin: 12px 0 0;
+}
+
+/* ---------- Testimonials ---------- */
+.vp-testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.vp-quote-card {
+  background: var(--vp-white);
+  border: 1px solid #eee5da;
+  border-radius: 12px;
+  padding: 34px 30px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vp-quote-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2, 19, 33, 0.1);
+}
+
+.vp-quote-card__stars {
+  color: var(--vp-gold);
+  letter-spacing: 3px;
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+
+.vp-quote-card__text {
+  font-family: var(--vp-font-display);
+  font-style: italic;
+  font-size: 17.5px;
+  line-height: 1.7;
+  color: var(--vp-navy);
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+.vp-quote-card__author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vp-quote-card__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--vp-navy);
+  color: var(--vp-sand);
+  display: grid;
+  place-items: center;
+  font-family: var(--vp-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  flex: none;
+}
+
+.vp-quote-card__avatar-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.vp-quote-card__info strong {
+  display: block;
+  font-family: var(--vp-font-body);
+  color: var(--vp-navy);
+  font-size: 16px;
+}
+
+.vp-quote-card__info span {
+  font-family: var(--vp-font-body);
+  font-size: 13px;
+  color: var(--vp-muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .vp-testimonials {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .vp-testimonials {
+    grid-template-columns: 1fr;
+  }
+}

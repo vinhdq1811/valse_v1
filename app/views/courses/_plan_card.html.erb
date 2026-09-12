@@ -1,0 +1,15 @@
+<article class="vp-plan<%= ' vp-plan--featured' if plan.position == 1 %>">
+  <% if plan.position == 1 %>
+    <span class="vp-plan__badge">Phổ biến nhất</span>
+  <% end %>
+  <h3 class="vp-plan__name"><%= plan.name %></h3>
+  <p class="vp-plan__tagline"><%= plan.tagline %></p>
+  <p class="vp-plan__price"><%= format_vnd(plan.price) %></p>
+  <p class="vp-plan__duration"><%= plan.duration %></p>
+  <ul class="vp-plan__features">
+    <% plan.features.each do |feature| %>
+      <li><%= feature %></li>
+    <% end %>
+  </ul>
+  <%= link_to "Đăng ký ngay", contact_path, class: "vp-btn vp-btn--full" %>
+</article>

@@ -1,0 +1,20 @@
+<article class="vp-post-card">
+  <%= link_to post_path(post), class: "vp-post-card__media" do %>
+    <% if post.featured_image.attached? %>
+      <%= image_tag post.featured_image.variant(:card), alt: post.title, loading: "lazy" %>
+    <% else %>
+      <span class="vp-post-card__placeholder">♪</span>
+    <% end %>
+    <span class="vp-post-card__badge"><%= post.category.name %></span>
+  <% end %>
+  <div class="vp-post-card__body">
+    <h3 class="vp-post-card__title"><%= link_to post.title, post_path(post) %></h3>
+    <div class="vp-post-card__meta">
+      <span><%= post.author.display_name %></span>
+      <span aria-hidden="true">•</span>
+      <time datetime="<%= post.published_at.to_date.iso8601 %>"><%= post.display_date %></time>
+    </div>
+    <p class="vp-post-card__summary"><%= post.excerpt_or_body_preview %></p>
+    <%= link_to "Đọc tiếp →", post_path(post), class: "vp-post-card__more" %>
+  </div>
+</article>

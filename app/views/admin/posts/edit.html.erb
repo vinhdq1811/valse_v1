@@ -1,0 +1,9 @@
+<div class="admin-head">
+  <h1>Sửa bài viết</h1>
+  <div class="admin-actions">
+    <%= link_to "Xem", admin_post_path(@post), class: "admin-btn admin-btn--secondary" %>
+    <%= link_to "← Danh sách", admin_posts_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+</div>
+
+<%= render "form" %>

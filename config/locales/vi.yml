@@ -1,0 +1,31 @@
+vi:
+  activerecord:
+    attributes:
+      user:
+        name: "Họ và tên"
+        email_address: "Email"
+        password: "Mật khẩu"
+        password_confirmation: "Xác nhận mật khẩu"
+  errors:
+    messages:
+      blank: "không được để trống"
+      present: "phải để trống"
+      taken: "đã được sử dụng"
+      invalid: "không hợp lệ"
+      confirmation: "không khớp"
+      too_short: "quá ngắn (tối thiểu %{count} ký tự)"
+      too_long: "quá dài (tối đa %{count} ký tự)"
+      wrong_length: "sai độ dài (phải là %{count} ký tự)"
+      not_a_number: "không phải là số"
+      not_an_integer: "phải là số nguyên"
+      greater_than: "phải lớn hơn %{count}"
+      greater_than_or_equal_to: "phải lớn hơn hoặc bằng %{count}"
+      less_than: "phải nhỏ hơn %{count}"
+      less_than_or_equal_to: "phải nhỏ hơn hoặc bằng %{count}"
+      equal_to: "phải bằng %{count}"
+      other_than: "phải khác %{count}"
+      empty: "không thể rỗng"
+      exclusion: "bị giành trước"
+      inclusion: "không nằm trong danh sách"
+      required: "phải tồn tại"
+      record_invalid: "Dữ liệu không hợp lệ: %{errors}"

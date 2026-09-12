@@ -1,0 +1,251 @@
+/* Giao diện tối giản cho khu vực /admin */
+.admin-body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f4f5f7;
+  color: #1f2937;
+}
+
+.admin-bar {
+  background: #021321;
+  color: #fff;
+}
+
+.admin-bar__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.admin-bar__brand {
+  letter-spacing: 1px;
+}
+
+.admin-bar__nav {
+  display: flex;
+  gap: 16px;
+}
+
+.admin-bar__nav a {
+  color: #f8d8a4;
+  text-decoration: none;
+  font-size: 14.5px;
+}
+
+.admin-bar__nav a:hover {
+  text-decoration: underline;
+}
+
+.admin-bar__user {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+}
+
+.admin-bar__logout {
+  background: transparent;
+  border: 1px solid #8b7d59;
+  color: #f8d8a4;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.admin-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.admin-flash {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14.5px;
+}
+
+.admin-flash--notice {
+  background: #e6f4ea;
+  color: #1e7d3c;
+  border: 1px solid #b7dfc4;
+}
+
+.admin-flash--alert {
+  background: #fdecea;
+  color: #b3261e;
+  border: 1px solid #f5c6c2;
+}
+
+.admin-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.admin-head h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eceff3;
+  font-size: 14.5px;
+  vertical-align: middle;
+}
+
+.admin-table th {
+  background: #f9fafb;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+}
+
+.admin-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+.admin-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+.admin-badge--published {
+  background: #e6f4ea;
+  color: #1e7d3c;
+}
+
+.admin-badge--draft {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.admin-btn {
+  display: inline-block;
+  background: #021321;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.admin-btn--secondary {
+  background: #6b7280;
+}
+
+.admin-btn--danger {
+  background: #b3261e;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-form {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  max-width: 760px;
+}
+
+.admin-form .field {
+  margin-bottom: 16px;
+}
+
+.admin-form label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="email"],
+.admin-form input[type="datetime-local"],
+.admin-form select,
+.admin-form textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14.5px;
+  box-sizing: border-box;
+}
+
+.admin-form .trix-content {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.admin-form .checkbox-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-form .checkbox-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.admin-errors {
+  background: #fdecea;
+  border: 1px solid #f5c6c2;
+  color: #b3261e;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.admin-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.admin-avatar-fallback {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #2c4a63;
+  color: #f0c75e;
+  font-weight: 700;
+  font-size: 14px;
+}

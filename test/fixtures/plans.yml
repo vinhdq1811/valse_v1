@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Gói Linh hoạt
+  tagline: Học thoải mái theo nhịp của bạn
+  duration: 3 tháng
+  session_rule: Tối đa 3 buổi/tuần
+  price: 5_000_000
+  features: ["Học 1 kèm 1", "Miễn phí tài liệu"]
+  position: 1
+
+two:
+  name: Gói 30 buổi
+  tagline: Cam kết lộ trình trọn vẹn
+  duration: 6 tháng
+  session_rule: Trọn 30 buổi học
+  price: 5_000_000
+  features: ["Học 1 kèm 1", "Đánh giá định kỳ"]
+  position: 2

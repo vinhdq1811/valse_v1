@@ -1,0 +1,26 @@
+<%= form_with model: [:admin, @tag], class: "admin-form" do |form| %>
+  <% if @tag.errors.any? %>
+    <div class="admin-errors">
+      <ul>
+        <% @tag.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Tên tag" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slug, "Slug (để trống để tự sinh)" %>
+    <%= form.text_field :slug %>
+  </div>
+
+  <div class="admin-actions">
+    <%= form.submit @tag.new_record? ? "Tạo tag" : "Cập nhật", class: "admin-btn" %>
+    <%= link_to "Hủy", admin_tags_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+<% end %>

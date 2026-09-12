@@ -1,0 +1,40 @@
+<section class="vp-auth">
+  <div class="vp-container">
+    <div class="vp-auth__card">
+      <div class="vp-auth__badge" aria-hidden="true">♪</div>
+      <p class="vp-auth__eyebrow">Valse Music School</p>
+      <h1 class="vp-auth__title">Đăng nhập</h1>
+      <p class="vp-auth__sub">Chào mừng bạn quay trở lại trường âm nhạc Valse.</p>
+
+      <% if flash[:alert] %>
+        <div class="vp-auth__flash vp-auth__flash--alert" role="alert"><%= flash[:alert] %></div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="vp-auth__flash vp-auth__flash--notice"><%= flash[:notice] %></div>
+      <% end %>
+
+      <%= form_with url: session_path, class: "vp-auth__form" do |form| %>
+        <div class="vp-auth__field">
+          <%= form.label :email_address, "Email", class: "vp-auth__label" %>
+          <%= form.email_field :email_address, required: true, autofocus: true,
+                autocomplete: "username", placeholder: "banvidu@example.com",
+                value: params[:email_address], class: "vp-auth__input" %>
+        </div>
+        <div class="vp-auth__field">
+          <%= form.label :password, "Mật khẩu", class: "vp-auth__label" %>
+          <%= form.password_field :password, required: true, autocomplete: "current-password",
+                placeholder: "Nhập mật khẩu của bạn", maxlength: 72, class: "vp-auth__input" %>
+        </div>
+        <div class="vp-auth__row">
+          <%= link_to "Quên mật khẩu?", new_password_path, class: "vp-auth__link" %>
+        </div>
+        <%= form.submit "Đăng nhập", class: "vp-btn vp-btn--full vp-auth__submit" %>
+      <% end %>
+
+      <div class="vp-auth__alt">
+        Chưa có tài khoản? <%= link_to "Đăng ký ngay", new_registration_path %>
+      </div>
+    </div>
+    <div class="vp-auth__back"><%= link_to "← Về trang chủ", root_path %></div>
+  </div>
+</section>

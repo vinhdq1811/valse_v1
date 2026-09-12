@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Mastering Fingerstyle Guitar
+  slug: mastering-fingerstyle-guitar
+  excerpt: MyText
+  status: 1
+  published_at: 2026-09-11 20:13:29
+  author: one
+  category: one
+
+two:
+  title: Why Ukulele is Ideal
+  slug: why-ukulele-is-ideal
+  excerpt: MyText
+  status: 1
+  published_at: 2026-09-11 20:13:29
+  author: two
+  category: two

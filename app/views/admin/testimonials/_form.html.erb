@@ -1,0 +1,72 @@
+<%= form_with model: [:admin, @testimonial], class: "admin-form" do |form| %>
+  <% if @testimonial.errors.any? %>
+    <div class="admin-errors">
+      <ul>
+        <% @testimonial.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Tên học viên" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role, "Vai trò / Công ty" %>
+    <%= form.text_field :role, placeholder: "VD: CEO của Tech Solutions" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quote, "Nhận xét" %>
+    <%= form.text_area :quote, rows: 5, required: true %>
+  </div>
+
+  <div class="admin-grid-2">
+    <div class="field">
+      <%= form.label :rating, "Số sao (tùy chọn)" %>
+      <%= form.select :rating,
+            (1..5).map { |n| ["#{"★" * n} (#{n} sao)", n] },
+            include_blank: "Không hiển thị sao" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :position, "Vị trí hiển thị" %>
+      <%= form.number_field :position, min: 0 %>
+    </div>
+  </div>
+
+  <div class="admin-grid-2">
+    <div class="field">
+      <%= form.label :avatar, "Ảnh đại diện" %>
+      <%= form.file_field :avatar, accept: "image/*" %>
+      <% if @testimonial.avatar.attached? %>
+        <p>
+          <%= image_tag @testimonial.avatar.variant(:thumb), style: "border-radius: 6px;" %>
+          <%= form.check_box :remove_avatar %>
+          <%= form.label :remove_avatar, "Xóa ảnh hiện tại" %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <div class="checkbox-row">
+        <label>
+          <%= form.check_box :published %>
+          Hiển thị trên trang Testimonials
+        </label>
+        <label>
+          <%= form.check_box :show_on_home %>
+          Hiển thị trên trang chủ
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-actions">
+    <%= form.submit @testimonial.new_record? ? "Tạo testimonial" : "Cập nhật", class: "admin-btn" %>
+    <%= link_to "Hủy", admin_testimonials_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+<% end %>

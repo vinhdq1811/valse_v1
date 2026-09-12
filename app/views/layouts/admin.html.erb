@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <title><%= content_for(:title) || "Quản trị — Valse" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin-body">
+    <header class="admin-bar">
+      <div class="admin-bar__inner">
+        <strong class="admin-bar__brand">Valse Admin</strong>
+        <nav class="admin-bar__nav">
+          <%= link_to "Testimonials", admin_testimonials_path %>
+          <%= link_to "Bài viết", admin_posts_path %>
+          <%= link_to "Danh mục", admin_categories_path %>
+          <%= link_to "Tags", admin_tags_path %>
+          <%= link_to "Xem website", root_path, target: "_top" %>
+        </nav>
+        <div class="admin-bar__user">
+          <span><%= Current.user.display_name %> (<%= Current.user.role.humanize %>)</span>
+          <%= button_to "Đăng xuất", session_path, method: :delete, class: "admin-bar__logout" %>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <% if flash[:notice] %><p class="admin-flash admin-flash--notice"><%= flash[:notice] %></p><% end %>
+      <% if flash[:alert] %><p class="admin-flash admin-flash--alert"><%= flash[:alert] %></p><% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

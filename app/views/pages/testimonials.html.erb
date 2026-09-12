@@ -1,0 +1,43 @@
+<section class="vp-hero">
+  <div class="vp-container">
+    <p class="vp-hero__eyebrow">Testimonials</p>
+    <h1 class="vp-hero__title">Cảm nhận từ học viên</h1>
+    <p class="vp-hero__sub">Những chia sẻ thực tế từ học viên đã tin chọn và đồng hành cùng Valse trên hành trình âm nhạc của mình.</p>
+  </div>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <div class="vp-testimonials">
+      <% @testimonials.each do |testimonial| %>
+        <figure class="vp-quote-card">
+          <% if testimonial.rating.present? %>
+            <div class="vp-quote-card__stars" aria-label="<%= testimonial.rating %> trên 5 sao"><%= "★" * testimonial.rating %></div>
+          <% end %>
+          <blockquote class="vp-quote-card__text"><%= testimonial.quote %></blockquote>
+          <figcaption class="vp-quote-card__author">
+            <% if testimonial.avatar.attached? %>
+              <%= image_tag testimonial.avatar.variant(:thumb), class: "vp-quote-card__avatar-img", alt: testimonial.name %>
+            <% else %>
+              <span class="vp-quote-card__avatar" aria-hidden="true"><%= testimonial.initials %></span>
+            <% end %>
+            <span class="vp-quote-card__info">
+              <strong><%= testimonial.name %></strong>
+              <span><%= testimonial.role %></span>
+            </span>
+          </figcaption>
+        </figure>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="vp-cta">
+  <div class="vp-container vp-cta__inner">
+    <div>
+      <h2 class="vp-cta__title">Bạn cũng muốn bắt đầu?</h2>
+      <p class="vp-cta__sub">Tham gia cùng các học viên của Valse — đặt một buổi học thử miễn phí ngay hôm nay.</p>
+    </div>
+    <%= link_to "Đặt lịch học thử", contact_path, class: "vp-btn vp-btn--light" %>
+  </div>
+</section>

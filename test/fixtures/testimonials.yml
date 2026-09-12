@@ -1,0 +1,24 @@
+published_one:
+  name: Sarah M
+  role: CEO của Tech Solutions
+  quote: Khóa học thực sự là một bước ngoặt! Nó giúp tôi hiểu sâu hơn về lý thuyết âm nhạc lẫn kỹ thuật biểu diễn.
+  rating: 5
+  position: 1
+  published: true
+  show_on_home: false
+
+published_two:
+  name: David H
+  role: CFO của Green Energy Corp
+  quote: Tôi rất thích cách dạy thực hành của khóa học.
+  position: 2
+  published: true
+  show_on_home: true
+
+hidden_one:
+  name: Bình Nguyễn
+  role: Nhà sản xuất âm nhạc
+  quote: Bản nháp chưa hiển thị.
+  position: 3
+  published: false
+  show_on_home: false

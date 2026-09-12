@@ -1,0 +1,50 @@
+<div class="admin-head">
+  <h1>Testimonials</h1>
+  <%= link_to "+ Testimonial mới", new_admin_testimonial_path, class: "admin-btn" %>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Ảnh</th>
+      <th>Tên</th>
+      <th>Vai trò</th>
+      <th>Đánh giá</th>
+      <th>Trạng thái</th>
+      <th>Trang chủ</th>
+      <th>Vị trí</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @testimonials.each do |testimonial| %>
+      <tr>
+        <td>
+          <% if testimonial.avatar.attached? %>
+            <%= image_tag testimonial.avatar.variant(:thumb), style: "width: 44px; height: 44px; border-radius: 50%; object-fit: cover;" %>
+          <% else %>
+            <span class="admin-avatar-fallback"><%= testimonial.initials %></span>
+          <% end %>
+        </td>
+        <td><strong><%= link_to testimonial.name, admin_testimonial_path(testimonial) %></strong></td>
+        <td><%= testimonial.role %></td>
+        <td><%= testimonial.rating ? "★" * testimonial.rating : "—" %></td>
+        <td>
+          <span class="admin-badge admin-badge--<%= testimonial.published ? "published" : "draft" %>">
+            <%= testimonial.published? ? "Hiện" : "Ẩn" %>
+          </span>
+        </td>
+        <td><%= "✓" if testimonial.show_on_home? %></td>
+        <td><%= testimonial.position %></td>
+        <td>
+          <div class="admin-actions">
+            <%= link_to "Sửa", edit_admin_testimonial_path(testimonial), class: "admin-btn admin-btn--secondary" %>
+            <%= button_to "Xóa", admin_testimonial_path(testimonial), method: :delete,
+                  form: { data: { turbo_confirm: "Xóa testimonial này?" } },
+                  class: "admin-btn admin-btn--danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

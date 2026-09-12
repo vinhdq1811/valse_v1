@@ -1,0 +1,32 @@
+<div class="admin-head">
+  <h1>Danh mục</h1>
+  <%= link_to "+ Danh mục mới", new_admin_category_path, class: "admin-btn" %>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Tên</th>
+      <th>Slug</th>
+      <th>Số bài viết</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><strong><%= link_to category.name, edit_admin_category_path(category) %></strong></td>
+        <td><code><%= category.slug %></code></td>
+        <td><%= category.posts.count %></td>
+        <td>
+          <div class="admin-actions">
+            <%= link_to "Sửa", edit_admin_category_path(category), class: "admin-btn admin-btn--secondary" %>
+            <%= button_to "Xóa", admin_category_path(category), method: :delete,
+                  form: { data: { turbo_confirm: "Xóa danh mục này?" } },
+                  class: "admin-btn admin-btn--danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,32 @@
+<div class="admin-head">
+  <h1>Tags</h1>
+  <%= link_to "+ Tag mới", new_admin_tag_path, class: "admin-btn" %>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Tên</th>
+      <th>Slug</th>
+      <th>Số bài viết</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><strong><%= link_to tag.name, edit_admin_tag_path(tag) %></strong></td>
+        <td><code><%= tag.slug %></code></td>
+        <td><%= tag.posts.count %></td>
+        <td>
+          <div class="admin-actions">
+            <%= link_to "Sửa", edit_admin_tag_path(tag), class: "admin-btn admin-btn--secondary" %>
+            <%= button_to "Xóa", admin_tag_path(tag), method: :delete,
+                  form: { data: { turbo_confirm: "Xóa tag này?" } },
+                  class: "admin-btn admin-btn--danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

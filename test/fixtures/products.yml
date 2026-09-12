@@ -1,0 +1,23 @@
+﻿# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Đàn Piano Yamaha P-145
+  slug: piano-yamaha-p-145
+  category: 1
+  summary: MyText
+  description: MyText
+  highlights: 
+  price: 
+  image: MyString
+  position: 1
+
+two:
+  name: Sheet Canon in D
+  slug: sheet-canon-in-d
+  category: 1
+  summary: MyText
+  description: MyText
+  highlights: 
+  price: 
+  image: MyString
+  position: 1

@@ -1,0 +1,79 @@
+<%= form_with model: [:admin, @post], class: "admin-form" do |form| %>
+  <% if @post.errors.any? %>
+    <div class="admin-errors">
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Tiêu đề" %>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slug, "Slug (để trống để tự sinh từ tiêu đề)" %>
+    <%= form.text_field :slug, placeholder: "vi-du: mastering-fingerstyle-guitar" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :excerpt, "Tóm tắt" %>
+    <%= form.text_area :excerpt, rows: 3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body, "Nội dung" %>
+    <%= form.rich_text_area :body %>
+  </div>
+
+  <div class="admin-grid-2">
+    <div class="field">
+      <%= form.label :category_id, "Danh mục" %>
+      <%= form.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+    </div>
+
+    <div class="field">
+      <%= form.label :status, "Trạng thái" %>
+      <%= form.select :status, Post.statuses.map { |key, _| [key.humanize, key] } %>
+    </div>
+  </div>
+
+  <div class="admin-grid-2">
+    <div class="field">
+      <%= form.label :published_at, "Ngày đăng" %>
+      <%= form.datetime_local_field :published_at, value: @post.published_at&.strftime("%Y-%m-%dT%H:%M") %>
+    </div>
+
+    <div class="field">
+      <%= form.label :featured_image, "Ảnh đại diện" %>
+      <%= form.file_field :featured_image, accept: "image/*" %>
+      <% if @post.featured_image.attached? %>
+        <p>
+          <%= image_tag @post.featured_image.variant(:thumb), style: "border-radius: 6px;" %>
+          <%= form.check_box :remove_featured_image %>
+          <%= form.label :remove_featured_image, "Xóa ảnh hiện tại" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_ids, "Tags" %>
+    <div class="checkbox-row">
+      <% Tag.order(:name).each do |tag| %>
+        <label>
+          <%= form.check_box :tag_ids, { multiple: true, checked: @post.tags.include?(tag) }, tag.id, nil %>
+          <%= tag.name %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="admin-actions">
+    <%= form.submit @post.new_record? ? "Tạo bài viết" : "Cập nhật", class: "admin-btn" %>
+    <%= link_to "Hủy", admin_posts_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+<% end %>

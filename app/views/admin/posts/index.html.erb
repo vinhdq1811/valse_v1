@@ -1,0 +1,38 @@
+<div class="admin-head">
+  <h1>Bài viết</h1>
+  <%= link_to "+ Bài viết mới", new_admin_post_path, class: "admin-btn" %>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Tiêu đề</th>
+      <th>Danh mục</th>
+      <th>Tác giả</th>
+      <th>Trạng thái</th>
+      <th>Ngày đăng</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><strong><%= link_to post.title, admin_post_path(post) %></strong></td>
+        <td><%= post.category.name %></td>
+        <td><%= post.author.display_name %></td>
+        <td>
+          <span class="admin-badge admin-badge--<%= post.status %>"><%= post.status.humanize %></span>
+        </td>
+        <td><%= post.published_at&.strftime("%d/%m/%Y %H:%M") %></td>
+        <td>
+          <div class="admin-actions">
+            <%= link_to "Sửa", edit_admin_post_path(post), class: "admin-btn admin-btn--secondary" %>
+            <%= button_to "Xóa", admin_post_path(post), method: :delete,
+                  form: { data: { turbo_confirm: "Xóa bài viết này?" } },
+                  class: "admin-btn admin-btn--danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

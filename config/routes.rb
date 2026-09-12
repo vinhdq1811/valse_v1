@@ -9,6 +9,43 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  # Authentication (Rails 8 generator)
+  resource :session, only: %i[ new create destroy ]
+  resource :registration, only: %i[ new create ]
+  resources :passwords, param: :token
+
   # Defines the root path route ("/")
   root "pages#home"
+
+  # Quản trị — yêu cầu role admin/superadmin
+  namespace :admin do
+    root to: "testimonials#index"
+    resources :testimonials
+    resources :posts
+    resources :categories, except: [:show]
+    resources :tags, except: [:show]
+  end
+
+  # Trang Courses (template gốc dùng URL /services/)
+  get "services", to: redirect("/courses")
+  get "course-detail", to: redirect("/courses")
+  resources :courses, param: :slug, only: [:index, :show]
+
+  get "blog", to: "posts#index"
+
+  get "contact" => "pages#contact"
+
+  get "pricing" => "pages#pricing"
+
+  get "testimonials" => "pages#testimonials"
+
+  # Stubs for the static Musicali template's MetForm AJAX endpoints
+  post "wp-json/metform/v1/entries/insert/:form_id" => "pages#metform_insert"
+  post "wp-json/metform/v1/forms/views/:form_id" => "pages#metform_view"
+
+  # Permalink kiểu WordPress cho bài viết — đặt CUỐI để không che các route khác
+  get "/:year/:month/:day/:slug",
+      to: "posts#show",
+      constraints: { year: /\d{4}/, month: /\d{1,2}/, day: /\d{1,2}/, slug: /[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/ },
+      as: :dated_post
 end

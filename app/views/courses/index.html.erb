@@ -1,0 +1,58 @@
+<section class="vp-hero">
+  <div class="vp-container">
+    <p class="vp-hero__eyebrow">Valse Music School</p>
+    <h1 class="vp-hero__title"><%= @page_title %></h1>
+    <nav class="vp-breadcrumb" aria-label="Breadcrumb">
+      <%= link_to "Trang chủ", root_path %> <span>/</span>
+      <%= link_to "Khóa học & Sản phẩm", courses_path %>
+      <% if @category %><span>/</span> <span class="vp-breadcrumb__current"><%= category_label(@category) %></span><% end %>
+    </nav>
+  </div>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <nav class="vp-tabs" aria-label="Danh mục sản phẩm">
+      <%= link_to "Tất cả", courses_path, class: "vp-tab#{' vp-tab--active' unless @category}" %>
+      <% Product.categories.each_key do |key| %>
+        <%= link_to category_label(key), courses_path(category: key),
+              class: "vp-tab#{' vp-tab--active' if @category == key}" %>
+      <% end %>
+    </nav>
+
+    <div class="vp-grid">
+      <% @products.each do |product| %>
+        <article class="vp-card">
+          <%= link_to course_path(product), class: "vp-card__media" do %>
+            <img src="<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+            <span class="vp-card__badge vp-card__badge--<%= product.category %>"><%= category_label(product.category) %></span>
+          <% end %>
+          <div class="vp-card__body">
+            <h3 class="vp-card__title"><%= link_to product.name, course_path(product) %></h3>
+            <p class="vp-card__summary"><%= product.summary %></p>
+            <div class="vp-card__foot">
+              <span class="vp-card__price">
+                <% if product.category_course? %>
+                  Từ <strong>5.000.000₫</strong>
+                <% else %>
+                  <strong><%= format_vnd(product.price) %></strong>
+                <% end %>
+              </span>
+              <%= link_to "Chi tiết →", course_path(product), class: "vp-card__more" %>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="vp-cta">
+  <div class="vp-container vp-cta__inner">
+    <div>
+      <h2 class="vp-cta__title">Chưa biết chọn khóa nào?</h2>
+      <p class="vp-cta__sub">Đặt một buổi học thử miễn phí — chúng tôi sẽ tư vấn lộ trình phù hợp với bạn.</p>
+    </div>
+    <%= link_to "Đặt lịch học thử", contact_path, class: "vp-btn vp-btn--light" %>
+  </div>
+</section>

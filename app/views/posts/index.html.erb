@@ -1,0 +1,25 @@
+<section class="vp-hero">
+  <div class="vp-container">
+    <p class="vp-hero__eyebrow">Valse Music School</p>
+    <h1 class="vp-hero__title">Latest News</h1>
+    <p class="vp-hero__sub">Chia sẻ kiến thức âm nhạc, mẹo luyện tập và câu chuyện từ giảng đường.</p>
+    <nav class="vp-breadcrumb" aria-label="Breadcrumb">
+      <%= link_to "Trang chủ", root_path %> <span>/</span>
+      <span class="vp-breadcrumb__current">Blog</span>
+    </nav>
+  </div>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <% if @posts.any? %>
+      <div class="vp-grid vp-grid--3 vp-posts">
+        <% @posts.each do |post| %>
+          <%= render "post_card", post: post %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="vp-note">Chưa có bài viết nào.</p>
+    <% end %>
+  </div>
+</section>

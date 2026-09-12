@@ -1,0 +1,242 @@
+/* Valse — COURSES (CoursesController: index, show)
+   Tabs danh mục, thẻ sản phẩm, trang chi tiết khóa học/sản phẩm. */
+
+/* ---------- Tabs ---------- */
+.vp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.vp-tab {
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  padding: 10px 22px;
+  border: 1px solid var(--vp-gold);
+  border-radius: 999px;
+  color: var(--vp-navy);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.vp-tab:hover {
+  background: var(--vp-sand);
+}
+
+.vp-tab--active {
+  background: var(--vp-navy);
+  border-color: var(--vp-navy);
+  color: var(--vp-white);
+}
+
+/* ---------- Product cards ---------- */
+.vp-card {
+  background: var(--vp-white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(2, 19, 33, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(2, 19, 33, 0.14);
+}
+
+.vp-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.vp-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vp-card__badge {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--vp-navy);
+  color: var(--vp-white);
+  font-family: var(--vp-font-body);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.vp-card__badge--sheet {
+  background: var(--vp-gold);
+}
+
+.vp-card__badge--piano {
+  background: var(--vp-dark);
+}
+
+.vp-card__body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vp-card__title {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: 21px;
+  margin: 0 0 8px;
+  color: var(--vp-navy);
+}
+
+.vp-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vp-card__summary {
+  font-family: var(--vp-font-body);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--vp-muted);
+  margin: 0 0 18px;
+  flex: 1;
+}
+
+.vp-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+}
+
+.vp-card__price {
+  font-family: var(--vp-font-body);
+  font-size: 14px;
+  color: var(--vp-muted);
+}
+
+.vp-card__price strong {
+  color: var(--vp-gold);
+  font-size: 17px;
+}
+
+.vp-card__more {
+  font-family: var(--vp-font-body);
+  font-size: 14px;
+  color: var(--vp-navy);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.vp-card__more:hover {
+  color: var(--vp-gold);
+}
+
+/* ---------- Product detail ---------- */
+.vp-detail {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: start;
+}
+
+.vp-detail__media img {
+  width: 100%;
+  border-radius: 14px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.vp-detail__heading {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--vp-navy);
+  margin: 36px 0 14px;
+}
+
+.vp-detail__desc p {
+  font-family: var(--vp-font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--vp-text);
+  margin: 0 0 14px;
+}
+
+.vp-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vp-highlights li {
+  font-family: var(--vp-font-body);
+  font-size: 15.5px;
+  color: var(--vp-text);
+  padding: 10px 0 10px 30px;
+  position: relative;
+  border-bottom: 1px dashed #eee;
+}
+
+.vp-highlights li::before {
+  content: "♪";
+  position: absolute;
+  left: 4px;
+  color: var(--vp-gold);
+}
+
+.vp-sidebox {
+  background: var(--vp-cream);
+  border-radius: 14px;
+  padding: 28px;
+  position: sticky;
+  top: 24px;
+}
+
+.vp-sidebox__label {
+  font-family: var(--vp-font-body);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--vp-gold);
+  margin: 0 0 8px;
+}
+
+.vp-sidebox__value {
+  font-family: var(--vp-font-display);
+  font-size: 34px;
+  color: var(--vp-navy);
+  margin: 0 0 8px;
+}
+
+.vp-sidebox__note {
+  font-family: var(--vp-font-body);
+  font-size: 14px;
+  color: var(--vp-muted);
+  margin: 0 0 18px;
+}
+
+.vp-sidebox .vp-btn + .vp-btn {
+  margin-top: 10px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .vp-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .vp-sidebox {
+    position: static;
+  }
+}

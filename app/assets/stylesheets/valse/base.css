@@ -1,0 +1,346 @@
+/* Valse — BASE: biến màu, layout dùng chung cho mọi controller
+   (hero, breadcrumb, section, button, plan, CTA).
+   Palette & fonts khớp với template Musicali (Playfair Display / Roboto). */
+
+:root {
+  --vp-navy: #021321;
+  --vp-navy-soft: #031732;
+  --vp-gold: #8b7d59;
+  --vp-dark: #533c00;
+  --vp-cream: #f9f4ef;
+  --vp-sand: #f8d8a4;
+  --vp-text: #55565a;
+  --vp-muted: #7d7d7d;
+  --vp-white: #ffffff;
+  --vp-font-display: "Playfair Display", serif;
+  --vp-font-body: "Roboto", "Segoe UI", sans-serif;
+}
+
+.vp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Hero ---------- */
+.vp-hero {
+  background: var(--vp-cream);
+  padding: 72px 0 56px;
+  text-align: center;
+}
+
+.vp-hero--detail {
+  padding: 56px 0 48px;
+}
+
+.vp-hero__eyebrow {
+  font-family: var(--vp-font-body);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--vp-gold);
+  margin: 0 0 14px;
+}
+
+.vp-hero__title {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.15;
+  color: var(--vp-navy);
+  margin: 0 0 16px;
+}
+
+.vp-hero__sub {
+  font-family: var(--vp-font-body);
+  font-size: 17px;
+  color: var(--vp-muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.vp-hero__note {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--vp-sand);
+  color: var(--vp-dark);
+  font-family: var(--vp-font-body);
+  font-size: 14px;
+}
+
+.vp-hero__price {
+  font-family: var(--vp-font-display);
+  font-size: 30px;
+  color: var(--vp-gold);
+  margin: 18px 0 0;
+}
+
+.vp-breadcrumb {
+  margin-top: 22px;
+  font-family: var(--vp-font-body);
+  font-size: 13px;
+  color: var(--vp-muted);
+}
+
+.vp-breadcrumb a {
+  color: var(--vp-gold);
+  text-decoration: none;
+}
+
+.vp-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.vp-breadcrumb span {
+  margin: 0 8px;
+}
+
+/* ---------- Sections & headings ---------- */
+.vp-section {
+  padding: 72px 0;
+}
+
+.vp-section--alt {
+  background: var(--vp-cream);
+}
+
+.vp-kicker {
+  font-family: var(--vp-font-body);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--vp-gold);
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.vp-heading {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 3.4vw, 38px);
+  color: var(--vp-navy);
+  text-align: center;
+  margin: 0 0 14px;
+}
+
+.vp-heading--left {
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.vp-heading__sub {
+  text-align: center;
+  color: var(--vp-muted);
+  font-family: var(--vp-font-body);
+  margin: 0 0 40px;
+}
+
+/* ---------- Grid (dùng chung Courses & Posts) ---------- */
+.vp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.vp-grid--3 {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* ---------- Buttons ---------- */
+.vp-btn {
+  display: inline-block;
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 30px;
+  border-radius: 999px;
+  background: var(--vp-navy);
+  color: var(--vp-white);
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.vp-btn:hover {
+  background: var(--vp-gold);
+  color: var(--vp-white);
+}
+
+.vp-btn--full {
+  display: block;
+  width: 100%;
+}
+
+.vp-btn--ghost {
+  background: transparent;
+  color: var(--vp-navy);
+  border: 1px solid #ddd;
+}
+
+.vp-btn--ghost:hover {
+  background: var(--vp-cream);
+  color: var(--vp-navy);
+}
+
+.vp-btn--light {
+  background: var(--vp-sand);
+  color: var(--vp-navy);
+}
+
+.vp-btn--light:hover {
+  background: var(--vp-white);
+  color: var(--vp-navy);
+}
+
+/* ---------- Plans (dùng chung Pricing & Course detail) ---------- */
+.vp-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.vp-plan {
+  position: relative;
+  background: var(--vp-white);
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 36px 30px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(2, 19, 33, 0.07);
+  display: flex;
+  flex-direction: column;
+}
+
+.vp-plan--featured {
+  border: 2px solid var(--vp-gold);
+}
+
+.vp-plan__badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--vp-gold);
+  color: var(--vp-white);
+  font-family: var(--vp-font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.vp-plan__name {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--vp-navy);
+  margin: 0 0 6px;
+}
+
+.vp-plan__tagline {
+  font-family: var(--vp-font-body);
+  font-size: 14.5px;
+  color: var(--vp-muted);
+  margin: 0 0 20px;
+}
+
+.vp-plan__price {
+  font-family: var(--vp-font-display);
+  font-size: 40px;
+  color: var(--vp-gold);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.vp-plan__duration {
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  color: var(--vp-navy);
+  margin: 6px 0 22px;
+}
+
+.vp-plan__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  text-align: left;
+  flex: 1;
+}
+
+.vp-plan__features li {
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  color: var(--vp-text);
+  padding: 9px 0 9px 28px;
+  position: relative;
+}
+
+.vp-plan__features li::before {
+  content: "✓";
+  position: absolute;
+  left: 2px;
+  color: var(--vp-gold);
+  font-weight: 700;
+}
+
+.vp-note {
+  font-family: var(--vp-font-body);
+  font-size: 14.5px;
+  color: var(--vp-muted);
+  max-width: 720px;
+  margin: 24px auto 0;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ---------- CTA band ---------- */
+.vp-cta {
+  background: var(--vp-navy);
+  padding: 64px 0;
+}
+
+.vp-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.vp-cta__title {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 34px);
+  color: var(--vp-white);
+  margin: 0 0 8px;
+}
+
+.vp-cta__sub {
+  font-family: var(--vp-font-body);
+  font-size: 15.5px;
+  color: #b9c2cc;
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .vp-section {
+    padding: 48px 0;
+  }
+
+  .vp-hero {
+    padding: 52px 0 40px;
+  }
+
+  .vp-cta__inner {
+    justify-content: center;
+    text-align: center;
+  }
+}

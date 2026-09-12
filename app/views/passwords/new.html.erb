@@ -1,0 +1,29 @@
+<section class="vp-auth">
+  <div class="vp-container">
+    <div class="vp-auth__card">
+      <div class="vp-auth__badge" aria-hidden="true">♪</div>
+      <p class="vp-auth__eyebrow">Valse Music School</p>
+      <h1 class="vp-auth__title">Quên mật khẩu?</h1>
+      <p class="vp-auth__sub">Nhập email bạn đã đăng ký — chúng tôi sẽ gửi hướng dẫn đặt lại mật khẩu.</p>
+
+      <% if flash[:alert] %>
+        <div class="vp-auth__flash vp-auth__flash--alert" role="alert"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%= form_with url: passwords_path, class: "vp-auth__form" do |form| %>
+        <div class="vp-auth__field">
+          <%= form.label :email_address, "Email", class: "vp-auth__label" %>
+          <%= form.email_field :email_address, required: true, autofocus: true,
+                autocomplete: "username", placeholder: "banvidu@example.com",
+                value: params[:email_address], class: "vp-auth__input" %>
+        </div>
+        <%= form.submit "Gửi hướng dẫn đặt lại mật khẩu", class: "vp-btn vp-btn--full vp-auth__submit" %>
+      <% end %>
+
+      <div class="vp-auth__alt">
+        Đã nhớ lại mật khẩu? <%= link_to "Đăng nhập", new_session_path %>
+      </div>
+    </div>
+    <div class="vp-auth__back"><%= link_to "← Về trang chủ", root_path %></div>
+  </div>
+</section>
