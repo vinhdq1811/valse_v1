@@ -7,14 +7,12 @@
   </div>
 </div>
 
-<p>
+<p class="admin-meta">
   <span class="admin-badge admin-badge--<%= @testimonial.published? ? "published" : "draft" %>">
     <%= @testimonial.published? ? "Hiện" : "Ẩn" %>
   </span>
-  &nbsp;
   <span class="admin-badge"><%= @testimonial.role %></span>
-  &nbsp;
-  <small>Vị trí: <%= @testimonial.position %> · Trang chủ: <%= @testimonial.show_on_home? ? "Có" : "Không" %></small>
+  Vị trí: <%= @testimonial.position %> · Trang chủ: <%= @testimonial.show_on_home? ? "Có" : "Không" %>
 </p>
 
 <% if @testimonial.avatar.attached? %>
@@ -23,9 +21,9 @@
 
 <div class="admin-form">
   <% if @testimonial.rating.present? %>
-    <p style="color: #c9a227; letter-spacing: 3px; font-size: 20px;"><%= "★" * @testimonial.rating %></p>
+    <p class="admin-stars"><%= "★" * @testimonial.rating %></p>
   <% end %>
-  <blockquote style="border-left: 3px solid #ccc; margin: 0; padding-left: 16px; font-style: italic;">
+  <blockquote class="admin-quote">
     <%= @testimonial.quote %>
   </blockquote>
 </div>

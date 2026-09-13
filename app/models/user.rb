@@ -22,4 +22,11 @@ class User < ApplicationRecord
   def display_name
     name.presence || email_address.split("@").first
   end
+
+  def initials
+    parts = display_name.split(/\s+/)
+    return parts.first[0, 2].upcase if parts.size == 1
+
+    [parts.first[0], parts.last[0]].join.upcase
+  end
 end

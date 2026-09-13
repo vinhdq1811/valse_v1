@@ -7,20 +7,18 @@
   </div>
 </div>
 
-<p>
+<p class="admin-meta">
   <span class="admin-badge admin-badge--<%= @post.status %>"><%= @post.status.humanize %></span>
-  &nbsp;
   <span class="admin-badge"><%= @post.category.name %></span>
-  &nbsp;
-  <small>Tác giả: <%= @post.author.display_name %> · Đăng: <%= @post.published_at&.strftime("%d/%m/%Y %H:%M") %></small>
+  Tác giả: <%= @post.author.display_name %> · Đăng: <%= @post.published_at&.strftime("%d/%m/%Y %H:%M") %>
 </p>
 
 <% if @post.featured_image.attached? %>
-  <p><%= image_tag @post.featured_image.variant(:card), style: "max-width: 420px; border-radius: 10px;" %></p>
+  <figure class="admin-figure"><%= image_tag @post.featured_image.variant(:card), style: "max-width: 420px;" %></figure>
 <% end %>
 
 <% if @post.excerpt.present? %>
-  <p><em><%= @post.excerpt %></em></p>
+  <p class="admin-excerpt"><%= @post.excerpt %></p>
 <% end %>
 
 <div class="admin-form">
