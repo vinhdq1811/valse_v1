@@ -1,3 +1,11 @@
 <%= render "layouts/musicali/header" %>
+<% if flash[:notice] || flash[:alert] %>
+  <div class="vp-flash-wrap">
+    <div class="vp-container">
+      <% if flash[:notice] %><p class="vp-flash vp-flash--notice"><%= flash[:notice] %></p><% end %>
+      <% if flash[:alert] %><p class="vp-flash vp-flash--alert"><%= flash[:alert] %></p><% end %>
+    </div>
+  </div>
+<% end %>
 <%= yield %>
 <%= render "layouts/musicali/footer" %>

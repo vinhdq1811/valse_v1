@@ -1,0 +1,124 @@
+<% today = Time.zone.today %>
+<% is_student = Current.user.student? %>
+
+<section class="vp-hero vp-hero--detail">
+  <p class="vp-hero__eyebrow">Đặt lịch học</p>
+  <h1 class="vp-hero__title">Lịch dạy — <%= @teacher.display_name %></h1>
+  <p class="vp-hero__sub">
+    Tuần <%= @week_start.strftime("%d/%m") %> – <%= (@week_start + 6).strftime("%d/%m/%Y") %>
+  </p>
+  <% if is_student %>
+    <% if @my_enrollments.any? %>
+      <p class="vp-hero__note">
+        <% @my_enrollments.each do |enrollment| %>
+          <%= enrollment.plan.name %>: tuần này <%= enrollment.weekly_booked_count %>/<%= enrollment.lessons_per_week %> buổi · cả khóa <%= enrollment.booked_count %>/<%= enrollment.total_lessons %> buổi
+        <% end %>
+      </p>
+    <% else %>
+      <p class="vp-hero__note">Bạn chưa có khóa học — liên hệ quản trị viên để được đăng ký.</p>
+    <% end %>
+  <% end %>
+</section>
+
+<section class="vp-section vp-section--alt">
+  <div class="vp-container">
+    <nav class="vp-weeknav" aria-label="Chọn tuần">
+      <%= link_to "« Tuần trước", teacher_path(@teacher, week: @week_start - 7), class: "vp-btn vp-btn--ghost" %>
+      <%= link_to "Tuần này", teacher_path(@teacher), class: "vp-btn vp-btn--ghost" %>
+      <%= link_to "Tuần sau »", teacher_path(@teacher, week: @week_start + 7), class: "vp-btn vp-btn--ghost" %>
+    </nav>
+
+    <% if @availabilities.none? %>
+      <p class="vp-note">Giáo viên này chưa công bố khung giờ dạy nào.</p>
+    <% else %>
+      <div class="vp-week">
+        <% @days.each do |date| %>
+          <% busy = @busy_dates[date] %>
+          <div class="vp-day<%= " vp-day--today" if date == today %>">
+            <header class="vp-day__head">
+              <span class="vp-day__name"><%= Availability::WEEKDAY_NAMES[date.wday] %></span>
+              <span class="vp-day__date"><%= date.strftime("%d/%m") %></span>
+            </header>
+            <div class="vp-day__slots">
+              <% if date < today %>
+                <p class="vp-slot vp-slot--past">Đã qua</p>
+              <% elsif busy %>
+                <p class="vp-slot vp-slot--busy">Nghỉ</p>
+              <% elsif @availabilities.none? { |a| a.weekday == date.wday } %>
+                <p class="vp-slot vp-slot--empty">Không dạy</p>
+              <% else %>
+                <% @availabilities.select { |a| a.weekday == date.wday }.each do |availability| %>
+                  <% slot_start = availability.slot_starts_at(date) %>
+                  <% past = slot_start <= Time.current %>
+                  <% lesson = @lessons_by_slot[[date, availability.id]] %>
+                  <% booked_by_me = lesson && @my_bookings_by_lesson.key?(lesson.id) %>
+                  <% full = lesson && lesson.full? && !booked_by_me %>
+                  <% remaining = lesson ? lesson.seats_left : availability.effective_max_students %>
+                  <% capacity = lesson ? lesson.max_students : availability.effective_max_students %>
+
+                  <% if past %>
+                    <div class="vp-slot vp-slot--past">
+                      <strong class="vp-slot__time"><%= availability.time_range_label %></strong>
+                      <span class="vp-slot__meta">Đã qua</span>
+                    </div>
+                  <% elsif booked_by_me %>
+                    <div class="vp-slot vp-slot--mine">
+                      <strong class="vp-slot__time"><%= availability.time_range_label %></strong>
+                      <span class="vp-slot__meta">Buổi của bạn</span>
+                      <%= button_to "Hủy buổi", booking_path(@my_bookings_by_lesson[lesson.id]),
+                            method: :delete,
+                            form: { data: { turbo_confirm: "Hủy buổi học này?" } },
+                            class: "vp-slot__cancel" %>
+                    </div>
+                  <% elsif full %>
+                    <div class="vp-slot vp-slot--full">
+                      <strong class="vp-slot__time"><%= availability.time_range_label %></strong>
+                      <span class="vp-slot__meta">Hết chỗ (<%= capacity %>/<%= capacity %>)</span>
+                      <% if !is_student %>
+                        <span class="vp-slot__students"><%= lesson.bookings.where(status: :booked).map { |b| b.student.display_name }.join(", ") %></span>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <div class="vp-slot vp-slot--free">
+                      <strong class="vp-slot__time"><%= availability.time_range_label %></strong>
+                      <span class="vp-slot__meta">Còn <%= remaining %>/<%= capacity %> chỗ</span>
+                      <% if !is_student && lesson %>
+                        <span class="vp-slot__students"><%= lesson.bookings.where(status: :booked).map { |b| b.student.display_name }.join(", ") %></span>
+                      <% end %>
+                      <% if is_student && @my_enrollments.any? %>
+                        <details class="vp-slot-form">
+                          <summary class="vp-btn">Đặt học</summary>
+                          <%= form_with url: bookings_path, class: "vp-slot-form__body" do |form| %>
+                            <%= form.hidden_field :availability_id, value: availability.id %>
+                            <%= form.hidden_field :date, value: date.iso8601 %>
+                            <% if @my_enrollments.size == 1 %>
+                              <%= form.hidden_field :enrollment_id, value: @my_enrollments.first.id %>
+                            <% else %>
+                              <%= form.label :enrollment_id, "Khóa học" %>
+                              <%= form.select :enrollment_id,
+                                    @my_enrollments.map { |e| ["#{e.plan.name} (còn #{e.remaining_total} buổi)", e.id] } %>
+                            <% end %>
+                            <%= form.label :notes, "Ghi chú" %>
+                            <%= form.text_area :notes, rows: 2, placeholder: "VD: Học bài Sonatina" %>
+                            <%= form.submit "Xác nhận đặt", class: "vp-btn vp-btn--full" %>
+                          <% end %>
+                        </details>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="vp-legend">
+        <span class="vp-legend__item"><i class="vp-legend__dot vp-legend__dot--free"></i>Còn trống</span>
+        <span class="vp-legend__item"><i class="vp-legend__dot vp-legend__dot--full"></i>Hết chỗ</span>
+        <span class="vp-legend__item"><i class="vp-legend__dot vp-legend__dot--mine"></i>Buổi của bạn</span>
+        <span class="vp-legend__item"><i class="vp-legend__dot vp-legend__dot--busy"></i>Nghỉ / không dạy</span>
+      </div>
+    <% end %>
+  </div>
+</section>

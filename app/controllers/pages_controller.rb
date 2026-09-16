@@ -12,7 +12,7 @@ class PagesController < ApplicationController
 
   def pricing
     @plans = Plan.ordered
-    @page_title = "Học phí"
+    @page_title = "Bảng giá"
     render "pricing", layout: "musicali"
   end
 
@@ -54,8 +54,21 @@ class PagesController < ApplicationController
     template = Rails.root.join("public", filename)
     html = File.binread(template).force_encoding(Encoding::UTF_8)
     html.gsub!(%r{<span class="__cf_email__"[^>]*>.*?</span>}) { |span| decode_cf_email(span) }
-
+    html.sub!(%r{</head>}m) { "#{valse_stylesheets}\n</head>" }
+    html.sub!(%r{<header id="masthead".*?</header>}m) { rails_header }
     render html: html.html_safe, layout: false
+  end
+
+  # CSS vp-* dùng chung cho header (file tĩnh gốc không có các stylesheet này).
+  def valse_stylesheets
+    helpers.stylesheet_link_tag("valse/base", "valse/header", "data-turbo-track": "reload")
+  end
+
+  # File template tĩnh chưa có trạng thái đăng nhập — thay bằng header partial
+  # của Rails (động, đồng bộ với các trang dùng layout musicali).
+  def rails_header
+    rendered = render_to_string(partial: "layouts/musicali/header")
+    rendered[%r{<header id="masthead".*?</header>}m] or raise "Header partial thiếu khối <header id=\"masthead\">"
   end
 
   # Decodes Cloudflare email-protection spans (<span class="__cf_email__"

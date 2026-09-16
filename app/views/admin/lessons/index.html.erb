@@ -1,0 +1,61 @@
+<div class="admin-head">
+  <h1>Buổi học</h1>
+  <div class="admin-actions">
+    <%= link_to "Sắp diễn ra", admin_lessons_path,
+          class: class_names("admin-btn", "admin-btn--secondary": params[:status].present?) %>
+    <%= link_to "Đã hủy", admin_lessons_path(status: "cancelled"),
+          class: class_names("admin-btn", "admin-btn--secondary": params[:status] != "cancelled") %>
+    <%= link_to "Hoàn thành", admin_lessons_path(status: "completed"),
+          class: class_names("admin-btn", "admin-btn--secondary": params[:status] != "completed") %>
+  </div>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Thời gian</th>
+      <th>Giáo viên</th>
+      <th>Học viên</th>
+      <th>Sĩ số</th>
+      <th>Trạng thái</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lessons.each do |lesson| %>
+      <tr>
+        <td>
+          <strong><%= lesson.starts_at.strftime("%d/%m/%Y") %></strong><br>
+          <small><%= lesson.time_range_label %></small>
+        </td>
+        <td><%= lesson.teacher.display_name %></td>
+        <td>
+          <% booked = lesson.bookings.select(&:booked?) %>
+          <% if booked.any? %>
+            <%= booked.map { |b| "#{b.student.display_name}#{b.notes.present? ? " (#{b.notes})" : ""}" }.join(", ") %>
+          <% else %>
+            <small>Chưa có học viên</small>
+          <% end %>
+        </td>
+        <td><%= lesson.booked_count %>/<%= lesson.max_students %></td>
+        <td>
+          <span class="admin-badge admin-badge--<%= { "scheduled" => "published", "cancelled" => "draft", "completed" => "published" }[lesson.status] %>">
+            <%= { "scheduled" => "Sắp diễn ra", "cancelled" => "Đã hủy", "completed" => "Hoàn thành" }[lesson.status] %>
+          </span>
+        </td>
+        <td>
+          <div class="admin-actions">
+            <% if lesson.scheduled? %>
+              <%= button_to "Hủy buổi", cancel_admin_lesson_path(lesson), method: :patch,
+                    form: { data: { turbo_confirm: "Hủy buổi học và các đăng ký liên quan?" } },
+                    class: "admin-btn admin-btn--secondary" %>
+            <% end %>
+            <%= button_to "Xóa", admin_lesson_path(lesson), method: :delete,
+                  form: { data: { turbo_confirm: "Xóa vĩnh viễn buổi học này?" } },
+                  class: "admin-btn admin-btn--danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

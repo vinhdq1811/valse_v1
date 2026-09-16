@@ -1,0 +1,21 @@
+<div class="admin-head">
+  <h1>Cài đặt hệ thống</h1>
+</div>
+
+<%= form_with url: admin_settings_path, method: :patch, class: "admin-form" do |form| %>
+  <div class="field">
+    <%= form.label :default_max_students, "Sĩ số mặc định mỗi buổi học" %>
+    <%= form.number_field :default_max_students, value: @default_max_students, min: 1, required: true %>
+    <p>
+      <small>
+        Áp dụng cho mọi khung giờ dạy mà giáo viên không tự nhập sĩ số riêng.
+        Các buổi học đã mở trước đó không bị ảnh hưởng.
+      </small>
+    </p>
+  </div>
+
+  <div class="admin-actions">
+    <%= form.submit "Lưu cài đặt", class: "admin-btn" %>
+    <%= link_to "Hủy", admin_root_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+<% end %>

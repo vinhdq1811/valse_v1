@@ -1,0 +1,42 @@
+<%= form_with model: [:admin, @user], class: "admin-form" do |form| %>
+  <% if @user.errors.any? %>
+    <div class="admin-errors">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="admin-grid-2">
+    <div class="field">
+      <%= form.label :name, "Họ tên" %>
+      <%= form.text_field :name, required: true %>
+    </div>
+
+    <div class="field">
+      <%= form.label :email_address, "Email" %>
+      <%= form.email_field :email_address, required: true %>
+    </div>
+  </div>
+
+  <div class="admin-grid-2">
+    <div class="field">
+      <%= form.label :role, "Vai trò" %>
+      <% role_labels = { "student" => "Học viên", "teacher" => "Giáo viên", "admin" => "Quản trị", "superadmin" => "Superadmin" } %>
+      <% available_roles = Current.user.superadmin? ? User.roles.keys : %w[student teacher admin] %>
+      <%= form.select :role, available_roles.map { |r| [role_labels[r], r] } %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password, "Mật khẩu #{@user.new_record? ? "" : "(để trống nếu giữ nguyên)"}" %>
+      <%= form.password_field :password, minlength: 8, required: @user.new_record? %>
+    </div>
+  </div>
+
+  <div class="admin-actions">
+    <%= form.submit @user.new_record? ? "Tạo tài khoản" : "Cập nhật", class: "admin-btn" %>
+    <%= link_to "Hủy", admin_users_path, class: "admin-btn admin-btn--secondary" %>
+  </div>
+<% end %>

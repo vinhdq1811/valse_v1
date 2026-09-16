@@ -2,6 +2,11 @@ class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :posts, dependent: :restrict_with_error
+  has_many :availabilities, dependent: :destroy
+  has_many :busy_dates, dependent: :destroy
+  has_many :enrollments, dependent: :restrict_with_error
+  has_many :bookings, foreign_key: :student_id, dependent: :destroy
+  has_many :teaching_lessons, class_name: "Lesson", foreign_key: :teacher_id, dependent: :destroy
 
   enum :role, { student: 0, teacher: 1, admin: 2, superadmin: 3 }, default: :student
 
@@ -14,9 +19,15 @@ class User < ApplicationRecord
 
   scope :staff, -> { where(role: [:admin, :superadmin]) }
   scope :authors, -> { where(role: [:teacher, :admin, :superadmin]) }
+  scope :teachers, -> { where(role: [:teacher, :admin, :superadmin]) }
+  scope :ordered, -> { order(:name, :id) }
 
   def admin_or_superadmin?
     admin? || superadmin?
+  end
+
+  def teacher_or_admin?
+    teacher? || admin_or_superadmin?
   end
 
   def display_name

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_12_090001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_16_090006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -52,6 +52,41 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_12_090001) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "availabilities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.time "end_time", null: false
+    t.integer "max_students"
+    t.time "start_time", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.integer "weekday", null: false
+    t.index ["user_id"], name: "index_availabilities_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "enrollment_id", null: false
+    t.bigint "lesson_id", null: false
+    t.text "notes"
+    t.integer "status", default: 0, null: false
+    t.bigint "student_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enrollment_id", "status"], name: "index_bookings_on_enrollment_id_and_status"
+    t.index ["enrollment_id"], name: "index_bookings_on_enrollment_id"
+    t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
+    t.index ["student_id", "status"], name: "index_bookings_on_student_id_and_status"
+    t.index ["student_id"], name: "index_bookings_on_student_id"
+  end
+
+  create_table "busy_dates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.date "date", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id", "date"], name: "index_busy_dates_on_user_id_and_date", unique: true
+    t.index ["user_id"], name: "index_busy_dates_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
@@ -68,6 +103,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_12_090001) do
     t.string "phone", null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.integer "lessons_per_week", null: false
+    t.bigint "plan_id", null: false
+    t.integer "total_lessons", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["plan_id"], name: "index_enrollments_on_plan_id"
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.bigint "availability_id"
+    t.datetime "created_at", null: false
+    t.datetime "ends_at", null: false
+    t.integer "max_students", null: false
+    t.datetime "starts_at", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "teacher_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["availability_id", "starts_at"], name: "index_lessons_on_availability_id_and_starts_at"
+    t.index ["availability_id"], name: "index_lessons_on_availability_id"
+    t.index ["teacher_id", "starts_at"], name: "index_lessons_on_teacher_id_and_starts_at"
+    t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -132,6 +194,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_12_090001) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "key", null: false
+    t.datetime "updated_at", null: false
+    t.string "value"
+    t.index ["key"], name: "index_settings_on_key", unique: true
+  end
+
   create_table "tags", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
@@ -164,6 +234,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_12_090001) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "availabilities", "users"
+  add_foreign_key "bookings", "enrollments"
+  add_foreign_key "bookings", "lessons"
+  add_foreign_key "bookings", "users", column: "student_id"
+  add_foreign_key "busy_dates", "users"
+  add_foreign_key "enrollments", "plans"
+  add_foreign_key "enrollments", "users"
+  add_foreign_key "lessons", "availabilities"
+  add_foreign_key "lessons", "users", column: "teacher_id"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "categories"

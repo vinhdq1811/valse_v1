@@ -1,0 +1,33 @@
+<section class="vp-hero vp-hero--detail">
+  <p class="vp-hero__eyebrow">Đặt lịch học</p>
+  <h1 class="vp-hero__title">Chọn giáo viên của bạn</h1>
+  <p class="vp-hero__sub">Xem lịch trống của từng giáo viên và đặt buổi học phù hợp với bạn.</p>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <% if @teachers.any? %>
+      <div class="vp-grid vp-grid--3">
+        <% @teachers.each do |teacher| %>
+          <article class="vp-card vp-teacher-card">
+            <div class="vp-teacher-card__head">
+              <span class="vp-avatar"><%= teacher.initials %></span>
+              <div>
+                <h3 class="vp-card__title"><%= link_to teacher.display_name, teacher_path(teacher) %></h3>
+                <p class="vp-teacher-card__role"><%= teacher.role.humanize %></p>
+              </div>
+            </div>
+            <p class="vp-teacher-card__meta">
+              <%= pluralize(teacher.availabilities.count, "khung giờ", "khung giờ") %> trống trong tuần
+            </p>
+            <div class="vp-card__foot">
+              <%= link_to "Xem lịch & đặt học", teacher_path(teacher), class: "vp-btn" %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="vp-note">Chưa có giáo viên nào trong hệ thống.</p>
+    <% end %>
+  </div>
+</section>

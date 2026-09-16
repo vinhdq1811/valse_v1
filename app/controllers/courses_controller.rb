@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   CATEGORY_LABELS = {
     "course" => "Khóa học Piano",
     "sheet" => "Sheet nhạc",
-    "piano" => "Đàn piano"
+    "piano" => "Đàn piano cũ"
   }.freeze
 
   def index

@@ -22,6 +22,10 @@ module Authentication
       redirect_to root_path, alert: "Bạn không có quyền truy cập trang này." unless Current.user&.admin_or_superadmin?
     end
 
+    def require_teacher_or_admin
+      redirect_to root_path, alert: "Chức năng này chỉ dành cho giáo viên và quản trị viên." unless Current.user&.teacher_or_admin?
+    end
+
     def require_authentication
       resume_session || request_authentication
     end

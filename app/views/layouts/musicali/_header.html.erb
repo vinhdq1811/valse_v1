@@ -47,8 +47,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='e-animation-fadeInUp-css' href='/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInUp.min.css?ver=3.32.4' media='all' />
 <link rel='stylesheet' id='e-animation-fadeIn-css' href='/wp-content/plugins/elementor/assets/lib/animations/styles/fadeIn.min.css?ver=3.32.4' media='all' />
 <link rel='stylesheet' id='widget-image-css' href='/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=3.32.4' media='all' />
+<link rel='stylesheet' id='widget-spacer-css' href='/wp-content/plugins/elementor/assets/css/widget-spacer.min.css?ver=3.32.4' media='all' />
+<link rel='stylesheet' id='elementor-post-1144-css' href='/wp-content/uploads/elementor/css/post-1144.css?ver=1787683078' media='all' />
 <link rel='stylesheet' id='e-animation-slideInUp-css' href='/wp-content/plugins/elementor/assets/lib/animations/styles/slideInUp.min.css?ver=3.32.4' media='all' />
 <link rel='stylesheet' id='elementor-post-1111-css' href='/wp-content/uploads/elementor/css/post-1111.css?ver=1787308874' media='all' />
+<link rel='stylesheet' id='elementor-post-1461-css' href='/wp-content/uploads/elementor/css/post-1461.css?ver=1787299811' media='all' />
+<link rel='stylesheet' id='widget-divider-css' href='/wp-content/plugins/elementor/assets/css/widget-divider.min.css?ver=3.32.4' media='all' />
+<link rel='stylesheet' id='widget-icon-box-css' href='/wp-content/uploads/elementor/css/custom-widget-icon-box.min.css?ver=1787248150' media='all' />
 <link rel='stylesheet' id='cute-alert-css' href='/wp-content/plugins/metform/public/assets/lib/cute-alert/style.css?ver=4.0.6' media='all' />
 <link rel='stylesheet' id='text-editor-style-css' href='/wp-content/plugins/metform/public/assets/css/text-editor.css?ver=4.0.6' media='all' />
 <link rel='stylesheet' id='hello-elementor-css' href='/wp-content/themes/hello-elementor/assets/css/reset.css?ver=3.4.4' media='all' />
@@ -102,7 +107,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='e-apple-webkit-css' href='/wp-content/uploads/elementor/css/custom-apple-webkit.min.css?ver=1787248150' media='all' />
 <link rel='stylesheet' id='elementor-icons-ekiticons-css' href='/wp-content/plugins/elementskit-lite/modules/elementskit-icon-pack/assets/css/ekiticons.css?ver=3.7.3' media='all' />
 <%# Styles các trang vp-* (đã tách theo controller trong app/assets/stylesheets/valse/) %>
-<%= stylesheet_link_tag "valse/base", "valse/courses", "valse/pages", "valse/posts", "valse/auth", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "valse/base", "valse/header", "valse/courses", "valse/pages", "valse/posts", "valse/auth", "valse/profile", "valse/schedule", "data-turbo-track": "reload" %>
 </head>
 
 <body class="wp-singular page-template page-template-elementor_header_footer page page-id-1111 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor jkit-color-scheme hello-elementor-default elementor-default elementor-template-full-width elementor-kit-8 elementor-page elementor-page-1111">
@@ -119,15 +124,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				<div class="elementor-element elementor-element-df4a42f elementor-widget elementor-widget-jkit_nav_menu" data-id="df4a42f" data-element_type="widget" data-settings="{&quot;st_submenu_item_text_normal_bg_background_background&quot;:&quot;classic&quot;,&quot;st_submenu_item_text_hover_bg_background_background&quot;:&quot;classic&quot;,&quot;st_menu_item_text_hover_bg_background_background&quot;:&quot;classic&quot;}" data-widget_type="jkit_nav_menu.default">
 				<div class="elementor-widget-container">
 					<div  class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_1111__6aa4592a98718"  data-item-indicator=""><button aria-label="open-menu" class="jkit-hamburger-menu"><i aria-hidden="true" class="jki jki-burger-menu-light"></i></button>
-        <div class="jkit-menu-wrapper"><div class="jkit-menu-container"><ul id="menu-primary-menu-desktop-01" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top"><li id="menu-item-1654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1654"><a href="/">Home</a></li>
-<li id="menu-item-1667" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1667"><a>Courses</a>
+        <div class="jkit-menu-wrapper"><div class="jkit-menu-container"><ul id="menu-primary-menu-desktop-01" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top"><li id="menu-item-1654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1654"><a href="/">Trang chủ</a></li>
+<li id="menu-item-1667" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children vp-has-caret menu-item-1667"><a href="/courses">Sản phẩm</a>
 <ul class="sub-menu">
-	<li id="menu-item-1660" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1111 current_page_item menu-item-1660"><a href="/courses" aria-current="page">Courses</a></li>
-	<li id="menu-item-1659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1659"><a href="/courses?category=course">Khóa học Piano</a></li>
+	<li id="menu-item-1659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1659"><a href="/courses?category=course">Khóa học piano</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/courses?category=sheet">Sheet nhạc</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/courses?category=piano">Đàn piano</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/courses?category=piano">Đàn piano cũ</a></li>
 </ul>
 </li>
+<li id="menu-item-1678" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1678"><a href="/pricing/">Bảng giá</a></li>
 </ul></div>
             <div class="jkit-nav-identity-panel">
                 <div class="jkit-nav-site-title"><a href="/" class="jkit-nav-logo" aria-label="Home Link"><img fetchpriority="high" width="701" height="146" src="/wp-content/uploads/2024/10/Logo-009.png" class="attachment-full size-full" alt="" decoding="async" srcset="/wp-content/uploads/2024/10/Logo-009.png 701w, /wp-content/uploads/2024/10/Logo-009-300x62.png 300w" sizes="(max-width: 701px) 100vw, 701px" /></a></div>
@@ -147,26 +152,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				<div class="elementor-element elementor-element-5702bc4 elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-jkit_nav_menu" data-id="5702bc4" data-element_type="widget" data-settings="{&quot;st_submenu_item_text_normal_bg_background_background&quot;:&quot;classic&quot;,&quot;st_submenu_item_text_hover_bg_background_background&quot;:&quot;classic&quot;,&quot;st_menu_item_text_hover_bg_background_background&quot;:&quot;classic&quot;}" data-widget_type="jkit_nav_menu.default">
 				<div class="elementor-widget-container">
 					<div  class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_1111_1_6aa4592a9a10c"  data-item-indicator=""><button aria-label="open-menu" class="jkit-hamburger-menu"><i aria-hidden="true" class="jki jki-burger-menu-light"></i></button>
-        <div class="jkit-menu-wrapper"><div class="jkit-menu-container"><ul id="menu-primary-menu-desktop-02" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top"><li id="menu-item-1682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1682"><a>Page</a>
-<ul class="sub-menu">
-	<li id="menu-item-1680" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1680"><a href="/testimonials/">Testimonials</a></li>
-</ul>
-</li>
-<li id="menu-item-1678" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1678"><a href="/pricing/">Pricing</a></li>
-<li id="menu-item-1681" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1681"><a>Blog</a>
-<ul class="sub-menu">
-	<li id="menu-item-1671" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1671"><a href="/blog/">Blog</a></li>
-	<li id="menu-item-2213" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2213"><a href="/2024/08/29/mastering-fingerstyle-guitar-a-step-by-step-course-for-beginners/">Single Post</a></li>
-</ul>
-</li>
-<li id="menu-item-1672" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1672"><a href="/contact/">Contact</a></li>
+        <div class="jkit-menu-wrapper"><div class="jkit-menu-container"><ul id="menu-primary-menu-desktop-02" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top"><li id="menu-item-1712" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1712"><a href="/blog">Chia sẻ</a></li>
+<li id="menu-item-1672" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1672"><a href="/contact/">Liên hệ</a></li>
 <% if Current.user %>
-<% if Current.user&.admin_or_superadmin? %><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/admin">Quản trị</a></li><% end %>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#" title="Tài khoản">Xin chào, <%= Current.user.display_name %></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><%= link_to "Đăng xuất", session_path, data: { turbo_method: :delete } %></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children vp-account"><a class="vp-account__toggle"><span class="vp-account__avatar" aria-hidden="true"><%= Current.user.initials %></span><span class="vp-account__name"><%= Current.user.display_name %></span></a>
+<ul class="sub-menu vp-account__menu">
+	<li class="menu-item"><%= link_to "Lớp học của tôi", Current.user.student? ? bookings_path : availabilities_path %></li>
+	<li class="menu-item"><%= link_to "Thông tin cá nhân", profile_path %></li>
+	<% if Current.user&.admin_or_superadmin? %><li class="menu-item"><a href="/admin">Quản trị</a></li><% end %>
+	<li class="menu-item vp-account__logout"><%= link_to "Đăng xuất", logout_path %></li>
+</ul>
+</li>
 <% else %>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<%= new_session_path %>">Đăng nhập</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<%= new_registration_path %>">Đăng ký</a></li>
+<li class="menu-item vp-login"><a class="vp-login__btn" href="<%= new_session_path %>">Đăng nhập</a></li>
 <% end %>
 </ul></div>
             <div class="jkit-nav-identity-panel">
@@ -179,35 +177,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				<div class="elementor-element elementor-element-a29705b elementor-hidden-desktop elementor-hidden-laptop elementor-widget elementor-widget-jkit_nav_menu" data-id="a29705b" data-element_type="widget" data-settings="{&quot;st_submenu_item_text_normal_bg_background_background&quot;:&quot;classic&quot;,&quot;st_submenu_item_text_hover_bg_background_background&quot;:&quot;classic&quot;,&quot;st_menu_item_text_hover_bg_background_background&quot;:&quot;classic&quot;}" data-widget_type="jkit_nav_menu.default">
 				<div class="elementor-widget-container">
 					<div  class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_1111_2_6aa4592a9b141"  data-item-indicator=""><button aria-label="open-menu" class="jkit-hamburger-menu"><i aria-hidden="true" class="jki jki-burger-menu-light"></i></button>
-        <div class="jkit-menu-wrapper"><div class="jkit-menu-container"><ul id="menu-primary-menu-phone" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top"><li id="menu-item-1698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1698"><a href="/">Home</a></li>
-<li id="menu-item-1711" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1711"><a>Courses</a>
+        <div class="jkit-menu-wrapper"><div class="jkit-menu-container"><ul id="menu-primary-menu-phone" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top"><li id="menu-item-1698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1698"><a href="/">Trang chủ</a></li>
+<li id="menu-item-1711" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children vp-has-caret menu-item-1711"><a href="/courses">Sản phẩm</a>
 <ul class="sub-menu">
-	<li id="menu-item-1704" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1111 current_page_item menu-item-1704"><a href="/courses" aria-current="page">Courses</a></li>
-	<li id="menu-item-1703" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1703"><a href="/courses?category=course">Khóa học Piano</a></li>
+	<li id="menu-item-1703" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1703"><a href="/courses?category=course">Khóa học piano</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/courses?category=sheet">Sheet nhạc</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/courses?category=piano">Đàn piano</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/courses?category=piano">Đàn piano cũ</a></li>
 </ul>
 </li>
-<li id="menu-item-1713" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1713"><a>Page</a>
-<ul class="sub-menu">
-	<li id="menu-item-1708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1708"><a href="/pricing/">Pricing</a></li>
-	<li id="menu-item-1710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1710"><a href="/testimonials/">Testimonials</a></li>
-</ul>
-</li>
-<li id="menu-item-1712" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1712"><a>Blog</a>
-<ul class="sub-menu">
-	<li id="menu-item-1701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1701"><a href="/blog/">Blog</a></li>
-	<li id="menu-item-2214" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2214"><a href="/2024/08/29/mastering-fingerstyle-guitar-a-step-by-step-course-for-beginners/">Single Post</a></li>
-</ul>
-</li>
-<li id="menu-item-1702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1702"><a href="/contact/">Contact</a></li>
+<li id="menu-item-1708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1708"><a href="/pricing/">Bảng giá</a></li>
+<li id="menu-item-1701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1701"><a href="/blog">Chia sẻ</a></li>
+<li id="menu-item-1702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1702"><a href="/contact/">Liên hệ</a></li>
 <% if Current.user %>
-<% if Current.user&.admin_or_superadmin? %><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/admin">Quản trị</a></li><% end %>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#" title="Tài khoản">Xin chào, <%= Current.user.display_name %></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><%= link_to "Đăng xuất", session_path, data: { turbo_method: :delete } %></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children vp-account"><a class="vp-account__toggle"><span class="vp-account__avatar" aria-hidden="true"><%= Current.user.initials %></span><span class="vp-account__name"><%= Current.user.display_name %></span></a>
+<ul class="sub-menu vp-account__menu">
+	<li class="menu-item"><%= link_to "Lớp học của tôi", Current.user.student? ? bookings_path : availabilities_path %></li>
+	<li class="menu-item"><%= link_to "Thông tin cá nhân", profile_path %></li>
+	<% if Current.user&.admin_or_superadmin? %><li class="menu-item"><a href="/admin">Quản trị</a></li><% end %>
+	<li class="menu-item vp-account__logout"><%= link_to "Đăng xuất", logout_path %></li>
+</ul>
+</li>
 <% else %>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<%= new_session_path %>">Đăng nhập</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<%= new_registration_path %>">Đăng ký</a></li>
+<li class="menu-item vp-login"><a class="vp-login__btn" href="<%= new_session_path %>">Đăng nhập</a></li>
 <% end %>
 </ul></div>
             <div class="jkit-nav-identity-panel">

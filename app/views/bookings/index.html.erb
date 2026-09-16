@@ -1,0 +1,93 @@
+<section class="vp-hero vp-hero--detail">
+  <p class="vp-hero__eyebrow">Tài khoản</p>
+  <h1 class="vp-hero__title">Lịch của tôi</h1>
+  <p class="vp-hero__sub">Xin chào <%= Current.user.display_name %>, đây là các buổi học của bạn.</p>
+  <% if Current.user.student? && @active_enrollments.any? %>
+    <p class="vp-hero__note">
+      <% @active_enrollments.each do |enrollment| %>
+        <%= enrollment.plan.name %>: tuần này <%= enrollment.weekly_booked_count %>/<%= enrollment.lessons_per_week %> buổi · cả khóa <%= enrollment.booked_count %>/<%= enrollment.total_lessons %> buổi
+      <% end %>
+    </p>
+  <% end %>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <% if Current.user.student? && @active_enrollments.none? %>
+      <p class="vp-note">Bạn chưa được đăng ký khóa học. Vui lòng liên hệ quản trị viên để được mở khóa trước khi đặt lịch.</p>
+    <% end %>
+
+    <% if Current.user.teacher_or_admin? %>
+      <h2 class="vp-heading vp-heading--left">Buổi dạy sắp tới</h2>
+      <% if @upcoming_lessons.any? %>
+        <div class="vp-booking-list">
+          <% @upcoming_lessons.each do |lesson| %>
+            <article class="vp-booking">
+              <div class="vp-booking__when">
+                <strong><%= lesson.starts_at.strftime("%d/%m/%Y") %></strong>
+                <span><%= lesson.time_range_label %></span>
+              </div>
+              <div class="vp-booking__info">
+                <span class="vp-booking__students">
+                  <%= lesson.bookings.where(status: :booked).map { |b| b.student.display_name }.join(", ").presence || "Chưa có học viên" %>
+                </span>
+                <span class="vp-booking__meta"><%= lesson.booked_count %>/<%= lesson.max_students %> học viên</span>
+              </div>
+            </article>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="vp-note">Chưa có buổi dạy nào sắp tới.</p>
+      <% end %>
+      <p><%= link_to "Cài khung giờ dạy & ngày nghỉ", availabilities_path, class: "vp-btn vp-btn--ghost" %></p>
+    <% end %>
+
+    <h2 class="vp-heading vp-heading--left">Buổi học sắp tới</h2>
+    <% if @upcoming_bookings.any? %>
+      <div class="vp-booking-list">
+        <% @upcoming_bookings.each do |booking| %>
+          <article class="vp-booking">
+            <div class="vp-booking__when">
+              <strong><%= booking.lesson.starts_at.strftime("%d/%m/%Y") %></strong>
+              <span><%= booking.lesson.time_range_label %></span>
+            </div>
+            <div class="vp-booking__info">
+              <% unless Current.user.student? %>
+                <span class="vp-booking__students"><%= booking.student.display_name %></span>
+              <% end %>
+              <span class="vp-booking__meta">Giáo viên: <%= booking.lesson.teacher.display_name %></span>
+              <% if booking.notes.present? %>
+                <span class="vp-booking__meta">Ghi chú: <%= booking.notes %></span>
+              <% end %>
+            </div>
+            <%= button_to "Hủy buổi", booking_path(booking),
+                  method: :delete,
+                  form: { data: { turbo_confirm: "Hủy buổi học này?" } },
+                  class: "vp-btn vp-btn--ghost" %>
+          </article>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="vp-note">Bạn chưa đặt buổi học nào sắp tới.</p>
+    <% end %>
+    <p><%= link_to "Đặt thêm buổi học", teachers_path, class: "vp-btn" %></p>
+
+    <% if @past_bookings.any? %>
+      <h2 class="vp-heading vp-heading--left">Buổi đã qua</h2>
+      <div class="vp-booking-list vp-booking-list--muted">
+        <% @past_bookings.each do |booking| %>
+          <article class="vp-booking">
+            <div class="vp-booking__when">
+              <strong><%= booking.lesson.starts_at.strftime("%d/%m/%Y") %></strong>
+              <span><%= booking.lesson.time_range_label %></span>
+            </div>
+            <div class="vp-booking__info">
+              <span class="vp-booking__meta">Giáo viên: <%= booking.lesson.teacher.display_name %></span>
+              <span class="vp-booking__meta"><%= booking.booked? ? "Đã học" : "Đã hủy" %></span>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

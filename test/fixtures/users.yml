@@ -15,3 +15,20 @@ admin:
   password_digest: <%= password_digest %>
   name: Quản trị viên
   role: admin
+
+teacher:
+  email_address: teacher@example.com
+  password_digest: <%= password_digest %>
+  name: Giáo viên Một
+  role: teacher
+
+teacher_two:
+  email_address: teacher_two@example.com
+  password_digest: <%= password_digest %>
+  name: Giáo viên Hai
+  role: teacher
+
+student_two:
+  email_address: student_two@example.com
+  password_digest: <%= password_digest %>
+  name: Học viên Ba

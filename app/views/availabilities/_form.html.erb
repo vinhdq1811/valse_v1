@@ -1,0 +1,37 @@
+<%= form_with model: availability, url: availability.new_record? ? availabilities_path : availability_path(availability), class: "vp-form" do |form| %>
+  <% if availability.errors.any? %>
+    <div class="vp-form__errors">
+      <ul>
+        <% availability.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="vp-form__field">
+    <%= form.label :weekday, "Thứ trong tuần" %>
+    <%= form.select :weekday,
+          Availability::WEEKDAY_NAMES.map { |value, name| [name, value] },
+          prompt: "Chọn thứ" %>
+  </div>
+
+  <div class="vp-form__row">
+    <div class="vp-form__field">
+      <%= form.label :start_time, "Bắt đầu" %>
+      <%= form.time_field :start_time, required: true %>
+    </div>
+    <div class="vp-form__field">
+      <%= form.label :end_time, "Kết thúc" %>
+      <%= form.time_field :end_time, required: true %>
+    </div>
+  </div>
+
+  <div class="vp-form__field">
+    <%= form.label :max_students, "Sĩ số tối đa" %>
+    <%= form.number_field :max_students, min: 1, placeholder: "Bỏ trống = mặc định (#{Setting.default_max_students} học viên)" %>
+    <p class="vp-form__hint">Để trống sẽ dùng sĩ số mặc định do quản trị viên quy định.</p>
+  </div>
+
+  <%= form.submit availability.new_record? ? "Thêm khung giờ" : "Cập nhật", class: "vp-btn" %>
+<% end %>

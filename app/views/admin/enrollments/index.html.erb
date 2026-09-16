@@ -1,0 +1,42 @@
+<div class="admin-head">
+  <h1>Đăng ký khóa học</h1>
+  <%= link_to "+ Đăng ký mới", new_admin_enrollment_path, class: "admin-btn" %>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Học viên</th>
+      <th>Khóa học</th>
+      <th>Buổi/tuần</th>
+      <th>Đã đặt</th>
+      <th>Tổng buổi</th>
+      <th>Trạng thái</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td><strong><%= enrollment.user.display_name %></strong><br><small><%= enrollment.user.email_address %></small></td>
+        <td><%= enrollment.plan.name %></td>
+        <td><%= enrollment.lessons_per_week %></td>
+        <td><%= @booked_counts[enrollment.id] || 0 %></td>
+        <td><%= enrollment.total_lessons %></td>
+        <td>
+          <span class="admin-badge admin-badge--<%= enrollment.active? ? "published" : "draft" %>">
+            <%= enrollment.active? ? "Đang học" : "Tạm dừng" %>
+          </span>
+        </td>
+        <td>
+          <div class="admin-actions">
+            <%= link_to "Sửa", edit_admin_enrollment_path(enrollment), class: "admin-btn admin-btn--secondary" %>
+            <%= button_to "Xóa", admin_enrollment_path(enrollment), method: :delete,
+                  form: { data: { turbo_confirm: "Xóa đăng ký này?" } },
+                  class: "admin-btn admin-btn--danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

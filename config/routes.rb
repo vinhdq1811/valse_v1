@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   resource :registration, only: %i[ new create ]
   resources :passwords, param: :token
 
+  # Đăng xuất qua GET (layout Musicali không nạp Turbo nên data-turbo-method không hoạt động)
+  get "logout", to: "sessions#destroy", as: :logout
+
+  # Hồ sơ cá nhân
+  get "profile", to: "profiles#show"
+
   # Defines the root path route ("/")
   root "pages#home"
 
@@ -24,7 +30,19 @@ Rails.application.routes.draw do
     resources :posts
     resources :categories, except: [:show]
     resources :tags, except: [:show]
+    resources :enrollments
+    resources :lessons do
+      member { patch :cancel }
+    end
+    resources :users, except: [:show]
+    resource :settings, only: %i[edit update]
   end
+
+  # Đặt lịch học — yêu cầu đăng nhập
+  resources :teachers, only: %i[index show]
+  resources :bookings, only: %i[index create destroy]
+  resources :availabilities, only: %i[index new create edit update destroy]
+  resources :busy_dates, only: %i[create destroy]
 
   # Trang Courses (template gốc dùng URL /services/)
   get "services", to: redirect("/courses")

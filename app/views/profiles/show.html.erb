@@ -1,0 +1,38 @@
+<section class="vp-hero">
+  <div class="vp-container">
+    <p class="vp-hero__eyebrow">Tài khoản</p>
+    <h1 class="vp-hero__title">Thông tin cá nhân</h1>
+    <p class="vp-hero__sub">Hồ sơ của bạn trên Valse — trường âm nhạc dành cho mọi lứa tuổi.</p>
+  </div>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <div class="vp-profile">
+      <div class="vp-profile__card">
+        <span class="vp-profile__avatar" aria-hidden="true"><%= @user.initials %></span>
+        <h2 class="vp-profile__name"><%= @user.display_name %></h2>
+        <p class="vp-profile__role"><%= role_label %></p>
+
+        <dl class="vp-profile__list">
+          <div class="vp-profile__row">
+            <dt>Email</dt>
+            <dd><%= @user.email_address %></dd>
+          </div>
+          <div class="vp-profile__row">
+            <dt>Vai trò</dt>
+            <dd><%= role_label %></dd>
+          </div>
+          <div class="vp-profile__row">
+            <dt>Ngày tham gia</dt>
+            <dd><%= @user.created_at.strftime("%d/%m/%Y") %></dd>
+          </div>
+        </dl>
+
+        <div class="vp-profile__actions">
+          <%= link_to "Lớp học của tôi", Current.user.student? ? bookings_path : availabilities_path, class: "vp-btn" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

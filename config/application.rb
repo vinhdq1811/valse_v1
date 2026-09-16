@@ -20,6 +20,9 @@ module ValseV1
     config.i18n.default_locale = :vi
     config.i18n.fallbacks = [:en]
 
+    # Toàn bộ lịch học thao tác theo giờ Việt Nam
+    config.time_zone = "Asia/Ho_Chi_Minh"
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

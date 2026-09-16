@@ -1,0 +1,66 @@
+<section class="vp-hero vp-hero--detail">
+  <p class="vp-hero__eyebrow">Giáo viên</p>
+  <h1 class="vp-hero__title">Lịch dạy của tôi</h1>
+  <p class="vp-hero__sub">Cài đặt khung giờ dạy lặp theo tuần và các ngày nghỉ của riêng bạn.</p>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container vp-sched-settings">
+
+    <div class="vp-sidebox vp-sched-settings__box">
+      <h2 class="vp-sidebox__label">Khung giờ dạy trong tuần</h2>
+      <% if @availabilities.any? %>
+        <ul class="vp-sched-list">
+          <% @availabilities.each do |availability| %>
+            <li class="vp-sched-list__item">
+              <span><strong><%= availability.weekday_name %></strong> · <%= availability.time_range_label %> ·
+                <%= availability.max_students ? "tối đa #{availability.max_students} học viên" : "sĩ số mặc định (#{@default_max_students})" %>
+              </span>
+              <span class="vp-sched-list__actions">
+                <%= link_to "Sửa", edit_availability_path(availability), class: "vp-btn vp-btn--ghost" %>
+                <%= button_to "Xóa", availability_path(availability), method: :delete,
+                      form: { data: { turbo_confirm: "Xóa khung giờ này?" } },
+                      class: "vp-btn vp-btn--ghost" %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="vp-note">Bạn chưa có khung giờ nào.</p>
+      <% end %>
+
+      <h3 class="vp-sched-form-title">Thêm khung giờ mới</h3>
+      <%= render "form", availability: @availability %>
+    </div>
+
+    <div class="vp-sidebox vp-sched-settings__box">
+      <h2 class="vp-sidebox__label">Ngày nghỉ</h2>
+      <% if @busy_dates.any? %>
+        <ul class="vp-sched-list">
+          <% @busy_dates.each do |busy_date| %>
+            <li class="vp-sched-list__item">
+              <span><strong><%= busy_date.date.strftime("%d/%m/%Y") %></strong> — <%= Availability::WEEKDAY_NAMES[busy_date.date.wday] %></span>
+              <span class="vp-sched-list__actions">
+                <%= button_to "Bỏ đánh dấu", busy_date_path(busy_date), method: :delete,
+                      form: { data: { turbo_confirm: "Bỏ ngày nghỉ này?" } },
+                      class: "vp-btn vp-btn--ghost" %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="vp-note">Không có ngày nghỉ nào.</p>
+      <% end %>
+
+      <h3 class="vp-sched-form-title">Đánh dấu ngày nghỉ</h3>
+      <%= form_with url: busy_dates_path, class: "vp-form" do |form| %>
+        <div class="vp-form__field">
+          <%= form.label :date, "Chọn ngày" %>
+          <%= form.date_field :date, min: Time.zone.today.iso8601, required: true %>
+        </div>
+        <%= form.submit "Đánh dấu nghỉ", class: "vp-btn" %>
+      <% end %>
+    </div>
+
+  </div>
+</section>

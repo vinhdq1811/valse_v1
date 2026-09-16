@@ -1,0 +1,13 @@
+<section class="vp-hero vp-hero--detail">
+  <p class="vp-hero__eyebrow">Giáo viên</p>
+  <h1 class="vp-hero__title">Thêm khung giờ dạy</h1>
+</section>
+
+<section class="vp-section">
+  <div class="vp-container">
+    <div class="vp-sidebox">
+      <%= render "form", availability: @availability %>
+      <p class="vp-back-link"><%= link_to "← Quay lại lịch dạy", availabilities_path %></p>
+    </div>
+  </div>
+</section>

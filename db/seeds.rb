@@ -1,6 +1,11 @@
 # Kinh doanh: Khóa học piano (4 khóa), Sheet nhạc, Đàn piano
 # Mọi khóa học dùng chung 2 gói học phí (bảng plans bên dưới).
 
+Booking.destroy_all
+Lesson.destroy_all
+Enrollment.destroy_all
+BusyDate.destroy_all
+Availability.destroy_all
 Plan.destroy_all
 Product.destroy_all
 
@@ -247,8 +252,10 @@ end
 users_seed = {
   "superadmin@valse.test" => { name: "Super Admin", role: :superadmin },
   "admin@valse.test" => { name: "Quản trị viên", role: :admin },
-  "teacher@valse.test" => { name: "oneprobl4smilk", role: :teacher },
-  "student@valse.test" => { name: "Học viên demo", role: :student }
+  "teacher@valse.test" => { name: "Nguyễn Thu Hà", role: :teacher },
+  "teacher2@valse.test" => { name: "Trần Minh Quân", role: :teacher },
+  "student@valse.test" => { name: "Học viên demo", role: :student },
+  "student2@valse.test" => { name: "Lê Gia Bảo", role: :student }
 }
 
 author = nil
@@ -438,4 +445,51 @@ testimonials_seed.each do |attrs|
     published: true
   )
   seed_testimonial_avatar(testimonial, attrs[:image])
+end
+
+
+# ============================================================
+# ĐẶT LỊCH HỌC: cài đặt hệ thống, khung giờ dạy, ngày nghỉ,
+# đăng ký khóa học (enrollment) cho học viên
+# ============================================================
+
+Setting["default_max_students"] = 2
+
+teacher1 = User.find_by!(email_address: "teacher@valse.test")
+teacher2 = User.find_by!(email_address: "teacher2@valse.test")
+student1 = User.find_by!(email_address: "student@valse.test")
+student2 = User.find_by!(email_address: "student2@valse.test")
+
+availabilities_seed = [
+  [teacher1, 1, "08:00", "09:00", nil],   # Thứ 2 sáng — sĩ số mặc định
+  [teacher1, 3, "18:00", "19:30", 4],     # Thứ 4 tối — lớp nhóm
+  [teacher1, 6, "09:00", "11:00", 1],     # Thứ 7 — 1 kèm 1
+  [teacher2, 2, "17:30", "19:00", nil],   # Thứ 3 tối — sĩ số mặc định
+  [teacher2, 4, "18:00", "19:00", nil],   # Thứ 5 tối — sĩ số mặc định
+  [teacher2, 0, "09:00", "10:30", 3]      # Chủ nhật sáng — lớp nhóm nhỏ
+].freeze
+
+availabilities_seed.each do |teacher, weekday, starts, ends, max|
+  Availability.find_or_create_by!(
+    user: teacher,
+    weekday: weekday,
+    start_time: Time.parse(starts),
+    end_time: Time.parse(ends)
+  ) { |slot| slot.max_students = max }
+end
+
+BusyDate.find_or_create_by!(user: teacher1, date: Time.zone.today.next_occurring(:friday))
+
+enrollments_seed = [
+  [student1, "Gói Linh hoạt", 2, 24],
+  [student2, "Gói 30 buổi", 3, 30]
+].freeze
+
+enrollments_seed.each do |student, plan_name, per_week, total|
+  plan = Plan.find_by!(name: plan_name)
+  Enrollment.find_or_create_by!(user: student, plan: plan) do |enrollment|
+    enrollment.lessons_per_week = per_week
+    enrollment.total_lessons = total
+    enrollment.active = true
+  end
 end
