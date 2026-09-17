@@ -49,6 +49,9 @@ Rails.application.routes.draw do
   get "course-detail", to: redirect("/courses")
   resources :courses, param: :slug, only: [:index, :show]
 
+  # Trang Products — sản phẩm đang bán (sheet nhạc, đàn piano cũ)
+  resources :products, param: :slug, only: [:index, :show]
+
   get "blog", to: "posts#index"
 
   get "contact" => "pages#contact"

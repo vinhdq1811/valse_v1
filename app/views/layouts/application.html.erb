@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="<%= content_for?(:html_lang) ? yield(:html_lang) : "vi" %>">
   <head>
-    <title><%= content_for(:title) || "Valse — Trường Âm nhạc" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Valse">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="Valse — Trường âm nhạc dành cho mọi lứa tuổi. Khóa học piano, guitar, violin, trống, thanh nhạc với giảng viên hàng đầu.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <title><%= content_for?(:title) ? yield(:title) : page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%# ===================== ASSET TAGS TẬP TRUNG TẠI ĐÂY ===================== %>
+    <%# 1) <head> assets riêng của layout musicali (WP/Musicali links & styles) %>
+    <%= yield :musicali_head %>
+    <%# 2) CSS hệ thống vp-* (Propshaft — app/assets/stylesheets/valse/) %>
+    <%= stylesheet_link_tag "valse/base", "valse/header", "valse/courses", "valse/pages", "valse/posts", "valse/auth", "valse/profile", "valse/schedule", "data-turbo-track": "reload" %>
+    <%# 3) CSS riêng từng trang — view khai báo mỗi URL một dòng qua content_for :page_css %>
+    <% yield(:page_css).to_s.split.each do |url| %>
+    <%= stylesheet_link_tag url, media: "all" %>
+    <% end %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body<%= " #{yield(:body_attrs)}".html_safe if content_for?(:body_attrs) %>>
+    <%= content_for?(:layout_content) ? yield(:layout_content) : yield %>
+    <%# 4) JS riêng từng trang — view khai báo qua content_for :page_js, mỗi dòng một mục:
+          dòng bắt đầu bằng "/"  -> bọc bằng javascript_include_tag
+          dòng khác              -> xuất nguyên văn (inline script),
+          thứ tự khai báo được giữ nguyên %>
+    <% yield(:page_js).to_s.split("\n").map(&:strip).reject(&:empty?).each do |line| %>
+      <% if line.start_with?("/") %>
+      <%= javascript_include_tag line %>
+      <% else %>
+      <%= line.html_safe %>
+      <% end %>
+    <% end %>
+    <%= javascript_importmap_tags if content_for?(:importmap) %>
   </body>
 </html>

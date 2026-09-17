@@ -109,8 +109,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='e-apple-webkit-css' href='/wp-content/uploads/elementor/css/custom-apple-webkit.min.css?ver=1787248150' media='all' />
 <link rel='stylesheet' id='el-icons-ekiticons-css' href='/wp-content/plugins/elementskit-lite/modules/elementskit-icon-pack/assets/css/ekiticons.css?ver=3.7.3' media='all' />
 <% end %>
-<%# Block form để giữ html_safe — content_for dạng string sẽ bị escape ở Rails 8.1 %>
-<% content_for :body_attrs do %>class="wp-singular page-template page-template-elementor_header_footer page page-id-1111 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor jkit-color-scheme hello-el-default el-default el-template-full-width el-kit-8 el-page el-page-1111"<% end %>
+<% content_for :body_attrs, 'class="wp-singular page-template page-template-elementor_header_footer page page-id-1111 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor jkit-color-scheme hello-el-default el-default el-template-full-width el-kit-8 el-page el-page-1111"' %>
 <% content_for :layout_content do %>
 <%= render "layouts/musicali/header" %>
 <% if flash[:notice] || flash[:alert] %>

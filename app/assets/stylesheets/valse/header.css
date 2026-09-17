@@ -4,8 +4,8 @@
    để đè được chuỗi selector dài của Elementor). */
 
 /* ---------- Nút Đăng nhập (chưa đăng nhập) ---------- */
-.jeg-elementor-kit.jkit-nav-menu .jkit-menu > li.vp-login > a.vp-login__btn,
-.jeg-elementor-kit.jkit-nav-menu .jkit-menu > li.vp-login > a.vp-login__btn:visited {
+.jeg-el-kit.jkit-nav-menu .jkit-menu > li.vp-login > a.vp-login__btn,
+.jeg-el-kit.jkit-nav-menu .jkit-menu > li.vp-login > a.vp-login__btn:visited {
   display: inline-flex;
   align-items: center;
   align-self: center;
@@ -21,8 +21,8 @@
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.jeg-elementor-kit.jkit-nav-menu .jkit-menu > li.vp-login > a.vp-login__btn:hover,
-.jeg-elementor-kit.jkit-nav-menu .jkit-menu > li.vp-login:hover > a.vp-login__btn {
+.jeg-el-kit.jkit-nav-menu .jkit-menu > li.vp-login > a.vp-login__btn:hover,
+.jeg-el-kit.jkit-nav-menu .jkit-menu > li.vp-login:hover > a.vp-login__btn {
   background: var(--vp-gold) !important;
   color: var(--vp-white) !important;
   transform: translateY(-1px);
@@ -37,7 +37,7 @@ body[data-elementor-device-mode="tablet"] .jkit-nav-menu .jkit-menu > li.vp-logi
 }
 
 /* ---------- Mục tài khoản (đã đăng nhập) ---------- */
-.jeg-elementor-kit.jkit-nav-menu .jkit-menu > li.vp-account > a.vp-account__toggle {
+.jeg-el-kit.jkit-nav-menu .jkit-menu > li.vp-account > a.vp-account__toggle {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -84,20 +84,20 @@ body[data-elementor-device-mode="tablet"] .jkit-nav-menu .jkit-menu > li.vp-logi
 }
 
 /* Dropdown tài khoản: căn phải để không tràn màn hình */
-.jeg-elementor-kit.jkit-nav-menu .jkit-menu > li.vp-account > .sub-menu {
+.jeg-el-kit.jkit-nav-menu .jkit-menu > li.vp-account > .sub-menu {
   left: auto !important;
   right: 0 !important;
   min-width: 240px;
 }
 
 /* Nút Đăng xuất trong dropdown */
-.jeg-elementor-kit.jkit-nav-menu .sub-menu li.vp-account__logout {
+.jeg-el-kit.jkit-nav-menu .sub-menu li.vp-account__logout {
   margin-top: 8px;
   padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.jeg-elementor-kit.jkit-nav-menu .sub-menu li.vp-account__logout > a {
+.jeg-el-kit.jkit-nav-menu .sub-menu li.vp-account__logout > a {
   color: var(--vp-sand) !important;
   border: 1px solid rgba(248, 216, 164, 0.55);
   border-radius: 999px !important;
@@ -105,7 +105,7 @@ body[data-elementor-device-mode="tablet"] .jkit-nav-menu .jkit-menu > li.vp-logi
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.jeg-elementor-kit.jkit-nav-menu .sub-menu li.vp-account__logout > a:hover {
+.jeg-el-kit.jkit-nav-menu .sub-menu li.vp-account__logout > a:hover {
   background: var(--vp-gold) !important;
   border-color: var(--vp-gold);
   color: var(--vp-white) !important;

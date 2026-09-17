@@ -1,6 +1,6 @@
-<%# Trang Course Detail — nhân bản 1:1 layout Elementor của mẫu Musicali /course-detail/ (CSS: elementor-post-1144.css). Font giữ nguyên Playfair Display / Roboto qua post-8.css. %>
-<% content_for :page_scripts do %>
-<script id="jkit-element-accordion-js" src="/wp-content/plugins/jeg-elementor-kit/assets/js/elements/accordion.js?ver=2.7.0"></script>
+<%# Trang Course Detail — nhân bản 1:1 layout Elementor của mẫu Musicali /course-detail/ (CSS: el-post-1144.css). Font giữ nguyên Playfair Display / Roboto qua post-8.css. %>
+<% content_for :page_js do %>
+/wp-content/plugins/jeg-elementor-kit/assets/js/elements/accordion.js?ver=2.7.0
 <% end %>
 <%
   check_svg = '<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>'
@@ -8,88 +8,95 @@
   perks_left = @product.highlights.first(half)
   perks_right = @product.highlights.drop(half)
 %>
-<div data-elementor-type="wp-page" data-elementor-id="1144" class="elementor elementor-1144">
-				<div class="elementor-element elementor-element-c0302e6 e-flex e-con-boxed e-con e-parent" data-id="c0302e6" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div data-elementor-type="wp-page" data-elementor-id="1144" class="el-root el-1144">
+				<div class="el-element el-detail-hero e-flex e-con-boxed e-con e-parent" data-id="detail-hero" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
-		<div class="elementor-element elementor-element-7c16e12 e-con-full e-flex e-con e-child" data-id="7c16e12" data-element_type="container">
-				<div class="elementor-element elementor-element-935d605 elementor-icon-list--layout-inline elementor-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="935d605" data-element_type="widget" data-widget_type="icon-list.default">
-				<div class="elementor-widget-container">
-							<ul class="elementor-icon-list-items elementor-inline-items">
-							<li class="elementor-icon-list-item elementor-inline-item">
+		<div class="el-element el-detail-hero-inner e-con-full e-flex e-con e-child" data-id="detail-hero-inner" data-element_type="container">
+				<div class="el-element el-detail-breadcrumb el-icon-list--layout-inline el-align-center el-list-item-link-full_width el-widget el-widget-icon-list" data-id="detail-breadcrumb" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="el-widget-container">
+							<ul class="el-icon-list-items el-inline-items">
+							<li class="el-icon-list-item el-inline-item">
 											<%= link_to root_path do %>
 
-											<span class="elementor-icon-list-text">Trang chủ</span>
+											<span class="el-icon-list-text">Trang chủ</span>
 											<% end %>
 									</li>
-								<li class="elementor-icon-list-item elementor-inline-item">
-											<span class="elementor-icon-list-icon">
+								<li class="el-icon-list-item el-inline-item">
+											<span class="el-icon-list-icon">
 							<i aria-hidden="true" class="jki jki-angle-right-solid"></i>						</span>
-										<span class="elementor-icon-list-text"></span>
+										<span class="el-icon-list-text"></span>
 									</li>
-								<li class="elementor-icon-list-item elementor-inline-item">
-											<%= link_to courses_path(category: @product.category) do %>
+							<li class="el-icon-list-item el-inline-item">
+										<% if @product.category_course? %>
+										<%= link_to courses_path do %>
 
-											<span class="elementor-icon-list-text"><%= category_label(@product.category) %> </span>
-											<% end %>
-									</li>
-								<li class="elementor-icon-list-item elementor-inline-item">
-											<span class="elementor-icon-list-icon">
+										<span class="el-icon-list-text"><%= category_label(@product.category) %> </span>
+										<% end %>
+										<% else %>
+										<%= link_to products_path do %>
+
+										<span class="el-icon-list-text"><%= category_label(@product.category) %> </span>
+										<% end %>
+										<% end %>
+								</li>
+								<li class="el-icon-list-item el-inline-item">
+											<span class="el-icon-list-icon">
 							<i aria-hidden="true" class="jki jki-angle-right-solid"></i>						</span>
-										<span class="elementor-icon-list-text"></span>
+										<span class="el-icon-list-text"></span>
 									</li>
-								<li class="elementor-icon-list-item elementor-inline-item">
-											<span class="elementor-icon-list-text"><%= @product.name %></span>
+								<li class="el-icon-list-item el-inline-item">
+											<span class="el-icon-list-text"><%= @product.name %></span>
 									</li>
 						</ul>
 						</div>
 				</div>
-				<div class="elementor-element elementor-element-b0847ab elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="b0847ab" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default"><%= @product.name %></h2>				</div>
+				<div class="el-element el-detail-title el-widget__width-initial el-widget el-widget-heading" data-id="detail-title" data-element_type="widget" data-widget_type="heading.default">
+				<div class="el-widget-container">
+					<h2 class="el-heading-title el-size-default"><%= @product.name %></h2>				</div>
 				</div>
 				</div>
 					</div>
 				</div>
-		<div class="elementor-element elementor-element-68c0f76 e-flex e-con-boxed e-con e-parent" data-id="68c0f76" data-element_type="container">
+		<div class="el-element el-detail-textpath-section e-flex e-con-boxed e-con e-parent" data-id="detail-textpath-section" data-element_type="container">
 					<div class="e-con-inner">
-				<div class="elementor-element elementor-element-8ef8a32 elementor-widget__width-auto elementor-widget elementor-widget-text-path" data-id="8ef8a32" data-element_type="widget" data-settings="{&quot;text&quot;:&quot;Valse Chuyên khóa học piano và nhạc cụ&quot;,&quot;align&quot;:&quot;center&quot;,&quot;text_path_direction&quot;:&quot;rtl&quot;,&quot;link&quot;:{&quot;url&quot;:&quot;&quot;,&quot;is_external&quot;:&quot;&quot;,&quot;nofollow&quot;:&quot;&quot;,&quot;custom_attributes&quot;:&quot;&quot;},&quot;start_point&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]}}" data-widget_type="text-path.default">
-				<div class="elementor-widget-container">
+				<div class="el-element el-detail-textpath el-widget__width-auto el-widget el-widget-text-path" data-id="detail-textpath" data-element_type="widget" data-settings="{&quot;text&quot;:&quot;Valse Chuyên khóa học piano và nhạc cụ&quot;,&quot;align&quot;:&quot;center&quot;,&quot;text_path_direction&quot;:&quot;rtl&quot;,&quot;link&quot;:{&quot;url&quot;:&quot;&quot;,&quot;is_external&quot;:&quot;&quot;,&quot;nofollow&quot;:&quot;&quot;,&quot;custom_attributes&quot;:&quot;&quot;},&quot;start_point&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]}}" data-widget_type="text-path.default">
+				<div class="el-widget-container">
 							<div class="e-text-path" data-text="Valse Chuyên khóa học piano và nhạc cụ" data-url="/wp-content/plugins/elementor/assets/svg-paths/circle.svg" data-link-url=""></div>
 						</div>
 				</div>
 					</div>
 				</div>
-		<div class="elementor-element elementor-element-1cc6466 e-flex e-con-boxed e-con e-parent" data-id="1cc6466" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<div class="el-element el-detail-spacer-section e-flex e-con-boxed e-con e-parent" data-id="detail-spacer-section" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
-				<div class="elementor-element elementor-element-c01bfdc elementor-widget elementor-widget-spacer" data-id="c01bfdc" data-element_type="widget" data-widget_type="spacer.default">
-				<div class="elementor-widget-container">
-							<div class="elementor-spacer">
-			<div class="elementor-spacer-inner"></div>
+				<div class="el-element el-detail-spacer el-widget el-widget-spacer" data-id="detail-spacer" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="el-widget-container">
+							<div class="el-spacer">
+			<div class="el-spacer-inner"></div>
 		</div>
 						</div>
 				</div>
 					</div>
 				</div>
-		<div class="elementor-element elementor-element-25f5c1c e-flex e-con-boxed e-con e-parent" data-id="25f5c1c" data-element_type="container">
+		<div class="el-element el-detail-intro-section e-flex e-con-boxed e-con e-parent" data-id="detail-intro-section" data-element_type="container">
 					<div class="e-con-inner">
-		<div class="elementor-element elementor-element-a02833c e-con-full e-flex e-con e-child" data-id="a02833c" data-element_type="container">
-				<div class="elementor-element elementor-element-88b2d78 elementor-widget elementor-widget-heading" data-id="88b2d78" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Giới thiệu</h2>				</div>
+		<div class="el-element el-detail-intro e-con-full e-flex e-con e-child" data-id="detail-intro" data-element_type="container">
+				<div class="el-element el-detail-about-title el-widget el-widget-heading" data-id="detail-about-title" data-element_type="widget" data-widget_type="heading.default">
+				<div class="el-widget-container">
+					<h2 class="el-heading-title el-size-default">Giới thiệu</h2>				</div>
 				</div>
-				<div class="elementor-element elementor-element-6d8363f elementor-widget elementor-widget-text-editor" data-id="6d8363f" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
+				<div class="el-element el-detail-about-text el-widget el-widget-text-editor" data-id="detail-about-text" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="el-widget-container">
 									<%= simple_format(@product.description) %>								</div>
 				</div>
 		<% if @plans.present? %>
-		<div class="elementor-element elementor-element-a4dcb7e e-con-full e-flex e-con e-child" data-id="a4dcb7e" data-element_type="container">
-				<div class="elementor-element elementor-element-0e6c34d elementor-widget elementor-widget-heading" data-id="0e6c34d" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Nội dung khóa học</h2>				</div>
+		<div class="el-element el-detail-curriculum e-con-full e-flex e-con e-child" data-id="detail-curriculum" data-element_type="container">
+				<div class="el-element el-detail-curriculum-title el-widget el-widget-heading" data-id="detail-curriculum-title" data-element_type="widget" data-widget_type="heading.default">
+				<div class="el-widget-container">
+					<h2 class="el-heading-title el-size-default">Nội dung khóa học</h2>				</div>
 				</div>
-				<div class="elementor-element elementor-element-bfbd73a elementor-widget__width-initial elementor-widget elementor-widget-jkit_accordion" data-id="bfbd73a" data-element_type="widget" data-widget_type="jkit_accordion.default">
-				<div class="elementor-widget-container">
-					<div  class="jeg-elementor-kit jkit-accordion style-default jeg_module_1144_3_6aa450cc79a45" ><% @plans.each do |plan| %><div class="card-wrapper ">
+				<div class="el-element el-detail-curriculum-accordion el-widget__width-initial el-widget el-widget-jkit_accordion" data-id="detail-curriculum-accordion" data-element_type="widget" data-widget_type="jkit_accordion.default">
+				<div class="el-widget-container">
+					<div  class="jeg-el-kit jkit-accordion style-default jeg_module_1144_3_6aa450cc79a45" ><% @plans.each do |plan| %><div class="card-wrapper ">
                 <div class="card-header">
                     <a href="#expand-<%= plan.id %>" class="card-header-button" aria-expanded="false" data-target="#expand-<%= plan.id %>" aria-controls="expand-<%= plan.id %>">
                         <span class="title"><%= plan.name %>: <%= plan.tagline %></span><div class="right-icon-group">
@@ -103,32 +110,32 @@
 				</div>
 				</div>
 		<% end %>
-		<div class="elementor-element elementor-element-61e092d e-con-full e-flex e-con e-child" data-id="61e092d" data-element_type="container">
-				<div class="elementor-element elementor-element-f73d3a2 elementor-widget elementor-widget-heading" data-id="f73d3a2" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default"><%= @product.category_course? ? "Bạn sẽ nhận được gì" : "Điểm nổi bật" %></h2>				</div>
+		<div class="el-element el-detail-perks e-con-full e-flex e-con e-child" data-id="detail-perks" data-element_type="container">
+				<div class="el-element el-detail-perks-title el-widget el-widget-heading" data-id="detail-perks-title" data-element_type="widget" data-widget_type="heading.default">
+				<div class="el-widget-container">
+					<h2 class="el-heading-title el-size-default"><%= @product.category_course? ? "Bạn sẽ nhận được gì" : "Điểm nổi bật" %></h2>				</div>
 				</div>
-		<div class="elementor-element elementor-element-617c00d e-grid e-con-full e-con e-child" data-id="617c00d" data-element_type="container">
-				<div class="elementor-element elementor-element-f36d56b elementor-widget__width-initial elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="f36d56b" data-element_type="widget" data-widget_type="icon-list.default">
-				<div class="elementor-widget-container">
-							<ul class="elementor-icon-list-items">
-							<% perks_left.each do |perk| %><li class="elementor-icon-list-item">
-											<span class="elementor-icon-list-icon">
+		<div class="el-element el-detail-perks-grid e-grid e-con-full e-con e-child" data-id="detail-perks-grid" data-element_type="container">
+				<div class="el-element el-detail-perks-left el-widget__width-initial el-icon-list--layout-traditional el-list-item-link-full_width el-widget el-widget-icon-list" data-id="detail-perks-left" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="el-widget-container">
+							<ul class="el-icon-list-items">
+							<% perks_left.each do |perk| %><li class="el-icon-list-item">
+											<span class="el-icon-list-icon">
 							<%= check_svg.html_safe %>						</span>
-										<span class="elementor-icon-list-text"><%= perk %></span>
+										<span class="el-icon-list-text"><%= perk %></span>
 									</li>
 								<% end %>
 						</ul>
 						</div>
 				</div>
 				<% if perks_right.present? %>
-				<div class="elementor-element elementor-element-c78304d elementor-widget__width-initial elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="c78304d" data-element_type="widget" data-widget_type="icon-list.default">
-				<div class="elementor-widget-container">
-							<ul class="elementor-icon-list-items">
-							<% perks_right.each do |perk| %><li class="elementor-icon-list-item">
-											<span class="elementor-icon-list-icon">
+				<div class="el-element el-detail-perks-right el-widget__width-initial el-icon-list--layout-traditional el-list-item-link-full_width el-widget el-widget-icon-list" data-id="detail-perks-right" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="el-widget-container">
+							<ul class="el-icon-list-items">
+							<% perks_right.each do |perk| %><li class="el-icon-list-item">
+											<span class="el-icon-list-icon">
 							<%= check_svg.html_safe %>						</span>
-										<span class="elementor-icon-list-text"><%= perk %></span>
+										<span class="el-icon-list-text"><%= perk %></span>
 									</li>
 								<% end %>
 						</ul>
@@ -138,57 +145,57 @@
 				</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-7cf07df e-con-full e-flex e-con e-child" data-id="7cf07df" data-element_type="container">
-		<div class="elementor-element elementor-element-90d4857 e-con-full e-flex e-con e-child" data-id="90d4857" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-				<div class="elementor-element elementor-element-5a6ba98 elementor-widget elementor-widget-heading" data-id="5a6ba98" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Mở khóa tiềm năng âm nhạc của bạn ngay hôm nay</h2>				</div>
+		<div class="el-element el-detail-cta-section e-con-full e-flex e-con e-child" data-id="detail-cta-section" data-element_type="container">
+		<div class="el-element el-detail-cta-register e-con-full e-flex e-con e-child" data-id="detail-cta-register" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="el-element el-detail-cta-title el-widget el-widget-heading" data-id="detail-cta-title" data-element_type="widget" data-widget_type="heading.default">
+				<div class="el-widget-container">
+					<h2 class="el-heading-title el-size-default">Mở khóa tiềm năng âm nhạc của bạn ngay hôm nay</h2>				</div>
 				</div>
-				<div class="elementor-element elementor-element-4e8186b elementor-align-center elementor-widget elementor-widget-button" data-id="4e8186b" data-element_type="widget" data-widget_type="button.default">
-				<div class="elementor-widget-container">
-									<div class="elementor-button-wrapper">
-					<%= link_to contact_path, class: "elementor-button elementor-button-link elementor-size-sm" do %>
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon">
+				<div class="el-element el-detail-cta-btn el-align-center el-widget el-widget-button" data-id="detail-cta-btn" data-element_type="widget" data-widget_type="button.default">
+				<div class="el-widget-container">
+									<div class="el-button-wrapper">
+					<%= link_to contact_path, class: "el-button el-button-link el-size-sm" do %>
+						<span class="el-button-content-wrapper">
+						<span class="el-button-icon">
 				<i aria-hidden="true" class="jki jki-angle-right-solid"></i>			</span>
-									<span class="elementor-button-text">Đăng ký ngay</span>
+									<span class="el-button-text">Đăng ký ngay</span>
 					</span>
 					<% end %>
 				</div>
 								</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-12e76ee e-con-full e-flex e-con e-child" data-id="12e76ee" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-				<div class="elementor-element elementor-element-b5c2fb3 elementor-widget elementor-widget-heading" data-id="b5c2fb3" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-					<h3 class="elementor-heading-title elementor-size-default">Gặp gỡ đội ngũ giảng viên giàu kinh nghiệm</h3>				</div>
+		<div class="el-element el-detail-team-section e-con-full e-flex e-con e-child" data-id="detail-team-section" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="el-element el-detail-team-title el-widget el-widget-heading" data-id="detail-team-title" data-element_type="widget" data-widget_type="heading.default">
+				<div class="el-widget-container">
+					<h3 class="el-heading-title el-size-default">Gặp gỡ đội ngũ giảng viên giàu kinh nghiệm</h3>				</div>
 				</div>
-				<div class="elementor-element elementor-element-ebd1f72 elementor-widget elementor-widget-text-editor" data-id="ebd1f72" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
+				<div class="el-element el-detail-team-desc el-widget el-widget-text-editor" data-id="detail-team-desc" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="el-widget-container">
 									<p>Đội ngũ giảng viên tận tâm, đồng hành cùng bạn trên từng nốt nhạc.</p>								</div>
 				</div>
-				<div class="elementor-element elementor-element-bd2785d elementor-mobile-align-center elementor-align-center elementor-widget elementor-widget-button" data-id="bd2785d" data-element_type="widget" data-widget_type="button.default">
-				<div class="elementor-widget-container">
-									<div class="elementor-button-wrapper">
-					<%= link_to teachers_path, class: "elementor-button elementor-button-link elementor-size-sm elementor-animation-shrink" do %>
-						<span class="elementor-button-content-wrapper">
-									<span class="elementor-button-text">Gặp đội ngũ</span>
+				<div class="el-element el-detail-team-btn el-mobile-align-center el-align-center el-widget el-widget-button" data-id="detail-team-btn" data-element_type="widget" data-widget_type="button.default">
+				<div class="el-widget-container">
+									<div class="el-button-wrapper">
+					<%= link_to teachers_path, class: "el-button el-button-link el-size-sm el-animation-shrink" do %>
+						<span class="el-button-content-wrapper">
+									<span class="el-button-text">Gặp đội ngũ</span>
 					</span>
 					<% end %>
 				</div>
 								</div>
 				</div>
-		<div class="elementor-element elementor-element-7a7a2fb e-con-full e-flex e-con e-child" data-id="7a7a2fb" data-element_type="container">
-				<div class="elementor-element elementor-element-e23ee6c elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="e23ee6c" data-element_type="widget" data-widget_type="image.default">
-				<div class="elementor-widget-container">
+		<div class="el-element el-detail-team-gallery e-con-full e-flex e-con e-child" data-id="detail-team-gallery" data-element_type="container">
+				<div class="el-element el-detail-team-img-1 el-widget__width-initial el-widget el-widget-image" data-id="detail-team-img-1" data-element_type="widget" data-widget_type="image.default">
+				<div class="el-widget-container">
 															<img decoding="async" src="/wp-content/uploads/elementor/thumbs/musicali-jpg-015-qt7laahgedcl5dtrj3nr27uel0sks2qnmudqyr8uts.jpg" title="musicali-jpg-015" alt="musicali-jpg-015" loading="lazy" />															</div>
 				</div>
-				<div class="elementor-element elementor-element-1470711 elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="1470711" data-element_type="widget" data-widget_type="image.default">
-				<div class="elementor-widget-container">
+				<div class="el-element el-detail-team-img-2 el-widget__width-initial el-widget el-widget-image" data-id="detail-team-img-2" data-element_type="widget" data-widget_type="image.default">
+				<div class="el-widget-container">
 															<img decoding="async" src="/wp-content/uploads/elementor/thumbs/musicali-jpg-012-qt7l1oapr1jyq2cbudkv7e4ajv9g7yj8g73ilg0rv4.jpg" title="musicali-jpg-012" alt="musicali-jpg-012" loading="lazy" />															</div>
 				</div>
-				<div class="elementor-element elementor-element-b6051e8 elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="b6051e8" data-element_type="widget" data-widget_type="image.default">
-				<div class="elementor-widget-container">
+				<div class="el-element el-detail-team-img-3 el-widget__width-initial el-widget el-widget-image" data-id="detail-team-img-3" data-element_type="widget" data-widget_type="image.default">
+				<div class="el-widget-container">
 															<img decoding="async" src="/wp-content/uploads/elementor/thumbs/musicali-jpg-013-qt7l1p8jxvl91oayovzhrvvr594tfnmysbr02pzdow.jpg" title="musicali-jpg-013" alt="musicali-jpg-013" loading="lazy" />															</div>
 				</div>
 				</div>

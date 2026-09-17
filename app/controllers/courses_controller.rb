@@ -9,10 +9,8 @@ class CoursesController < ApplicationController
   }.freeze
 
   def index
-    @category = params[:category] if Product.categories.key?(params[:category])
-    scope = @category ? Product.where(category: @category) : Product.all
-    @products = scope.ordered.order(:category)
-    @page_title = @category ? CATEGORY_LABELS[@category] : "Khóa học & Sản phẩm"
+    @products = Product.category_course.ordered
+    @page_title = CATEGORY_LABELS["course"]
   end
 
   def show
