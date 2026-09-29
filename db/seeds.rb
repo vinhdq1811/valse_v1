@@ -63,7 +63,7 @@ Product.create!(
     "Kỹ thuật ngón tay, tư thế ngồi đúng chuẩn",
     "Chơi được các bản nhạc đơn giản sau khóa học"
   ],
-  image: "#{img}/musicali-jpg-01.jpg",
+  image: "#{img}/valse-img-01.jpg",
   position: 1
 )
 
@@ -83,7 +83,7 @@ Product.create!(
     "Kiểu đệm pop, ballad, arpeggio",
     "Tự đệm hát bản nhạc yêu thích của bạn"
   ],
-  image: "#{img}/musicali-jpg-02.jpg",
+  image: "#{img}/valse-img-02.jpg",
   position: 2
 )
 
@@ -103,7 +103,7 @@ Product.create!(
     "Luyện thi chứng chỉ ABRSM, LCM",
     "Biểu cảm âm nhạc & kỹ thuật biểu diễn"
   ],
-  image: "#{img}/musicali-jpg-03.jpg",
+  image: "#{img}/valse-img-03.jpg",
   position: 3
 )
 
@@ -123,7 +123,7 @@ Product.create!(
     "Bài hát thiếu nhi quen thuộc",
     "Phát triển thính giác & tiết tấu"
   ],
-  image: "#{img}/musicali-jpg-05.jpg",
+  image: "#{img}/valse-img-05.jpg",
   position: 4
 )
 
@@ -135,7 +135,7 @@ Product.create!(
   summary: "Bản nhạc kinh điển bất hủ, trình bày đầy đủ cho piano solo. File PDF 6 trang.",
   description: "Bản xếp tấu Canon in D cho piano solo ở trình độ trung cấp, giữ trọn vẹn giai điệu gốc với phần hòa âm phù hợp tay đệm hát. Bao gồm cả bản nhạc có ghi chú ngón tay (fingering) chi tiết.",
   highlights: ["PDF 6 trang, có ghi chú ngón", "Trình độ trung cấp", "Bản quyền in cá nhân"],
-  image: "#{img}/musicali-jpg-012.jpg",
+  image: "#{img}/valse-img-012.jpg",
   price: 80_000,
   position: 1
 )
@@ -147,7 +147,7 @@ Product.create!(
   summary: "20 bản nhạc trẻ Việt Nam được chuyển soạn cho piano đệm hát, kèm bảng hợp âm.",
   description: "Tuyển tập 20 ca khúc nhạc trẻ phổ biến được chuyển soạn cho piano, trình bày dưới dạng giai điệu + hợp âm, phù hợp để vừa đệm hát vừa biểu diễn. Kèm hướng dẫn ký hiệu đệm cơ bản.",
   highlights: ["20 bản nhạc trẻ nổi tiếng", "Giai điệu + hợp âm đầy đủ", "PDF 45 trang"],
-  image: "#{img}/musicali-jpg-013.jpg",
+  image: "#{img}/valse-img-013.jpg",
   price: 120_000,
   position: 2
 )
@@ -159,7 +159,7 @@ Product.create!(
   summary: "Tác phẩm kinh điển quen thuộc trong bản đơn giản hóa cho người mới học.",
   description: "Bản đơn giản hóa của Für Elise dành cho trình độ cơ bản, giữ nguyên phần chủ đề nổi tiếng nhất. Là lựa chọn hoàn hảo cho buổi biểu diễn đầu tiên của học viên.",
   highlights: ["Bản đơn giản hóa", "Trình độ cơ bản", "PDF 3 trang, có ngón tay"],
-  image: "#{img}/musicali-jpg-014.jpg",
+  image: "#{img}/valse-img-014.jpg",
   price: 60_000,
   position: 3
 )
@@ -171,7 +171,7 @@ Product.create!(
   summary: "5 bản nhạc phim Ghibli nổi tiếng nhất, xếp tấu cho piano solo trình độ trung cấp.",
   description: "Tuyển chọn 5 bản nhạc kinh điển từ các bộ phim Ghibli: Merry-Go-Round of Life, One Summer's Day, A Town with an Ocean View và hai bản khác. Bản xếp tấu trung cấp, giàu cảm xúc.",
   highlights: ["5 bản nhạc phim Ghibli", "Trình độ trung cấp", "PDF 24 trang"],
-  image: "#{img}/musicali-jpg-015.jpg",
+  image: "#{img}/valse-img-015.jpg",
   price: 150_000,
   position: 4
 )
@@ -183,7 +183,7 @@ Product.create!(
   summary: "Bộ bài tập ngón tay thiết kế theo từng cấp độ, dùng kèm cho mọi khóa học.",
   description: "Bộ 20 bài tập kỹ thuật được thiết kế theo lộ trình từ cơ bản đến nâng cao, giúp rèn độ dẻo dai, độc lập của ngón tay và kiểm soát âm thanh. Dùng kèm hiệu quả cho cả 4 khóa học piano.",
   highlights: ["20 bài tập theo cấp độ", "Kèm hướng dẫn tập luyện", "PDF 18 trang"],
-  image: "#{img}/musicali-jpg-016.jpg",
+  image: "#{img}/valse-img-016.jpg",
   price: 90_000,
   position: 5
 )
@@ -196,7 +196,7 @@ Product.create!(
   summary: "Piano điện 88 phím cảm ứng nặng, âm thanh grand piano — lựa chọn số 1 cho người mới.",
   description: "Yamaha P-145 sở hữu 88 phím graded hammer action cho cảm giác bấm gần như đàn cơ, âm thanh sampled từ đại dương cầm Yamaha CFIIIS. Thiết kế mỏng nhẹ, phù hợp căn hộ và người mới bắt đầu.",
   highlights: ["88 phím GHS cảm ứng nặng", "10 voices, chế độ dual", "Kbao gồm chân đàn + ghế"],
-  image: "#{img}/musicali-jpg-017.jpg",
+  image: "#{img}/valse-img-017.jpg",
   price: 18_900_000,
   position: 1
 )
@@ -208,7 +208,7 @@ Product.create!(
   summary: "Piano điện dạng tủ với hệ phím Roland nổi tiếng bền bỉ, phù hợp học lâu dài.",
   description: "Roland RP30 là piano điện dạng tủ (cabinet) với hệ phím cơ cấu búa Roland lừng danh độ bền, âm thanh SuperNATURAL rõ ràng. Hệ thống loa hai chiều cho trải nghiệm chơi tại nhà trọn vẹn.",
   highlights: ["Hệ phím cơ cấu búa Roland", "Âm thanh SuperNATURAL", "Dạng tủ, kèm ghế đàn"],
-  image: "#{img}/musicali-jpg-018.jpg",
+  image: "#{img}/valse-img-018.jpg",
   price: 21_500_000,
   position: 2
 )
@@ -220,7 +220,7 @@ Product.create!(
   summary: "Upright piano cơ Nhật Bản 121cm, âm thanh ấm — dành cho học viên nghiêm túc.",
   description: "Kawai K-200 là upright piano cơ 121cm thuộc dòng K Series nổi tiếng, được sử dụng rộng rãi tại các trường âm nhạc. Phím hành động Millennium III cho độ nhạy và độ bền vượt trội, âm thanh ấm áp, sâu lắng.",
   highlights: ["Piano cơ Nhật Bản, cao 121cm", "Hệ phím Millennium III", "Bảo hành 10 năm"],
-  image: "#{img}/musicali-jpg-020.jpg",
+  image: "#{img}/valse-img-020.jpg",
   price: 89_000_000,
   position: 3
 )

@@ -1,4 +1,4 @@
-/* Valse — HEADER: nút Đăng nhập & dropdown tài khoản trên menu Musicali.
+/* Valse — HEADER: nút Đăng nhập & dropdown tài khoản trên menu Valse.
    Ghi đè style jkit-nav-menu của template (valse/header.css được nạp CUỐI head
    nên thắng khi specificity tương đương; các thuộc tính quan trọng dùng !important
    để đè được chuỗi selector dài của Elementor). */

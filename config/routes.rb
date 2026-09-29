@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resource :registration, only: %i[ new create ]
   resources :passwords, param: :token
 
-  # Đăng xuất qua GET (layout Musicali không nạp Turbo nên data-turbo-method không hoạt động)
+  # Đăng xuất qua GET (layout theme kh\u00f4ng n\u1ea1p Turbo nên data-turbo-method không hoạt động)
   get "logout", to: "sessions#destroy", as: :logout
 
   # Hồ sơ cá nhân
@@ -60,7 +60,7 @@ Rails.application.routes.draw do
 
   get "testimonials" => "pages#testimonials"
 
-  # Stubs for the static Musicali template's MetForm AJAX endpoints
+  # Stubs for the static Valse template's MetForm AJAX endpoints
   post "wp-json/metform/v1/entries/insert/:form_id" => "pages#metform_insert"
   post "wp-json/metform/v1/forms/views/:form_id" => "pages#metform_view"
 

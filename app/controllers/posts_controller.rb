@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  layout "musicali"
+  layout "theme"
   allow_unauthenticated_access only: [:index, :show]
 
   def index

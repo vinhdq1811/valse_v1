@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  layout "musicali"
+  layout "theme"
   allow_unauthenticated_access only: [:index, :show]
 
   CATEGORY_LABELS = {

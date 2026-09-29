@@ -29,3 +29,93 @@ vi:
       inclusion: "không nằm trong danh sách"
       required: "phải tồn tại"
       record_invalid: "Dữ liệu không hợp lệ: %{errors}"
+  pages:
+    home:
+      page_title: "Trang chủ"
+      hero:
+        brand: "Musical Specialist"
+        animated_text: "Khóa học"
+        cta: "Tham gia lớp học"
+        text_path: "Khóa học nhạc cụ Musical Specialist"
+      courses:
+        title: "Các khóa học chuyên biệt của chúng tôi"
+        intro: "Chúng tôi cung cấp các khóa học âm nhạc chuyên sâu dành cho mọi cấp độ, từ người mới bắt đầu đến đã có nền tảng, với lộ trình rõ ràng và giảng viên đồng hành tận tâm."
+        read_more: "Xem thêm"
+        card_description: "Khóa học được thiết kế phù hợp cho mọi trình độ, từ cơ bản đến nâng cao."
+        join_class_now: "ĐĂNG KÝ HỌC NGAY"
+        items:
+          guitar: "Guitar"
+          violin: "Violin"
+          piano: "Piano"
+          drum: "Trống"
+      about:
+        eyebrow: "Về chúng tôi"
+        title: "Nắm vững nền tảng âm nhạc và vươn tới sự xuất sắc"
+        text_1: "Trung tâm của chúng tôi mang đến môi trường học tập chuyên nghiệp, nơi mỗi học viên được định hướng lộ trình riêng phù hợp với năng lực và mục tiêu của mình."
+        text_2: "Với cơ sở vật chất hiện đại và đội ngũ giảng viên tận tâm, chúng tôi tự hào là địa chỉ tin cậy cho hành trình chinh phục âm nhạc."
+        read_more: "Xem thêm"
+      why:
+        eyebrow: "Vì sao chọn chúng tôi"
+        title: "Vì sao khóa học âm nhạc của chúng tôi phù hợp với bạn"
+        join_our_class: "THAM GIA LỚP HỌC"
+        cards:
+          personalized: "Trải nghiệm học tập cá nhân hóa"
+          expert: "Giảng viên giàu kinh nghiệm thực tế"
+          curriculum: "Chương trình học & tài liệu toàn diện"
+      stats:
+        years_of_experience: "Năm kinh nghiệm"
+        students_enrolled: "Học viên đã ghi danh"
+        instruments_available: "Loại nhạc cụ"
+        satisfaction_rate: "Tỷ lệ hài lòng của học viên"
+      team:
+        eyebrow: "Đội ngũ của chúng tôi"
+        title: "Gặp gỡ đội ngũ giảng viên tài năng & giàu kinh nghiệm"
+        text: "Đội ngũ giảng viên của chúng tôi luôn sẵn sàng đồng hành, truyền cảm hứng và hỗ trợ bạn trên từng bước tiến trong hành trình âm nhạc."
+        cta: "Gặp đội ngũ"
+      value:
+        eyebrow: "Giá trị của chúng tôi"
+        title: "Khơi mở tiềm năng: Lợi ích từ khóa học"
+        benefits:
+          expert_instructors: "Giảng viên chuyên môn cao"
+          personalized_learning: "Học tập cá nhân hóa"
+          hands_on_experience: "Thực hành trực tiếp"
+          comprehensive_curriculum: "Chương trình học toàn diện"
+          description: "Đồng hành cùng bạn ở mọi bước tiến trên con đường âm nhạc."
+      testimonials:
+        eyebrow: "Cảm nhận học viên"
+        prefix: " Cảm nhận "
+        animated: "của học viên"
+        items:
+          s1:
+            name: "Sarah M"
+            role: "CEO của Tech Solutions"
+            quote: "Khóa học thực sự là bước ngoặt! Nó giúp tôi hiểu sâu hơn về lý thuyết âm nhạc và kỹ thuật biểu diễn. Rất đáng để theo học!"
+          s2:
+            name: "David H"
+            role: "CFO của Green Energy Corp"
+            quote: "Tôi rất thích phương pháp thực hành của khóa học. Các giảng viên cực kỳ tài năng và tôi chưa bao giờ tự tin vào khả năng âm nhạc của mình như lúc này."
+          s3:
+            name: "Lisa R."
+            role: "Giám đốc HealthCare"
+            quote: "Từ sáng tác nhạc đến làm chủ nhạc cụ, khóa học này bao phủ tất cả! Các bài học được cấu trúc chặt chẽ và rất hấp dẫn."
+          s4:
+            name: "Olivia Bennett"
+            role: "CEO công ty Marketing"
+            quote: "Khóa học chuyên sâu đã giúp tôi cải thiện cả kỹ năng biểu diễn lẫn kiến thức sản xuất âm nhạc. Hoàn hảo cho người muốn theo đuổi âm nhạc!"
+          s5:
+            name: "Ethan Marshall"
+            role: "Chủ cửa hàng Nancy's Boutique"
+            quote: "Dù bạn là người mới bắt đầu hay đã nâng cao, khóa học đều có điều phù hợp cho mọi người. Sự linh hoạt và hỗ trợ thật tuyệt vời!"
+      clients:
+        title: "Được hơn 500 khách hàng trên toàn thế giới tin tưởng"
+      blog:
+        title: "Bài viết mới nhất"
+        posts:
+          ukulele: "Vì sao Ukulele là nhạc cụ lý tưởng cho người mới bắt đầu"
+          guitar_scales: "Những gam thức guitar cơ bản mà người mới nên học đầu tiên"
+          piano: "Làm chủ piano: Kỹ thuật thiết yếu cho người mới tập chơi"
+        categories:
+          jazz: "Jazz và Tức hứng"
+          guitar_mastery: "Làm chủ Guitar"
+          piano_lessons: "Học Piano"
+        date: "29 tháng 8, 2024"

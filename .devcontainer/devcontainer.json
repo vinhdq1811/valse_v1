@@ -1,0 +1,14 @@
+{
+  "name": "valse_v1",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "web",
+  "workspaceFolder": "/rails",
+  "shutdownAction": "stopCompose",
+  // Bind mount từ Windows khiến git trong container báo "dubious ownership"
+  "postCreateCommand": "git config --global --add safe.directory /rails",
+  "customizations": {
+    "vscode": {
+      "extensions": ["Shopify.ruby-lsp"]
+    }
+  }
+}

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  layout "musicali"
+  layout "theme"
 
   allow_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_path, alert: "Bạn đã thao tác quá nhanh. Vui lòng thử lại sau." }

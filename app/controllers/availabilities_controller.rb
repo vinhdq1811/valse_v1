@@ -1,5 +1,5 @@
 class AvailabilitiesController < ApplicationController
-  layout "musicali"
+  layout "theme"
 
   before_action :require_teacher_or_admin
   before_action :set_availability, only: %i[edit update destroy]

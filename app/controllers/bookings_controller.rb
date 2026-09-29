@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  layout "musicali"
+  layout "theme"
 
   def index
     @page_title = "Lịch của tôi"

@@ -1,0 +1,48 @@
+/* =======================================================================
+   Trang /products — CSS bù cho markup đã tinh gọn (xem products/index.html.erb).
+   Các rule dưới đây thay thế style trước đây gắn trên những div bọc trung gian
+   đã bị bỏ (.el-widget-container, .el-listing-hero-inner, .btn-wrapper), giúp
+   giảm số tầng lồng HTML mà không thay đổi giao diện.
+   File được nạp SAU post-1111.css (qua content_for :page_css) nên thắng cascade
+   ở cùng độ đặc hiệu.
+   ======================================================================= */
+
+/* 1) Breadcrumb: đã bỏ .el-widget-container
+      - margin 0 0 10px -> cũ: .el-listing-breadcrumb > .el-widget-container (post-1111.css)
+      - overflow hidden -> cũ: .el-icon-list--layout-inline .el-widget-container
+        (custom-widget-icon-list.min.css — cắt phần margin âm của danh sách) */
+.el-1111 .el-element.el-listing-breadcrumb {
+  margin: 0 0 10px;
+  overflow: hidden;
+}
+
+/* 2) Hero: đã gộp .el-listing-hero-inner vào .e-con-inner.
+      hero-inner cũ có padding mặc định 10px mọi phía và gap 0.
+      Đọc theo biến --padding-* (media query của post-1111.css cập nhật biến
+      trên .el-listing-hero) nên các giá trị tự theo đúng từng breakpoint. */
+.el-1111 .el-element.el-listing-hero > .e-con-inner {
+  --row-gap: 0px;
+  --column-gap: 0px;
+  --gap: 0px 0px;
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+  --padding-block-start: calc(var(--padding-top) + 10px);
+  --padding-block-end: calc(var(--padding-bottom) + 10px);
+}
+
+/* 3) Card: đã bỏ .btn-wrapper — bù lại phần style nền của link jkit
+      (trước đây nằm trên chuỗi .icon-box-button .btn-wrapper .icon-box-link
+      trong jeg-elementor-kit main.css; các thuộc tính còn lại — màu, đệm,
+      viền, font... — post-1111.css đã tự khai báo trên a.icon-box-link) */
+.el-1111 .el-element.el-listing-card-box .icon-box-button a.icon-box-link {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+}

@@ -1,6 +1,6 @@
 /* Valse — BASE: biến màu, layout dùng chung cho mọi controller
    (hero, breadcrumb, section, button, plan, CTA).
-   Palette & fonts khớp với template Musicali (Playfair Display / Roboto). */
+   Palette & fonts khớp với template Valse (Playfair Display / Roboto). */
 
 :root {
   --vp-navy: #021321;

@@ -1,19 +1,21 @@
-<%# Liên hệ — trích từ public/musicali-contact.html (Elementor page 1349).
+<%# Liên hệ — trích từ docs/design-reference/contact.html (Elementor page 1349).
     Asset tag được application layout tạo từ danh sách URL bên dưới. %>
 <% content_for :page_css do %>
-/wp-content/plugins/elementor/assets/css/widget-google_maps.min.css?ver=3.32.4
-/wp-content/uploads/elementor/css/post-1349.css?ver=1787492680
-/wp-content/plugins/metform/public/assets/css/metform-ui.css?ver=4.0.6
-/wp-content/plugins/metform/public/assets/css/style.css?ver=4.0.6
+theme/elementor/widgets/widget-google_maps.min
+theme/elementor/posts/post-1349
+theme/metform/metform-ui
+theme/metform/style
+theme/metform/cute-alert
+theme/metform/text-editor
 <% end %>
 <% content_for :page_js do %>
-/wp-content/plugins/metform/public/assets/js/htm.js?ver=4.0.6
-/wp-includes/js/dist/vendor/react.min.js?ver=18.3.1.1
-/wp-includes/js/dist/vendor/react-dom.min.js?ver=18.3.1.1
-/wp-includes/js/dist/escape-html.min.js?ver=87ebe53e97bba59805a5
-/wp-includes/js/dist/element.min.js?ver=4a4370b2b349066fd440
+metform/htm
+wp/react.min
+wp/react-dom.min
+wp/escape-html.min
+wp/element.min
 <script id="metform-app-js-extra">var mf = {"postType":"page","restURI":"/wp-json/metform/v1/forms/views/","minMsg1":"Minimum length should be ","Msg2":" character long.","maxMsg1":"Maximum length should be ","maxNum":"Maximum number should be ","minNum":"Minimum number should be "};</script>
-/wp-content/plugins/metform/public/assets/js/app.js?ver=4.0.6
+metform/app
 <% end %>
 					<div data-elementor-type="wp-page" data-elementor-id="1349" class="el-root el-1349">
 				<div class="el-element el-contact-hero-section e-flex e-con-boxed e-con e-parent" data-id="contact-hero-section" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -53,7 +55,7 @@
 					<div class="e-con-inner">
 				<div class="el-element el-contact-circle-text el-widget__width-auto el-widget el-widget-text-path" data-id="contact-circle-text" data-element_type="widget" data-settings="{&quot;text&quot;:&quot;Musical Specialist Instrument courses&quot;,&quot;align&quot;:&quot;center&quot;,&quot;text_path_direction&quot;:&quot;rtl&quot;,&quot;link&quot;:{&quot;url&quot;:&quot;&quot;,&quot;is_external&quot;:&quot;&quot;,&quot;nofollow&quot;:&quot;&quot;,&quot;custom_attributes&quot;:&quot;&quot;},&quot;start_point&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]}}" data-widget_type="text-path.default">
 				<div class="el-widget-container">
-							<div class="e-text-path" data-text="Musical Specialist Instrument courses" data-url="/wp-content/plugins/elementor/assets/svg-paths/circle.svg" data-link-url=""></div>
+							<div class="e-text-path" data-text="Musical Specialist Instrument courses" data-url="<%= image_path("elementor/circle.svg") %>" data-link-url=""></div>
 						</div>
 				</div>
 					</div>
@@ -351,7 +353,7 @@
 				<div class="el-element el-contact-info-2 jkit-equal-height-disable el-widget el-widget-jkit_icon_box" data-id="contact-info-2" data-element_type="widget" data-widget_type="jkit_icon_box.default">
 				<div class="el-widget-container">
 					<div  class="jeg-el-kit jkit-icon-box icon-position-left el-animation- jeg_module_1349_4_6aa44e9a0e068" ><a href="" class="icon-box-link" aria-label="Learn More"><div class="jkit-icon-box-wrapper hover-from-left"><div class="icon-box icon-box-header el-animation-"><div class="icon style-color"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg></div></div><div class="icon-box icon-box-body">
-                <h4 class="title">Our email</h4><p class="icon-box-description">musicali@mail.com</p>
+                <h4 class="title">Our email</h4><p class="icon-box-description">Valse@mail.com</p>
             </div>
             
             </div></a></div>				</div>

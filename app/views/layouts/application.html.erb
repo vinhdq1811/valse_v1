@@ -8,8 +8,8 @@
     <%= csp_meta_tag %>
     <%= yield :head %>
     <%# ===================== ASSET TAGS TẬP TRUNG TẠI ĐÂY ===================== %>
-    <%# 1) <head> assets riêng của layout musicali (WP/Musicali links & styles) %>
-    <%= yield :musicali_head %>
+    <%# 1) <head> assets riêng của layout Valse (WP/Valse links & styles) %>
+    <%= yield :theme_head %>
     <%# 2) CSS hệ thống vp-* (Propshaft — app/assets/stylesheets/valse/) %>
     <%= stylesheet_link_tag "valse/base", "valse/header", "valse/courses", "valse/pages", "valse/posts", "valse/auth", "valse/profile", "valse/schedule", "data-turbo-track": "reload" %>
     <%# 3) CSS riêng từng trang — view khai báo mỗi URL một dòng qua content_for :page_css %>
@@ -20,14 +20,20 @@
   <body<%= " #{yield(:body_attrs)}".html_safe if content_for?(:body_attrs) %>>
     <%= content_for?(:layout_content) ? yield(:layout_content) : yield %>
     <%# 4) JS riêng từng trang — view khai báo qua content_for :page_js, mỗi dòng một mục:
-          dòng bắt đầu bằng "/"  -> bọc bằng javascript_include_tag
-          dòng khác              -> xuất nguyên văn (inline script),
+          dòng bắt đầu bằng "<"  -> xuất nguyên văn (inline script, chạy khi parse —
+                                    chỉ nên chứa khai báo biến config),
+          dòng khác              -> logical path trong app/assets/javascripts
+                                    (có thể chứa thư mục con, vd "jkit/tiny-slider"),
+                                    bọc bằng javascript_include_tag + defer (tất cả script
+                                    jkit/metform chỉ đăng ký handler trên sự kiện
+                                    elementor/frontend/init — sự kiện này nổ sau
+                                    DOMContentLoaded nên defer không đổi hành vi),
           thứ tự khai báo được giữ nguyên %>
     <% yield(:page_js).to_s.split("\n").map(&:strip).reject(&:empty?).each do |line| %>
-      <% if line.start_with?("/") %>
-      <%= javascript_include_tag line %>
-      <% else %>
+      <% if line.start_with?("<") %>
       <%= line.html_safe %>
+      <% else %>
+      <%= javascript_include_tag line, defer: true %>
       <% end %>
     <% end %>
     <%= javascript_importmap_tags if content_for?(:importmap) %>

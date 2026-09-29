@@ -3,25 +3,25 @@ class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:metform_insert, :metform_view]
 
   def home
-    @page_title = "Trang chủ"
-    render "home", layout: "musicali"
+    @page_title = t("pages.home.page_title")
+    render "home", layout: "theme"
   end
 
   def contact
     @page_title = "Liên hệ"
-    render "contact", layout: "musicali"
+    render "contact", layout: "theme"
   end
 
   def pricing
     @plans = Plan.ordered
     @page_title = "Bảng giá"
-    render "pricing", layout: "musicali"
+    render "pricing", layout: "theme"
   end
 
   def testimonials
     @testimonials = Testimonial.published.ordered
     @page_title = "Cảm nhận học viên"
-    render "testimonials", layout: "musicali"
+    render "testimonials", layout: "theme"
   end
 
   def metform_insert

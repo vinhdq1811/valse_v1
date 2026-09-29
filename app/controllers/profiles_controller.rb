@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  layout "musicali"
+  layout "theme"
 
   ROLE_LABELS = {
     "student" => "Học viên",

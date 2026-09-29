@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  layout "musicali"
+  layout "theme"
 
   def index
     @page_title = "Đặt lịch học"

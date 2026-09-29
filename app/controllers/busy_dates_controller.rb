@@ -1,5 +1,5 @@
 class BusyDatesController < ApplicationController
-  layout "musicali"
+  layout "theme"
 
   before_action :require_teacher_or_admin
 

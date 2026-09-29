@@ -5,8 +5,8 @@ module ApplicationHelper
     "#{number_with_delimiter(amount, delimiter: '.')}₫"
   end
 
-  def page_title(default = "Musicali — Valse Music School")
-    @page_title.present? ? "#{@page_title} — Musicali" : default
+  def page_title(default = "Valse Music School")
+    @page_title.present? ? "#{@page_title} — Valse" : default
   end
 
   # Permalink bài viết: /:year/:month/:day/:slug

@@ -29,3 +29,93 @@
 
 en:
   hello: "Hello world"
+  pages:
+    home:
+      page_title: "Home"
+      hero:
+        brand: "Musical Specialist"
+        animated_text: "Courses"
+        cta: "Join our class"
+        text_path: "Musical Specialist Instrument courses"
+      courses:
+        title: "Our specialist courses"
+        intro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Ligula luctus nascetur."
+        read_more: "Read More"
+        card_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        join_class_now: "JOIN CLASS NOW"
+        items:
+          guitar: "Guitar"
+          violin: "Violin"
+          piano: "Piano"
+          drum: "Drum"
+      about:
+        eyebrow: "About us"
+        title: "Master Music from the Core and Achieve Excellence"
+        text_1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+        text_2: "Dignissim potenti morbi malesuada tellus est facilisis vehicula hendrerit, proin quam dis."
+        read_more: "Read more"
+      why:
+        eyebrow: "Why Choose us"
+        title: "Why our music course is the perfect fit for you"
+        join_our_class: "JOIN OUR CLASS"
+        cards:
+          personalized: "Personalized Learning Experience"
+          expert: "Expert Instructors with Industry Experience"
+          curriculum: "Comprehensive Curriculum & Resources"
+      stats:
+        years_of_experience: "Years of Experience"
+        students_enrolled: "Students Enrolled"
+        instruments_available: "Instruments Available"
+        satisfaction_rate: "Student Satisfaction Rate"
+      team:
+        eyebrow: "Our team"
+        title: "Meet Our Skilled & Experienced Tutors"
+        text: "Feugiat egestas etiam aliquam non eleifend potenti lectus maecenas, dictum massa hendrerit pharetra nunc congue ultrices elementum."
+        cta: "Meet Our Team"
+      value:
+        eyebrow: "Our Value"
+        title: "Unlock Your Potential: Our Course Benefits"
+        benefits:
+          expert_instructors: "Expert Instructors"
+          personalized_learning: "Personalized Learning"
+          hands_on_experience: "Hands-On Experience"
+          comprehensive_curriculum: "Comprehensive Curriculum"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      testimonials:
+        eyebrow: "Testimonials"
+        prefix: " Reviews "
+        animated: "our members"
+        items:
+          s1:
+            name: "Sarah M"
+            role: "CEO of Tech Solutions"
+            quote: "This course was a game changer! It deepened my understanding of music theory and performance techniques. Highly recommended!"
+          s2:
+            name: "David H"
+            role: "CFO of Green Energy Corp"
+            quote: "I loved the hands-on approach of this course. The instructors are incredibly talented, and I feel more confident in my musical abilities than ever before."
+          s3:
+            name: "Lisa R."
+            role: "Director of  HealthCare"
+            quote: "From songwriting to mastering instruments, this course covered it all! The lessons were well-structured and engaging."
+          s4:
+            name: "Olivia Bennett"
+            role: "CEO Marketing Agency"
+            quote: "The musical specialist course helped me improve both my performance skills and my knowledge of music production. Perfect for aspiring musicians!"
+          s5:
+            name: "Ethan Marshall"
+            role: "Owner of Nancy’s Boutique"
+            quote: "Whether you're a beginner or advanced musician, this course has something for everyone. The flexibility and support were amazing!"
+      clients:
+        title: "Trusted by more than 500 clients worldwide"
+      blog:
+        title: "Our Latest Articles"
+        posts:
+          ukulele: "Why Ukulele is the Ideal Instrument for First-Time Musicians"
+          guitar_scales: "The Best Guitar Scales Every Beginner Should Learn First"
+          piano: "Mastering the Piano: Essential Techniques for Beginner Pianists"
+        categories:
+          jazz: "Jazz and Improvisation"
+          guitar_mastery: "Guitar Mastery"
+          piano_lessons: "Piano Lessons"
+        date: "August 29, 2024"
