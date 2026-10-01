@@ -227,9 +227,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_16_090006) do
     t.string "email_address", null: false
     t.string "name"
     t.string "password_digest", null: false
-    t.integer "role"
+    t.integer "role", default: 0, null: false
     t.datetime "updated_at", null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
+    t.index ["role"], name: "index_users_on_role"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

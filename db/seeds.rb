@@ -183,7 +183,7 @@ Product.create!(
   summary: "Bộ bài tập ngón tay thiết kế theo từng cấp độ, dùng kèm cho mọi khóa học.",
   description: "Bộ 20 bài tập kỹ thuật được thiết kế theo lộ trình từ cơ bản đến nâng cao, giúp rèn độ dẻo dai, độc lập của ngón tay và kiểm soát âm thanh. Dùng kèm hiệu quả cho cả 4 khóa học piano.",
   highlights: ["20 bài tập theo cấp độ", "Kèm hướng dẫn tập luyện", "PDF 18 trang"],
-  image: "#{img}/valse-img-016.jpg",
+  image: "/wp-content/uploads/2024/09/valse-img-016.jpg",
   price: 90_000,
   position: 5
 )
@@ -196,7 +196,7 @@ Product.create!(
   summary: "Piano điện 88 phím cảm ứng nặng, âm thanh grand piano — lựa chọn số 1 cho người mới.",
   description: "Yamaha P-145 sở hữu 88 phím graded hammer action cho cảm giác bấm gần như đàn cơ, âm thanh sampled từ đại dương cầm Yamaha CFIIIS. Thiết kế mỏng nhẹ, phù hợp căn hộ và người mới bắt đầu.",
   highlights: ["88 phím GHS cảm ứng nặng", "10 voices, chế độ dual", "Kbao gồm chân đàn + ghế"],
-  image: "#{img}/valse-img-017.jpg",
+  image: "/wp-content/uploads/2024/10/valse-img-017.jpg",
   price: 18_900_000,
   position: 1
 )
@@ -208,7 +208,7 @@ Product.create!(
   summary: "Piano điện dạng tủ với hệ phím Roland nổi tiếng bền bỉ, phù hợp học lâu dài.",
   description: "Roland RP30 là piano điện dạng tủ (cabinet) với hệ phím cơ cấu búa Roland lừng danh độ bền, âm thanh SuperNATURAL rõ ràng. Hệ thống loa hai chiều cho trải nghiệm chơi tại nhà trọn vẹn.",
   highlights: ["Hệ phím cơ cấu búa Roland", "Âm thanh SuperNATURAL", "Dạng tủ, kèm ghế đàn"],
-  image: "#{img}/valse-img-018.jpg",
+  image: "/wp-content/uploads/2024/10/valse-img-018.jpg",
   price: 21_500_000,
   position: 2
 )
@@ -232,7 +232,7 @@ Product.create!(
   summary: "Biểu tượng upright piano 121cm — chuẩn âm thanh cho gia đình và phòng thu.",
   description: "Yamaha U1J là phiên bản tối ưu của dòng U1 huyền thoại — upright piano bán chạy nhất thế giới. Chất gỗ được chọn lọc kỹ, âm thanh sáng, lực phím đồng đều, phù hợp từ học viên đến người chơi chuyên nghiệp.",
   highlights: ["Dòng U1 huyền thoại, 121cm", "Âm thanh sáng, lực phím đều", "Bảo hành chính hãng 10 năm"],
-  image: "#{img}/Gallery-01.jpg",
+  image: "/wp-content/uploads/2024/09/Gallery-01.jpg",
   price: 139_000_000,
   position: 4
 )

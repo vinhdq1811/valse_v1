@@ -1,8 +1,9 @@
-<section class="vp-auth">
-  <div class="vp-container">
+<%# Đặt lại mật khẩu — layout split giống Đăng nhập (panel thương hiệu + form). %>
+<section class="vp-auth vp-auth--split">
+  <%= render "shared/brand_panel" %>
+
+  <div class="vp-auth__main">
     <div class="vp-auth__card">
-      <div class="vp-auth__badge" aria-hidden="true">♪</div>
-      <p class="vp-auth__eyebrow">Valse Music School</p>
       <h1 class="vp-auth__title">Đặt lại mật khẩu</h1>
       <p class="vp-auth__sub">Tạo mật khẩu mới cho tài khoản của bạn.</p>
 
@@ -13,18 +14,32 @@
       <%= form_with url: password_path(params[:token]), method: :put, class: "vp-auth__form" do |form| %>
         <div class="vp-auth__field">
           <%= form.label :password, "Mật khẩu mới", class: "vp-auth__label" %>
-          <%= form.password_field :password, required: true, autofocus: true,
-                autocomplete: "new-password", placeholder: "Tối thiểu 8 ký tự",
-                minlength: 8, maxlength: 72, class: "vp-auth__input" %>
+          <div class="vp-auth__control">
+            <span class="vp-auth__control-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            </span>
+            <%= form.password_field :password, required: true, autofocus: true,
+                  autocomplete: "new-password", placeholder: "Tối thiểu 8 ký tự",
+                  minlength: 8, maxlength: 72, class: "vp-auth__input" %>
+          </div>
         </div>
         <div class="vp-auth__field">
           <%= form.label :password_confirmation, "Xác nhận mật khẩu mới", class: "vp-auth__label" %>
-          <%= form.password_field :password_confirmation, required: true,
-                autocomplete: "new-password", placeholder: "Nhập lại mật khẩu mới",
-                maxlength: 72, class: "vp-auth__input" %>
+          <div class="vp-auth__control">
+            <span class="vp-auth__control-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            </span>
+            <%= form.password_field :password_confirmation, required: true,
+                  autocomplete: "new-password", placeholder: "Nhập lại mật khẩu mới",
+                  maxlength: 72, class: "vp-auth__input" %>
+          </div>
         </div>
         <%= form.submit "Lưu mật khẩu mới", class: "vp-btn vp-btn--full vp-auth__submit" %>
       <% end %>
+
+      <div class="vp-auth__alt">
+        Đã nhớ lại mật khẩu? <%= link_to "Đăng nhập", new_session_path %>
+      </div>
     </div>
     <div class="vp-auth__back"><%= link_to "← Về trang đăng nhập", new_session_path %></div>
   </div>

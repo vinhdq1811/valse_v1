@@ -195,6 +195,12 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 //# sourceURL=el-frontend-js-before
 </script>
 <%= javascript_include_tag "elementor/frontend.min", id: "el-frontend-js", defer: true %>
+<%# Handler widget text-path (vòng tròn chữ xoay) là webpack chunk Elementor
+    lazy-load theo tên file cứng — Propshaft không serve được URL đó (404) nên
+    vong tròn không bao giờ vẽ. Nạp trước chunk để webpack runtime nhận module
+    có sẵn, không cần fetch. Chunk tự push [[30], ...] vào runtime đã nạp ở trên,
+    chỉ những trang có .e-text-path mới phát sinh handler. %>
+<%= javascript_include_tag "elementor/text-path.ebcd5a983a56266562f3.bundle.min", id: "el-text-path-handler-js", defer: true %>
 <script id="el-frontend-js-after">
 var jkit_ajax_url = "/?jkit-ajax-request=jkit_elements", jkit_nonce = "9b48a9dd31";
 //# sourceURL=el-frontend-js-after

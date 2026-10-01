@@ -1,0 +1,28 @@
+<%# Panel thương hiệu dùng chung cho các trang auth (split layout).
+    Chỉ hiển thị >= 960px (ẩn qua CSS ở màn hẹp). %>
+<aside class="vp-auth__panel">
+  <%= image_tag "hero-main.jpg", class: "vp-auth__panel-img", alt: "", aria: { hidden: true } %>
+  <div class="vp-auth__panel-scrim" aria-hidden="true"></div>
+
+  <div class="vp-auth__panel-inner">
+    <%= link_to root_path, class: "vp-auth__brand", "aria-label": "Valse Music School" do %>
+      <%= image_tag "logo-dark.png", alt: "Valse Music School", width: 170, height: 35 %>
+    <% end %>
+
+    <div class="vp-auth__panel-body">
+      <p class="vp-auth__panel-eyebrow">Học viện âm nhạc Valse</p>
+      <h2 class="vp-auth__panel-title">Nơi những <span class="vp-auth__panel-accent">giai điệu</span> cất tiếng</h2>
+      <p class="vp-auth__panel-text">Đăng nhập để tiếp tục hành trình âm nhạc của bạn cùng đội ngũ giảng viên giàu kinh nghiệm tại Valse.</p>
+      <ul class="vp-auth__panel-list">
+        <li>Đặt lịch học thử và học chính thức trong vài phút</li>
+        <li>Lộ trình cá nhân hóa theo từng học viên</li>
+        <li>Theo dõi tiến bộ và lớp học của bạn mọi lúc</li>
+      </ul>
+    </div>
+
+    <figure class="vp-auth__panel-quote">
+      <p>“Âm nhạc là ngôn ngữ duy nhất trên thế giới không cần dịch.”</p>
+      <cite>— Valse Music School</cite>
+    </figure>
+  </div>
+</aside>

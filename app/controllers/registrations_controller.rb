@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  layout "theme"
+  layout "auth"
 
   allow_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create,

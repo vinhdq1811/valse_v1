@@ -43,10 +43,15 @@
   margin: 0 0 10px;
 }
 
-.vp-auth__title {
+/* Specificity (0,2,0) để thắng rule ".el-kit-8 h1" (0,1,1) của theme Elementor
+   (post-8.css đặt font-size h1 = var(--e-global-typography-primary-font-size) = 97px) */
+.vp-auth .vp-auth__title {
   font-family: var(--vp-font-display);
   font-weight: 400;
   font-size: clamp(26px, 3.4vw, 34px);
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
   color: var(--vp-navy);
   text-align: center;
   margin: 0 0 8px;
@@ -213,5 +218,268 @@
 
   .vp-auth__card {
     padding: 32px 22px 30px;
+  }
+}
+
+/* ============================================================
+   SPLIT LAYOUT — trang đăng nhập (modifier .vp-auth--split).
+   Panel thương hiệu bên trái (navy + ảnh piano) và form bên phải.
+   ============================================================ */
+.vp-auth--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* ---------- Panel thương hiệu (bên trái) ---------- */
+.vp-auth__panel {
+  position: relative;
+  display: flex;
+  padding: clamp(36px, 4.5vw, 68px);
+  background: var(--vp-navy);
+  overflow: hidden;
+}
+
+.vp-auth__panel-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+}
+
+/* Lớp phủ navy chuyển gradient để chữ luôn đọc được */
+.vp-auth__panel-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    155deg,
+    rgba(2, 19, 33, 0.94) 0%,
+    rgba(2, 19, 33, 0.62) 52%,
+    rgba(2, 19, 33, 0.9) 100%
+  );
+}
+
+.vp-auth__panel-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 44px;
+  width: 100%;
+}
+
+.vp-auth__brand {
+  display: inline-block;
+  line-height: 0;
+}
+
+.vp-auth__brand img {
+  width: 170px;
+  height: auto;
+}
+
+.vp-auth .vp-auth__panel-eyebrow {
+  font-family: var(--vp-font-body);
+  font-size: 12.5px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--vp-sand);
+  margin: 0 0 16px;
+}
+
+/* Specificity (0,2,0) thắng rule ".el-kit-8 h2" (0,1,1) của post-8.css
+   (màu navy + font-size ~55px sẽ làm chữ tàng hình trên panel navy) */
+.vp-auth .vp-auth__panel-title {
+  font-family: var(--vp-font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.2vw, 44px);
+  line-height: 1.18;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--vp-white);
+  margin: 0 0 18px;
+}
+
+.vp-auth .vp-auth__panel-accent {
+  font-style: italic;
+  color: var(--vp-sand);
+}
+
+.vp-auth .vp-auth__panel-text {
+  font-family: var(--vp-font-body);
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: #c6cdd6;
+  max-width: 480px;
+  margin: 0;
+}
+
+.vp-auth__panel-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 0;
+}
+
+.vp-auth .vp-auth__panel-list li {
+  position: relative;
+  padding: 9px 0 9px 32px;
+  font-family: var(--vp-font-body);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #d7dde3;
+}
+
+.vp-auth__panel-list li::before {
+  content: "♪";
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  color: var(--vp-sand);
+  font-size: 15px;
+}
+
+.vp-auth__panel-quote {
+  margin: 0;
+  padding: 20px 26px;
+  border-left: 2px solid var(--vp-gold);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.vp-auth .vp-auth__panel-quote p {
+  font-family: var(--vp-font-display);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  color: #e9e2d3;
+  margin: 0 0 8px;
+}
+
+.vp-auth .vp-auth__panel-quote cite {
+  font-family: var(--vp-font-body);
+  font-style: normal;
+  font-size: 12.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--vp-sand);
+}
+
+/* ---------- Cột form (bên phải) ---------- */
+.vp-auth__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.vp-auth--split .vp-auth__card {
+  width: 100%;
+  max-width: 460px;
+  margin: 0;
+}
+
+/* Input có icon ở bên trái */
+.vp-auth__control {
+  position: relative;
+}
+
+.vp-auth__control-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #b3aca1;
+  pointer-events: none;
+}
+
+.vp-auth__control-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Input: theme ".el-kit-8 input:not([type=button]):not([type=submit])" có (0,3,1)
+   nên cần (0,4,0) để giành lại font/padding */
+.vp-auth .vp-auth__form .vp-auth__field .vp-auth__input {
+  width: 100%;
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  color: var(--vp-navy);
+  padding: 12px 16px;
+  border: 1px solid #e2dcd2;
+  border-radius: 10px;
+  background: var(--vp-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vp-auth .vp-auth__form .vp-auth__control .vp-auth__input {
+  padding-left: 45px;
+}
+
+/* Focus: giữ nguyên border 1px (chỉ đổi màu) — theme ".el-kit-8 input:focus:not(...)"
+   (0,4,1) đặt border-width:0 + màu trong suốt khi focus, làm nội dung xê dịch.
+   Rule (0,5,0) này thắng để border không đổi độ dày, chỉ có ring box-shadow. */
+.vp-auth .vp-auth__form .vp-auth__field input.vp-auth__input:focus {
+  outline: none;
+  border-width: 1px;
+  border-color: var(--vp-gold);
+  box-shadow: 0 0 0 3px rgba(139, 125, 89, 0.15);
+}
+
+/* Nút submit: theme ".el-kit-8 input[type=submit]" có (0,2,1) và ":hover" (0,3,1)
+   đặt nền sand/radius 8px — cần (0,3,0) và (0,4,0), load sau để thắng cascade */
+.vp-auth .vp-auth__form .vp-auth__submit {
+  background: var(--vp-navy);
+  color: var(--vp-white);
+  border: none;
+  border-radius: 999px;
+  font-family: var(--vp-font-body);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 30px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.vp-auth .vp-auth__form .vp-auth__submit:hover {
+  background: var(--vp-gold);
+  color: var(--vp-white);
+}
+
+.vp-auth--split .vp-auth__back {
+  margin-top: 20px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .vp-auth--split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 40px 0 64px;
+  }
+
+  .vp-auth__panel {
+    display: none;
+  }
+
+  .vp-auth__main {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .vp-auth--split {
+    padding: 32px 0 56px;
+  }
+
+  .vp-auth__main {
+    padding: 0 16px;
   }
 }

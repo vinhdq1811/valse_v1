@@ -6,7 +6,10 @@
       - bỏ .btn-wrapper quanh nút "XEM CHI TIẾT"
     Các style từng gắn trên các div bọc đó được bù lại trong valse/products.css
     nên giao diện không đổi. Vẫn bỏ các section: listing-title-row, listing-intro,
-    why-us, team, values (như bản gốc). %>
+    why-us, team, values (như bản gốc).
+    Khác bản gốc: thêm section bộ lọc phân loại (Tất cả/Sheet nhạc/Đàn piano) giữa
+    banner và listing; card dùng ảnh sản phẩm (product.image) vuông tràn viền,
+    tiêu đề h4 cỡ nhỏ và card cùng hàng cao bằng nhau (xem valse/products.css). %>
 <% content_for :page_css do %>
 theme/elementor/posts/post-1111
 valse/products
@@ -18,8 +21,8 @@ valse/products
 <% content_for :skip_fa_shim_js, "1" %>
 <% content_for :skip_animate_circle_js, "1" %>
 <%
-  card_icons = %w[icon-01 icon-02 icon-04 icon-03 icon-05 icon-06 icon-07 icon-08]
   delays = [150, 200, 250, 300]
+  filter_tabs = [["sheet", "Sheet nhạc"], ["piano", "Đàn piano"]]
 %>
 <div data-elementor-type="wp-page" data-elementor-id="1111" class="el-root el-1111">
 	<div class="el-element el-listing-hero e-flex e-con-boxed e-con e-parent" data-id="listing-hero" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -67,18 +70,29 @@ valse/products
 			</div>
 		</div>
 	</div>
+	<div class="el-element el-listing-filter-section e-flex e-con-boxed e-con e-parent" data-id="listing-filter-section" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<div class="e-con-inner">
+			<div class="el-element el-listing-filter el-widget__width-auto el-widget el-widget-button" data-id="listing-filter" data-element_type="widget" data-widget_type="button.default">
+				<nav class="el-product-filter" aria-label="Phân loại sản phẩm">
+					<%= link_to "Tất cả", products_path, class: "el-product-filter-btn" + (@category.nil? ? " is-active" : "") %>
+<% filter_tabs.each do |key, label| %>
+					<%= link_to label, products_path(category: key), class: "el-product-filter-btn" + (@category == key ? " is-active" : "") %>
+<% end %>
+				</nav>
+			</div>
+		</div>
+	</div>
 	<div class="el-element el-listing-section e-flex e-con-boxed e-con e-parent" data-id="listing-section" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="e-con-inner">
 			<div class="el-element el-listing-grid e-grid e-con-full e-con e-child" data-id="listing-grid" data-element_type="container">
 <% @products.each_with_index do |product, i| %>
-<% icon = card_icons[i % card_icons.length] %>
-<% icon_src = i % card_icons.length < 4 ? "/wp-content/uploads/2024/08/#{icon}.png" : "/wp-content/uploads/2024/10/#{icon}.png" %>
-				<div class="el-element el-listing-card el-listing-card-box el-widget el-widget-jkit_icon_box jkit-equal-height-disable e-con-full e-flex el-invisible e-con e-child" data-id="listing-card" data-element_type="container" data-widget_type="jkit_icon_box.default" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:<%= delays[i % delays.length] %>}">
+<% image_src = product.image.presence || "/wp-content/uploads/2024/08/icon-01.png" %>
+				<div class="el-element el-listing-card el-listing-card-box el-widget el-widget-jkit_icon_box jkit-equal-height-enable e-con-full e-flex el-invisible e-con e-child" data-id="listing-card" data-element_type="container" data-widget_type="jkit_icon_box.default" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:<%= delays[i % delays.length] %>}">
 					<div class="jeg-el-kit jkit-icon-box jeg_module_1111_3_<%= product.id %>">
 						<div class="jkit-icon-box-wrapper hover-from-left">
 							<div class="icon-box icon-box-header">
 								<div class="icon style-color">
-									<img loading="lazy" decoding="async" width="626" height="626" src="<%= icon_src %>" class="attachment-full size-full" alt="<%= product.name %>" srcset="<%= icon_src %> 626w, <%= icon_src.sub('.png', '-300x300.png') %> 300w, <%= icon_src.sub('.png', '-150x150.png') %> 150w" sizes="(max-width: 626px) 100vw, 626px" />
+									<img loading="lazy" decoding="async" src="<%= image_src %>" class="attachment-full size-full" alt="<%= product.name %>" />
 								</div>
 							</div>
 							<div class="icon-box icon-box-body">
