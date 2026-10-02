@@ -185,6 +185,21 @@
 			    chỉ khai báo biến config nên vẫn chạy khi parse, sẵn sàng cho script defer đọc. %>
 			<%= javascript_include_tag "framework/webpack-runtime.min", id: "webpack-runtime-js", defer: true %>
 <%= javascript_include_tag "framework/frontend-modules.min", id: "frontend-modules-js", defer: true %>
+<%# Các webpack chunk widget (text-editor, counter, lightbox, shared-frontend-handlers —
+    nơi chứa handler reveal animation cho các section .anim-pending...) là lazy-load
+    theo tên file cứng có hash — Propshaft không serve được URL đó (404) nên
+    ChunkLoadError làm gián đoạn init và nội dung không bao giờ hiện. Phải preload
+    các chunk TRƯỚC frontend.min (script defer thực thi theo thứ tự tài liệu):
+    chunk tự push module vào runtime, khi frontend.min yêu cầu chunk thì đã có
+    sẵn, không phát sinh fetch 404. %>
+<% ["framework/lightbox.bundle.min", "framework/accordion.bundle.min", "framework/alert.bundle.min",
+    "framework/counter.bundle.min", "framework/progress.bundle.min", "framework/tabs.bundle.min",
+    "framework/toggle.bundle.min", "framework/video.bundle.min", "framework/image-carousel.bundle.min",
+    "framework/text-editor.bundle.min", "framework/site-audio.bundle.min", "framework/nested-tabs.bundle.min",
+    "framework/nested-accordion.bundle.min", "framework/contact-buttons.bundle.min", "framework/floating-bars.bundle.min",
+    "framework/shared-frontend-handlers.bundle.min", "framework/section-frontend-handlers.bundle.min"].each do |chunk| %>
+<%= javascript_include_tag chunk, id: "#{File.basename(chunk, '.js')}-js", defer: true %>
+<% end %>
 <script id="jquery-ui-core-js-before">
 jQuery.uiBackCompat = true;
 //# sourceURL=jquery-ui-core-js-before

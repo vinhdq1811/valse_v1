@@ -10,6 +10,12 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap", media: "all" %>
 	<%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap", media: "all" %>
+	<%# jQuery phải có mặt đồng bộ trong head: script inline ở footer (jquery-ui-core-js-before)
+	    tham chiếu jQuery ngay khi parse, còn frontend.min định nghĩa appModules mà
+	    toàn bộ widget script (defer) phụ thuộc vào — thiếu jQuery làm mọi widget
+	    (slider, animated-text, nav-menu, animation reveal) không khởi tạo. %>
+	<%= javascript_include_tag "vendor/jquery/jquery.min", id: "jquery-core-js" %>
+	<%= javascript_include_tag "vendor/jquery/jquery-migrate.min", id: "jquery-migrate-js" %>
 	<%# Lazy-load ảnh nền: section ngoài màn hình đầu không tải ảnh cho tới khi
 	    vào viewport (vòng tròn chữ xoay text-ring dùng data-url riêng nên không ảnh hưởng) %>
 	<style>
