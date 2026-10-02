@@ -1,48 +1,31 @@
 <%# Layout Valse (nested) — bọc trong application layout.
-    Toàn bộ asset đã chuẩn hóa về Rails/Propshaft:
-      - CSS theme nằm ở app/assets/stylesheets/theme/ (đã chuyển từ public/wp-content)
-      - Nhờ Propshaft, các file được nạp qua stylesheet_link_tag với fingerprint
-    Layout này chỉ khai báo asset riêng (head, body attrs) qua content_for. %>
+    Dùng cho các trang guest có header/footer (home, courses, blog, ...).
+    CSS dùng chung đã gộp vào guest/style.css do application layout nạp;
+    layout này chỉ khai báo font, favicon và thuộc tính body. %>
 <% content_for :html_lang, "en-US" %>
 <% content_for :theme_head do %>
 	<meta name='robots' content='max-image-preview:large' />
-	<%# CSS preset toàn cục (WP global styles — giữ lại để không lệch màu/spacing mặc định) %>
-	<%= stylesheet_link_tag "theme/wp-global-styles", media: "all" %>
-	<%# === CSS theme Valse (thứ tự giữ nguyên như bản gốc để đúng cascade) === %>
-	<%= stylesheet_link_tag "theme/jkit/elements/main", "theme/template-kit-export", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementor/custom-frontend.min", "theme/elementor/posts/post-8", "theme/elementor/custom/custom-widget-icon-list.min", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementor/widgets/widget-heading.min", "theme/elementor/widgets/widget-text-path.min", "theme/elementor/animations/e-animation-shrink.min", "theme/elementor/animations/fadeInUp.min", "theme/elementor/animations/fadeIn.min", "theme/elementor/widgets/widget-image.min", "theme/elementor/widgets/widget-spacer.min", media: "all" %>
-	<%# post-1144 (course-detail), post-1111 (courses/products), post-1461 (pricing),
-	    cute-alert + text-editor (metform — contact) chỉ cần ở trang riêng =>
-	    các view tương ứng tự nạp qua content_for :page_css. %>
-	<%= stylesheet_link_tag "theme/elementor/animations/slideInUp.min", "theme/elementor/widgets/widget-divider.min", "theme/elementor/custom/custom-widget-icon-box.min", media: "all" %>
-	<%= stylesheet_link_tag "theme/hello-elementor/reset", "theme/hello-elementor/theme", "theme/hello-elementor/header-footer", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementskit/css/widget-styles", "theme/elementskit/css/responsive", media: "all" %>
-	<%# Font: Google Fonts (Playfair Display, Roboto) + Lora tự host %>
+	<%# Font: Google Fonts (Playfair Display, Roboto) + Lora tự host (guest/style.css) %>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap", media: "all" %>
 	<%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap", media: "all" %>
-	<%= stylesheet_link_tag "theme/fonts/lora", media: "all" %>
-	<%= stylesheet_link_tag "theme/jkit/jkiticon/jkiticon", media: "all" %>
-	<%= javascript_include_tag "jquery/jquery.min", id: "jquery-core-js" %>
-	<%= javascript_include_tag "jquery/jquery-migrate.min", id: "jquery-migrate-js" %>
-	<%= javascript_include_tag "theme/template-kit-export-public", id: "template-kit-export-js" %>
-	<%# Elementor lazy-load background images (giữ nguyên hành vi gốc) %>
+	<%# Lazy-load ảnh nền: section ngoài màn hình đầu không tải ảnh cho tới khi
+	    vào viewport (vòng tròn chữ xoay text-ring dùng data-url riêng nên không ảnh hưởng) %>
 	<style>
-		.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
-		.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+		.section.section-parent:nth-of-type(n+4):not(.bg-loaded):not(.bg-no-lazy),
+		.section.section-parent:nth-of-type(n+4):not(.bg-loaded):not(.bg-no-lazy) * {
 			background-image: none !important;
 		}
 		@media screen and (max-height: 1024px) {
-			.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
-			.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+			.section.section-parent:nth-of-type(n+3):not(.bg-loaded):not(.bg-no-lazy),
+			.section.section-parent:nth-of-type(n+3):not(.bg-loaded):not(.bg-no-lazy) * {
 				background-image: none !important;
 			}
 		}
 		@media screen and (max-height: 640px) {
-			.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
-			.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+			.section.section-parent:nth-of-type(n+2):not(.bg-loaded):not(.bg-no-lazy),
+			.section.section-parent:nth-of-type(n+2):not(.bg-loaded):not(.bg-no-lazy) * {
 				background-image: none !important;
 			}
 		}
@@ -52,15 +35,9 @@
 	<link rel="icon" href="<%= image_path("favicon-300x300.png") %>" sizes="192x192" />
 	<link rel="apple-touch-icon" href="<%= image_path("favicon-300x300.png") %>" />
 	<meta name="msapplication-TileImage" content="<%= image_path("favicon-300x300.png") %>" />
-	<%= stylesheet_link_tag "theme/jkit/jeg-dynamic-styles", "theme/elementor/posts/post-1683", media: "all" %>
-	<%# Font Awesome (all.min.css ~100KB + v4-shims) đã bị loại: toàn bộ icon trên
-	    site dùng font jki/ekiticons hoặc SVG inline, không có class fa-* nào.
-	    Nếu sau này cần icon FA, copy lại từ public/wp-content/plugins/elementor
-	    và thêm: stylesheet_link_tag "theme/fontawesome/css/all.min" %>
-	<%= stylesheet_link_tag "theme/elementor/posts/post-678", "theme/elementor/widgets/widget-social-icons.min", "theme/elementor/custom/custom-apple-webkit.min", "theme/elementskit/ekiticons/css/ekiticons", media: "all" %>
 <% end %>
 <%# Block form để giữ html_safe — content_for dạng string sẽ bị escape ở Rails 8.1 %>
-<% content_for :body_attrs do %>class="wp-singular page-template page-template-elementor_header_footer page page-id-1111 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor jkit-color-scheme hello-el-default el-default el-template-full-width el-kit-8 el-page el-page-1111"<% end %>
+<% content_for :body_attrs do %>class="page color-scheme site-skin"<% end %>
 <% content_for :layout_content do %>
 <%= render "layouts/theme/header" %>
 <% if flash[:notice] || flash[:alert] %>

@@ -8,11 +8,13 @@
     <%= csp_meta_tag %>
     <%= yield :head %>
     <%# ===================== ASSET TAGS TẬP TRUNG TẠI ĐÂY ===================== %>
-    <%# 1) <head> assets riêng của layout Valse (WP/Valse links & styles) %>
+    <%# 1) <head> assets riêng của layout con (font, favicon, meta...) %>
     <%= yield :theme_head %>
-    <%# 2) CSS hệ thống vp-* (Propshaft — app/assets/stylesheets/valse/) %>
-    <%= stylesheet_link_tag "valse/base", "valse/header", "valse/courses", "valse/pages", "valse/posts", "valse/auth", "valse/profile", "valse/schedule", "data-turbo-track": "reload" %>
-    <%# 3) CSS riêng từng trang — view khai báo mỗi URL một dòng qua content_for :page_css %>
+    <%# 2) CSS dùng chung guest (Propshaft — app/assets/stylesheets/guest/style.css);
+          CSS admin nằm ở admin/style.css do layout admin nạp riêng %>
+    <%= stylesheet_link_tag "guest/style", "data-turbo-track": "reload" %>
+    <%# 3) CSS riêng từng trang — view khai báo mỗi URL một dòng qua content_for :page_css
+          (vd "guest/pages/home", "admin/schedule") %>
     <% yield(:page_css).to_s.split.each do |url| %>
     <%= stylesheet_link_tag url, media: "all" %>
     <% end %>
@@ -23,10 +25,10 @@
           dòng bắt đầu bằng "<"  -> xuất nguyên văn (inline script, chạy khi parse —
                                     chỉ nên chứa khai báo biến config),
           dòng khác              -> logical path trong app/assets/javascripts
-                                    (có thể chứa thư mục con, vd "jkit/tiny-slider"),
+                                    (có thể chứa thư mục con, vd "widgets/nav-menu"),
                                     bọc bằng javascript_include_tag + defer (tất cả script
-                                    jkit/metform chỉ đăng ký handler trên sự kiện
-                                    elementor/frontend/init — sự kiện này nổ sau
+                                    widget chỉ đăng ký handler trên sự kiện
+                                    app/frontend/init — sự kiện này nổ sau
                                     DOMContentLoaded nên defer không đổi hành vi),
           thứ tự khai báo được giữ nguyên %>
     <% yield(:page_js).to_s.split("\n").map(&:strip).reject(&:empty?).each do |line| %>

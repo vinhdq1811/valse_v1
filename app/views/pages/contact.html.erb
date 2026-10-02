@@ -1,89 +1,84 @@
-<%# Liên hệ — trích từ docs/design-reference/contact.html (Elementor page 1349).
+<%# Liên hệ — trích từ docs/design-reference/contact.html (App page 1349).
     Asset tag được application layout tạo từ danh sách URL bên dưới. %>
 <% content_for :page_css do %>
-theme/elementor/widgets/widget-google_maps.min
-theme/elementor/posts/post-1349
-theme/metform/metform-ui
-theme/metform/style
-theme/metform/cute-alert
-theme/metform/text-editor
+guest/pages/contact
 <% end %>
 <% content_for :page_js do %>
-metform/htm
-wp/react.min
-wp/react-dom.min
-wp/escape-html.min
-wp/element.min
-<script id="metform-app-js-extra">var mf = {"postType":"page","restURI":"/wp-json/metform/v1/forms/views/","minMsg1":"Minimum length should be ","Msg2":" character long.","maxMsg1":"Maximum length should be ","maxNum":"Maximum number should be ","minNum":"Minimum number should be "};</script>
-metform/app
+forms/htm
+vendor/react/react.min
+vendor/react/react-dom.min
+vendor/react/escape-html.min
+vendor/react/element.min
+<script id="contact-form-app-config">var mf = {"postType":"page","restURI":"/api/contact-form/forms/views/","minMsg1":"Minimum length should be ","Msg2":" character long.","maxMsg1":"Maximum length should be ","maxNum":"Maximum number should be ","minNum":"Minimum number should be "};</script>
+forms/app
 <% end %>
-					<div data-elementor-type="wp-page" data-elementor-id="1349" class="el-root el-1349">
-				<div class="el-element el-contact-hero-section e-flex e-con-boxed e-con e-parent" data-id="contact-hero-section" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner">
-		<div class="el-element el-contact-hero-inner e-con-full e-flex e-con e-child" data-id="contact-hero-inner" data-element_type="container">
-				<div class="el-element el-contact-breadcrumb el-icon-list--layout-inline el-align-center el-list-item-link-full_width el-widget el-widget-icon-list" data-id="contact-breadcrumb" data-element_type="widget" data-widget_type="icon-list.default">
-				<div class="el-widget-container">
-							<ul class="el-icon-list-items el-inline-items">
-							<li class="el-icon-list-item el-inline-item">
+					<div data-page-type="site-page" data-page-id="1349" class="page-root page-contact">
+				<div class="block contact-hero-section section-flex section-boxed section section-parent" data-id="contact-hero-section" data-block-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="section-inner">
+		<div class="block contact-hero-inner section-full section-flex section section-child" data-id="contact-hero-inner" data-block-type="container">
+				<div class="block contact-breadcrumb link-list-layout-inline align-center link-list-fullwidth module module-icon-list" data-id="contact-breadcrumb" data-block-type="widget" data-module-type="icon-list.default">
+				<div class="module-body">
+							<ul class="link-list link-list-inline">
+							<li class="link-list-item link-list-inline-item">
 											<a href="#">
 
-											<span class="el-icon-list-text">Home</span>
+											<span class="link-list-text">Home</span>
 											</a>
 									</li>
-								<li class="el-icon-list-item el-inline-item">
-											<span class="el-icon-list-icon">
-							<i aria-hidden="true" class="jki jki-angle-right-solid"></i>						</span>
-										<span class="el-icon-list-text"></span>
+								<li class="link-list-item link-list-inline-item">
+											<span class="link-list-icon">
+							<i aria-hidden="true" class="glyph glyph-angle-right"></i>						</span>
+										<span class="link-list-text"></span>
 									</li>
-								<li class="el-icon-list-item el-inline-item">
+								<li class="link-list-item link-list-inline-item">
 											<a href="#">
 
-											<span class="el-icon-list-text">Contact us</span>
+											<span class="link-list-text">Contact us</span>
 											</a>
 									</li>
 						</ul>
 						</div>
 				</div>
-				<div class="el-element el-contact-hero-title el-widget__width-initial el-widget el-widget-heading" data-id="contact-hero-title" data-element_type="widget" data-widget_type="heading.default">
-				<div class="el-widget-container">
-					<h2 class="el-heading-title el-size-default">Get in touch</h2>				</div>
+				<div class="block contact-hero-title module-width-initial module module-heading" data-id="contact-hero-title" data-block-type="widget" data-module-type="heading.default">
+				<div class="module-body">
+					<h2 class="module-title size-default">Get in touch</h2>				</div>
 				</div>
 				</div>
 					</div>
 				</div>
-		<div class="el-element el-contact-circle-section e-flex e-con-boxed e-con e-parent" data-id="contact-circle-section" data-element_type="container">
-					<div class="e-con-inner">
-				<div class="el-element el-contact-circle-text el-widget__width-auto el-widget el-widget-text-path" data-id="contact-circle-text" data-element_type="widget" data-settings="{&quot;text&quot;:&quot;Musical Specialist Instrument courses&quot;,&quot;align&quot;:&quot;center&quot;,&quot;text_path_direction&quot;:&quot;rtl&quot;,&quot;link&quot;:{&quot;url&quot;:&quot;&quot;,&quot;is_external&quot;:&quot;&quot;,&quot;nofollow&quot;:&quot;&quot;,&quot;custom_attributes&quot;:&quot;&quot;},&quot;start_point&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]}}" data-widget_type="text-path.default">
-				<div class="el-widget-container">
-							<div class="e-text-path" data-text="Musical Specialist Instrument courses" data-url="<%= image_path("elementor/circle.svg") %>" data-link-url=""></div>
+		<div class="block contact-circle-section section-flex section-boxed section section-parent" data-id="contact-circle-section" data-block-type="container">
+					<div class="section-inner">
+				<div class="block contact-circle-text module-width-auto module module-text-path" data-id="contact-circle-text" data-block-type="widget" data-settings="{&quot;text&quot;:&quot;Musical Specialist Instrument courses&quot;,&quot;align&quot;:&quot;center&quot;,&quot;text_path_direction&quot;:&quot;rtl&quot;,&quot;link&quot;:{&quot;url&quot;:&quot;&quot;,&quot;is_external&quot;:&quot;&quot;,&quot;nofollow&quot;:&quot;&quot;,&quot;custom_attributes&quot;:&quot;&quot;},&quot;start_point&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]}}" data-module-type="text-path.default">
+				<div class="module-body">
+							<div class="text-ring" data-text="Musical Specialist Instrument courses" data-url="<%= image_path('decor/circle-text.svg') %>" data-link-url=""></div>
 						</div>
 				</div>
 					</div>
 				</div>
-		<div class="el-element el-contact-main-section e-flex e-con-boxed e-con e-parent" data-id="contact-main-section" data-element_type="container">
-					<div class="e-con-inner">
-		<div class="el-element el-contact-form-section e-con-full e-flex e-con e-child" data-id="contact-form-section" data-element_type="container">
-				<div class="el-element el-contact-form-title el-widget el-widget-heading" data-id="contact-form-title" data-element_type="widget" data-widget_type="heading.default">
-				<div class="el-widget-container">
-					<h2 class="el-heading-title el-size-default">Make an Enquiry</h2>				</div>
+		<div class="block contact-main-section section-flex section-boxed section section-parent" data-id="contact-main-section" data-block-type="container">
+					<div class="section-inner">
+		<div class="block contact-form-section section-full section-flex section section-child" data-id="contact-form-section" data-block-type="container">
+				<div class="block contact-form-title module module-heading" data-id="contact-form-title" data-block-type="widget" data-module-type="heading.default">
+				<div class="module-body">
+					<h2 class="module-title size-default">Make an Enquiry</h2>				</div>
 				</div>
-				<div class="el-element el-contact-form-desc el-widget__width-initial el-widget el-widget-text-editor" data-id="contact-form-desc" data-element_type="widget" data-widget_type="text-editor.default">
-				<div class="el-widget-container">
+				<div class="block contact-form-desc module-width-initial module module-text" data-id="contact-form-desc" data-block-type="widget" data-module-type="text-editor.default">
+				<div class="module-body">
 									<p>Semper potenti in sodales diam dictumst aenean habitant, ridiculus urna erat pellentesque   diam natoque.</p>								</div>
 				</div>
-				<div class="el-element el-contact-form el-widget el-widget-metform" data-id="contact-form" data-element_type="widget" data-widget_type="metform.default">
-				<div class="el-widget-container">
-					<div id="mf-response-props-id-1368" data-previous-steps-style="" data-editswitchopen="" data-response_type="alert" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
-		<div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="1368" >
+				<div class="block contact-form module module-contact-form" data-id="contact-form" data-block-type="widget" data-module-type="contactform.default">
+				<div class="module-body">
+					<div id="form-response-id-1368" data-previous-steps-style="" data-editswitchopen="" data-response_type="alert" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   cf-scroll-top-no">
+		<div class="form-picker form-picker-editable" data-form-key="1368" >
 				
-			<div class="mf-widget-container">
+			<div class="cf-widget-container">
 				
 		<div
-			id="metform-wrap-fb64587-1368"
-			class="mf-form-wrapper"
+			id="contact-form-wrap"
+			class="cf-form-wrapper"
 			data-form-id="1368"
-			data-action="/wp-json/metform/v1/entries/insert/1368"
-			data-wp-nonce="764d73059a"
+			data-action="/api/contact-form/entries/insert/1368"
+			data-api-nonce="764d73059a"
 			data-form-nonce="e92c713834"
 			data-quiz-summery = "false"
 			data-save-progress = "false"
@@ -98,9 +93,9 @@ metform/app
 			* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 		--------------------------- -->
 
-				<script type="text/mf" class="mf-template">
+				<script type="text/mf" class="cf-template">
 			function controls_data (value){
-				let currentWrapper = "mf-response-props-id-1368";
+				let currentWrapper = "form-response-id-1368";
 				let currentEl = document.getElementById(currentWrapper);
 				
 				return currentEl ? currentEl.dataset[value] : false
@@ -114,14 +109,14 @@ metform/app
 			let message_successIcon = controls_data('successicon') || '';
 			let message_errorIcon = controls_data('erroricon') || '';
 			let message_editSwitch = controls_data('editswitchopen') === 'yes' ? true : false;
-			let message_proClass = controls_data('editswitchopen') === 'yes' ? 'mf_pro_activated' : '';
+			let message_proClass = controls_data('editswitchopen') === 'yes' ? 'cf_pro_activated' : '';
 			
 			let is_dummy_markup = is_edit_mode && message_editSwitch ? true : false;
 
 			
 			return html`
 				<form
-					className="metform-form-content"
+					className="contact-form-content"
 					ref=${parent.formContainerRef}
 					onSubmit=${ validation.handleSubmit( parent.handleFormSubmit ) }
 				
@@ -133,63 +128,63 @@ metform/app
 
 					<!--------------------------------------------------------
 					*** IMPORTANT / DANGEROUS ***
-					${html``} must be used as in immediate child of "metform-form-main-wrapper"
+					${html``} must be used as in immediate child of "contact-form-main"
 					class otherwise multistep form will not run at all
 					---------------------------------------------------------->
 
-					<div className="metform-form-main-wrapper" key=${'hide-form-after-submit'} ref=${parent.formRef}>
+					<div className="contact-form-main" key=${'hide-form-after-submit'} ref=${parent.formRef}>
 					${html`
-								<div data-elementor-type="wp-post" key="2" data-elementor-id="1368" className="elementor el-1368">
-				<div className="el-element el-4cdaff e-flex e-con-boxed e-con e-parent" data-id="4cdaff" data-element_type="container">
-					<div className="e-con-inner">
-		<div className="el-element el-contact-form-name-row e-con-full e-flex e-con e-child" data-id="contact-form-name-row" data-element_type="container">
-				<div className="el-element el-contact-form-name el-widget el-widget-mf-listing-fname" data-id="contact-form-name" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-listing-fname&quot;}" data-widget_type="mf-listing-fname.default">
-				<div className="el-widget-container">
+								<div data-page-type="site-post" key="2" data-page-id="1368" className="app 1368">
+				<div className="block 4cdaff section-flex section-boxed section section-parent" data-id="4cdaff" data-block-type="container">
+					<div className="section-inner">
+		<div className="block contact-form-name-row section-full section-flex section section-child" data-id="contact-form-name-row" data-block-type="container">
+				<div className="block contact-form-name module module-form-name" data-id="contact-form-name" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-name&quot;}" data-module-type="contact-name.default">
+				<div className="module-body">
 					
-		<div className="mf-input-wrapper">
+		<div className="cf-input-wrapper">
 			
-			<input type="text" className="mf-input " id="mf-input-text-44376e6" 
-				name="mf-listing-fname" 
+			<input type="text" className="cf-input " id="cf-input-text-44376e6" 
+				name="contact-name" 
 				placeholder="${ parent.decodeEntities(`Your Name`) } "
 				onInput=${ parent.handleChange }
 
-									aria-invalid=${validation.errors['mf-listing-fname'] ? 'true' : 'false'}
+									aria-invalid=${validation.errors['contact-name'] ? 'true' : 'false'}
 					ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el) }
 							/>
 
 							<${validation.ErrorMessage}
 					errors=${validation.errors}
-					name="mf-listing-fname"
-					as=${html`<span className="mf-error-message"></span>`}
+					name="contact-name"
+					as=${html`<span className="cf-error-message"></span>`}
 					/>
 								</div>
 
 						</div>
 				</div>
 				</div>
-		<div className="el-element el-contact-form-email-rowd e-con-full e-flex e-con e-child" data-id="1a6b6abd" data-element_type="container">
-				<div className="el-element el-contact-form-email5 el-widget el-widget-mf-email" data-id="314013d5" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-email_527908&quot;}" data-widget_type="mf-email.default">
-				<div className="el-widget-container">
+		<div className="block contact-form-email-rowd section-full section-flex section section-child" data-id="1a6b6abd" data-block-type="container">
+				<div className="block contact-form-email5 module module-form-email" data-id="314013d5" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-email&quot;}" data-module-type="cf-email.default">
+				<div className="module-body">
 					
-		<div className="mf-input-wrapper">
+		<div className="cf-input-wrapper">
 			
 			<input 
 				type="email" 
 				 
 				defaultValue="" 
-				className="mf-input " 
-				id="mf-input-email-314013d5" 
-				name="mf-email_527908" 
+				className="cf-input " 
+				id="cf-input-email-314013d5" 
+				name="contact-email" 
 				placeholder="${ parent.decodeEntities(`Your Email`) } " 
 				 
-				onBlur=${parent.handleChange} onFocus=${parent.handleChange} aria-invalid=${validation.errors['mf-email_527908'] ? 'true' : 'false' } 
+				onBlur=${parent.handleChange} onFocus=${parent.handleChange} aria-invalid=${validation.errors['contact-email'] ? 'true' : 'false' } 
 				ref=${el=> parent.activateValidation({"message":"This field is required.","emailMessage":"Please enter a valid Email address","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el)}
 							/>
 
 						<${validation.ErrorMessage} 
 				errors=${validation.errors} 
-				name="mf-email_527908" 
-				as=${html`<span className="mf-error-message"></span>`}
+				name="contact-email" 
+				as=${html`<span className="cf-error-message"></span>`}
 			/>
 			
 					</div>
@@ -197,27 +192,27 @@ metform/app
 				</div>
 				</div>
 				</div>
-		<div className="el-element el-contact-form-phone-row1 e-con-full e-flex e-con e-child" data-id="725c7001" data-element_type="container">
-				<div className="el-element el-contact-form-phone4 el-widget el-widget-mf-telephone" data-id="2b225904" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-telephone&quot;}" data-widget_type="mf-telephone.default">
-				<div className="el-widget-container">
+		<div className="block contact-form-phone-row1 section-full section-flex section section-child" data-id="725c7001" data-block-type="container">
+				<div className="block contact-form-phone4 module module-form-phone" data-id="2b225904" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-phone&quot;}" data-module-type="contact-phone.default">
+				<div className="module-body">
 					
-		<div className="mf-input-wrapper">
+		<div className="cf-input-wrapper">
 			
 			<input
 				type="tel"
-				className="mf-input "
-				id="mf-input-telephone-2b225904" 
-				name="mf-telephone"
+				className="cf-input "
+				id="cf-input-telephone-2b225904" 
+				name="contact-phone"
 				placeholder="${ parent.decodeEntities(`Your number`) } "
 									onInput=${parent.handleChange}
-					aria-invalid=${validation.errors['mf-telephone'] ? 'true' : 'false'}
+					aria-invalid=${validation.errors['contact-phone'] ? 'true' : 'false'}
 					ref=${el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el)}
 								/>
 			
 							<${validation.ErrorMessage}
 					errors=${validation.errors}
-					name="mf-telephone"
-					as=${html`<span className="mf-error-message"></span>`}
+					name="contact-phone"
+					as=${html`<span className="cf-error-message"></span>`}
 					/>
 			
 			
@@ -226,61 +221,61 @@ metform/app
 						</div>
 				</div>
 				</div>
-		<div className="el-element el-contact-form-subject-row e-con-full e-flex e-con e-child" data-id="contact-form-subject-row" data-element_type="container">
-				<div className="el-element el-contact-form-subject el-widget el-widget-mf-input-text" data-id="contact-form-subject" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-title&quot;}" data-widget_type="mf-input-text.default">
-				<div className="el-widget-container">
+		<div className="block contact-form-subject-row section-full section-flex section section-child" data-id="contact-form-subject-row" data-block-type="container">
+				<div className="block contact-form-subject module module-form-text" data-id="contact-form-subject" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-subject&quot;}" data-module-type="cf-input-text.default">
+				<div className="module-body">
 					
-		<div className="mf-input-wrapper">
+		<div className="cf-input-wrapper">
 			
-			<input type="text" className="mf-input " id="mf-input-text-8cb07b5" 
-				name="mf-title" 
+			<input type="text" className="cf-input " id="cf-input-text-8cb07b5" 
+				name="contact-subject" 
 				placeholder="${ parent.decodeEntities(`Subject`) } "
 				onInput=${ parent.handleChange }
 
-									aria-invalid=${validation.errors['mf-title'] ? 'true' : 'false'}
+									aria-invalid=${validation.errors['contact-subject'] ? 'true' : 'false'}
 					ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el) }
 							/>
 
 							<${validation.ErrorMessage}
 					errors=${validation.errors}
-					name="mf-title"
-					as=${html`<span className="mf-error-message"></span>`}
+					name="contact-subject"
+					as=${html`<span className="cf-error-message"></span>`}
 					/>
 							</div>
 
 					</div>
 				</div>
 				</div>
-		<div className="el-element el-contact-form-message-row9 e-con-full e-flex e-con e-child" data-id="25a344f9" data-element_type="container">
-				<div className="el-element el-contact-form-message4 el-widget el-widget-mf-textarea" data-id="2ea70084" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-textarea&quot;}" data-widget_type="mf-textarea.default">
-				<div className="el-widget-container">
+		<div className="block contact-form-message-row9 section-full section-flex section section-child" data-id="25a344f9" data-block-type="container">
+				<div className="block contact-form-message4 module module-form-message" data-id="2ea70084" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-message&quot;}" data-module-type="contact-message.default">
+				<div className="module-body">
 					
-		<div className="mf-input-wrapper">
+		<div className="cf-input-wrapper">
 			
-			<textarea className="mf-input mf-textarea " id="mf-input-text-area-2ea70084"
-				name="mf-textarea" 
+			<textarea className="cf-input contact-message " id="cf-input-text-area-2ea70084"
+				name="contact-message" 
 				placeholder="${ parent.decodeEntities(`Your enquiry`) } "
 				cols="30" rows="10"
 									onInput=${ parent.handleChange }
-					aria-invalid=${validation.errors['mf-textarea'] ? 'true' : 'false'}
+					aria-invalid=${validation.errors['contact-message'] ? 'true' : 'false'}
 					ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el)}
 								></textarea>
 
 							<${validation.ErrorMessage}
 					errors=${validation.errors}
-					name="mf-textarea"
-					as=${html`<span className="mf-error-message"></span>`}
+					name="contact-message"
+					as=${html`<span className="cf-error-message"></span>`}
 					/>
 								</div>
 
 						</div>
 				</div>
 				</div>
-		<div className="el-element el-contact-form-submit-row3 e-con-full e-flex e-con e-child" data-id="5afeca63" data-element_type="container">
-				<div className="el-element el-contact-form-submitb mf-btn--justify mf-btn--tablet-justify mf-btn--mobile-justify el-widget el-widget-mf-button" data-id="64b13deb" data-element_type="widget" data-widget_type="mf-button.default">
-				<div className="el-widget-container">
-							<div className="mf-btn-wraper " data-mf-form-conditional-logic-requirement="">
-							<button type="submit" className="metform-btn metform-submit-btn " id="">
+		<div className="block contact-form-submit-row3 section-full section-flex section section-child" data-id="5afeca63" data-block-type="container">
+				<div className="block contact-form-submitb cf-btn--justify cf-btn--tablet-justify cf-btn--mobile-justify module module-form-submit" data-id="64b13deb" data-block-type="widget" data-module-type="cf-button.default">
+				<div className="module-body">
+							<div className="cf-btn-wraper " data-form-conditional-logic="">
+							<button type="submit" className="contact-form-btn contact-form-submit " id="">
 					<span>${ parent.decodeEntities(`Submit`) } </span>
 				</button>
 			        </div>
@@ -304,72 +299,72 @@ metform/app
 		</div>
 		</div>				</div>
 				</div>
-		<div class="el-element el-contact-social-section e-con-full e-flex e-con e-child" data-id="contact-social-section" data-element_type="container">
-				<div class="el-element el-contact-social-title el-widget el-widget-heading" data-id="contact-social-title" data-element_type="widget" data-widget_type="heading.default">
-				<div class="el-widget-container">
-					<h4 class="el-heading-title el-size-default">FOLLOW US ON  :</h4>				</div>
+		<div class="block contact-social-section section-full section-flex section section-child" data-id="contact-social-section" data-block-type="container">
+				<div class="block contact-social-title module module-heading" data-id="contact-social-title" data-block-type="widget" data-module-type="heading.default">
+				<div class="module-body">
+					<h4 class="module-title size-default">FOLLOW US ON  :</h4>				</div>
 				</div>
-				<div class="el-element el-contact-social-icons e-grid-align-mobile-center el-shape-rounded el-grid-0 e-grid-align-center el-widget el-widget-social-icons" data-id="contact-social-icons" data-element_type="widget" data-widget_type="social-icons.default">
-				<div class="el-widget-container">
-							<div class="el-social-icons-wrapper el-grid" role="list">
-							<span class="el-grid-item" role="listitem">
-					<a class="el-icon el-social-icon el-social-icon-jki-facebook-f el-repeater-item-76a9e62" target="_blank">
-						<span class="el-screen-only">Jki-facebook-f</span>
-						<i aria-hidden="true" class="jki jki-facebook-f"></i>					</a>
+				<div class="block contact-social-icons e-grid-align-mobile-center shape-rounded widget-grid-0 e-grid-align-center module module-social-icons" data-id="contact-social-icons" data-block-type="widget" data-module-type="social-icons.default">
+				<div class="module-body">
+							<div class="social-links widget-grid" role="list">
+							<span class="widget-grid-item" role="listitem">
+					<a class="social-icon social-link social-link-facebook social-tone-facebook" target="_blank">
+						<span class="screen-only">Jki-facebook-f</span>
+						<i aria-hidden="true" class="glyph glyph-facebook"></i>					</a>
 				</span>
-							<span class="el-grid-item" role="listitem">
-					<a class="el-icon el-social-icon el-social-icon-x-twitter el-repeater-item-866e3cf" target="_blank">
-						<span class="el-screen-only">X-twitter</span>
-						<svg aria-hidden="true" class="e-font-icon-svg e-fab-x-twitter" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>					</a>
+							<span class="widget-grid-item" role="listitem">
+					<a class="social-icon social-link social-link-x social-tone-x" target="_blank">
+						<span class="screen-only">X-twitter</span>
+						<svg aria-hidden="true" class="icon-svg icon-x-twitter" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>					</a>
 				</span>
-							<span class="el-grid-item" role="listitem">
-					<a class="el-icon el-social-icon el-social-icon-jki-instagram-1-light el-repeater-item-302ff58" target="_blank">
-						<span class="el-screen-only">Jki-instagram-1-light</span>
-						<i aria-hidden="true" class="jki jki-instagram-1-light"></i>					</a>
+							<span class="widget-grid-item" role="listitem">
+					<a class="social-icon social-link social-link-instagram social-tone-instagram" target="_blank">
+						<span class="screen-only">Jki-instagram-1-light</span>
+						<i aria-hidden="true" class="glyph glyph-instagram"></i>					</a>
 				</span>
-							<span class="el-grid-item" role="listitem">
-					<a class="el-icon el-social-icon el-social-icon-jki-pinterest-light el-repeater-item-41aeb4d" target="_blank">
-						<span class="el-screen-only">Jki-pinterest-light</span>
-						<i aria-hidden="true" class="jki jki-pinterest-light"></i>					</a>
+							<span class="widget-grid-item" role="listitem">
+					<a class="social-icon social-link social-link-pinterest social-tone-pinterest" target="_blank">
+						<span class="screen-only">Jki-pinterest-light</span>
+						<i aria-hidden="true" class="glyph glyph-pinterest"></i>					</a>
 				</span>
-							<span class="el-grid-item" role="listitem">
-					<a class="el-icon el-social-icon el-social-icon-jki-linkedin-light el-repeater-item-6126b9e" target="_blank">
-						<span class="el-screen-only">Jki-linkedin-light</span>
-						<i aria-hidden="true" class="jki jki-linkedin-light"></i>					</a>
+							<span class="widget-grid-item" role="listitem">
+					<a class="social-icon social-link social-link-linkedin social-tone-linkedin" target="_blank">
+						<span class="screen-only">Jki-linkedin-light</span>
+						<i aria-hidden="true" class="glyph glyph-linkedin"></i>					</a>
 				</span>
 					</div>
 						</div>
 				</div>
 				</div>
-		<div class="el-element el-contact-info-grid e-grid e-con-full el-invisible e-con e-child" data-id="contact-info-grid" data-element_type="container" data-settings="{&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:200}">
-				<div class="el-element el-contact-info-1 jkit-equal-height-disable el-widget el-widget-jkit_icon_box" data-id="contact-info-1" data-element_type="widget" data-widget_type="jkit_icon_box.default">
-				<div class="el-widget-container">
-					<div  class="jeg-el-kit jkit-icon-box icon-position-left el-animation- jeg_module_1349_3_6aa44e9a0d9ed" ><a href="" class="icon-box-link" aria-label="Learn More"><div class="jkit-icon-box-wrapper hover-from-left"><div class="icon-box icon-box-header el-animation-"><div class="icon style-color"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path></svg></div></div><div class="icon-box icon-box-body">
-                <h4 class="title">Contact Center</h4><p class="icon-box-description">+888-807-5000</p>
+		<div class="block contact-info-grid section-grid section-full anim-pending section section-child" data-id="contact-info-grid" data-block-type="container" data-settings="{&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:200}">
+				<div class="block contact-info-1 equal-height-off module module-icon-box" data-id="contact-info-1" data-block-type="widget" data-module-type="feature_card.default">
+				<div class="module-body">
+					<div  class="js-widget feature-card icon-left js-mod-3" ><a href="" class="feature-box-link" aria-label="Learn More"><div class="feature-card-inner hover-left"><div class="feature-box feature-box-head"><div class="icon accent"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path></svg></div></div><div class="feature-box feature-box-body">
+                <h4 class="title">Contact Center</h4><p class="feature-box-desc">+888-807-5000</p>
             </div>
             
             </div></a></div>				</div>
 				</div>
-				<div class="el-element el-contact-info-2 jkit-equal-height-disable el-widget el-widget-jkit_icon_box" data-id="contact-info-2" data-element_type="widget" data-widget_type="jkit_icon_box.default">
-				<div class="el-widget-container">
-					<div  class="jeg-el-kit jkit-icon-box icon-position-left el-animation- jeg_module_1349_4_6aa44e9a0e068" ><a href="" class="icon-box-link" aria-label="Learn More"><div class="jkit-icon-box-wrapper hover-from-left"><div class="icon-box icon-box-header el-animation-"><div class="icon style-color"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg></div></div><div class="icon-box icon-box-body">
-                <h4 class="title">Our email</h4><p class="icon-box-description">Valse@mail.com</p>
+				<div class="block contact-info-2 equal-height-off module module-icon-box" data-id="contact-info-2" data-block-type="widget" data-module-type="feature_card.default">
+				<div class="module-body">
+					<div  class="js-widget feature-card icon-left js-mod-4" ><a href="" class="feature-box-link" aria-label="Learn More"><div class="feature-card-inner hover-left"><div class="feature-box feature-box-head"><div class="icon accent"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg></div></div><div class="feature-box feature-box-body">
+                <h4 class="title">Our email</h4><p class="feature-box-desc">Valse@mail.com</p>
             </div>
             
             </div></a></div>				</div>
 				</div>
-				<div class="el-element el-contact-info-3 jkit-equal-height-disable el-widget el-widget-jkit_icon_box" data-id="contact-info-3" data-element_type="widget" data-widget_type="jkit_icon_box.default">
-				<div class="el-widget-container">
-					<div  class="jeg-el-kit jkit-icon-box icon-position-left el-animation- jeg_module_1349_5_6aa44e9a0e6a7" ><a href="" class="icon-box-link" aria-label="Learn More"><div class="jkit-icon-box-wrapper hover-from-left"><div class="icon-box icon-box-header el-animation-"><div class="icon style-color"><svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg></div></div><div class="icon-box icon-box-body">
-                <h4 class="title">Find an office</h4><p class="icon-box-description">Jl. Sokarno-hatta 01</p>
+				<div class="block contact-info-3 equal-height-off module module-icon-box" data-id="contact-info-3" data-block-type="widget" data-module-type="feature_card.default">
+				<div class="module-body">
+					<div  class="js-widget feature-card icon-left js-mod-5" ><a href="" class="feature-box-link" aria-label="Learn More"><div class="feature-card-inner hover-left"><div class="feature-box feature-box-head"><div class="icon accent"><svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg></div></div><div class="feature-box feature-box-body">
+                <h4 class="title">Find an office</h4><p class="feature-box-desc">Jl. Sokarno-hatta 01</p>
             </div>
             
             </div></a></div>				</div>
 				</div>
-				<div class="el-element el-contact-info-4 jkit-equal-height-disable el-widget el-widget-jkit_icon_box" data-id="contact-info-4" data-element_type="widget" data-widget_type="jkit_icon_box.default">
-				<div class="el-widget-container">
-					<div  class="jeg-el-kit jkit-icon-box icon-position-left el-animation- jeg_module_1349_6_6aa44e9a0eccf" ><a href="" class="icon-box-link" aria-label="Learn More"><div class="jkit-icon-box-wrapper hover-from-left"><div class="icon-box icon-box-header el-animation-"><div class="icon style-color"><svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M436 480h-20V24c0-13.255-10.745-24-24-24H56C42.745 0 32 10.745 32 24v456H12c-6.627 0-12 5.373-12 12v20h448v-20c0-6.627-5.373-12-12-12zM128 76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76zm0 96c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40zm52 148h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12zm76 160h-64v-84c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v84zm64-172c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40z"></path></svg></div></div><div class="icon-box icon-box-body">
-                <h4 class="title">We are available</h4><p class="icon-box-description">Sat 8:30  – Mon 8:30 </p>
+				<div class="block contact-info-4 equal-height-off module module-icon-box" data-id="contact-info-4" data-block-type="widget" data-module-type="feature_card.default">
+				<div class="module-body">
+					<div  class="js-widget feature-card icon-left js-mod-6" ><a href="" class="feature-box-link" aria-label="Learn More"><div class="feature-card-inner hover-left"><div class="feature-box feature-box-head"><div class="icon accent"><svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M436 480h-20V24c0-13.255-10.745-24-24-24H56C42.745 0 32 10.745 32 24v456H12c-6.627 0-12 5.373-12 12v20h448v-20c0-6.627-5.373-12-12-12zM128 76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76zm0 96c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40zm52 148h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12zm76 160h-64v-84c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v84zm64-172c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40z"></path></svg></div></div><div class="feature-box feature-box-body">
+                <h4 class="title">We are available</h4><p class="feature-box-desc">Sat 8:30  – Mon 8:30 </p>
             </div>
             
             </div></a></div>				</div>
@@ -378,10 +373,10 @@ metform/app
 				</div>
 					</div>
 				</div>
-		<div class="el-element el-contact-map-section e-con-full e-flex e-con e-parent" data-id="contact-map-section" data-element_type="container">
-				<div class="el-element el-contact-map el-widget el-widget-google_maps" data-id="contact-map" data-element_type="widget" data-widget_type="google_maps.default">
-				<div class="el-widget-container">
-							<div class="el-custom-embed">
+		<div class="block contact-map-section section-full section-flex section section-parent" data-id="contact-map-section" data-block-type="container">
+				<div class="block contact-map module module-google-maps" data-id="contact-map" data-block-type="widget" data-module-type="google_maps.default">
+				<div class="module-body">
+							<div class="custom-embed">
 			<iframe loading="lazy"
 					src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&#038;t=m&#038;z=10&#038;output=embed&#038;iwloc=near"
 					title="London Eye, London, United Kingdom"

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   allow_unauthenticated_access
-  skip_before_action :verify_authenticity_token, only: [:metform_insert, :metform_view]
+  skip_before_action :verify_authenticity_token, only: [:contact_form_submit, :contact_form_view]
 
   def home
     @page_title = t("pages.home.page_title")
@@ -24,13 +24,13 @@ class PagesController < ApplicationController
     render "testimonials", layout: "theme"
   end
 
-  def metform_insert
+  def contact_form_submit
     contact = ContactMessage.new(
-      name: params["mf-listing-fname"],
-      email: params["mf-email_527908"],
-      phone: params["mf-telephone"],
-      title: params["mf-title"],
-      message: params["mf-textarea"]
+      name: params["contact-name"],
+      email: params["contact-email"],
+      phone: params["contact-phone"],
+      title: params["contact-subject"],
+      message: params["contact-message"]
     )
 
     if contact.save
@@ -46,7 +46,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def metform_view
+  def contact_form_view
     head :no_content
   end
 end

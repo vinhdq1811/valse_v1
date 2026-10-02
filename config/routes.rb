@@ -60,9 +60,9 @@ Rails.application.routes.draw do
 
   get "testimonials" => "pages#testimonials"
 
-  # Stubs for the static Valse template's MetForm AJAX endpoints
-  post "wp-json/metform/v1/entries/insert/:form_id" => "pages#metform_insert"
-  post "wp-json/metform/v1/forms/views/:form_id" => "pages#metform_view"
+  # Endpoint form liên hệ (AJAX từ app/assets/javascripts/forms/app.js)
+  post "api/contact-form/entries/insert/:form_id" => "pages#contact_form_submit"
+  post "api/contact-form/forms/views/:form_id" => "pages#contact_form_view"
 
   # Permalink kiểu WordPress cho bài viết — đặt CUỐI để không che các route khác
   get "/:year/:month/:day/:slug",

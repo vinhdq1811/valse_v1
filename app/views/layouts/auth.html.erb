@@ -1,34 +1,17 @@
 <%# Layout Auth (nested) — phiên bản gọn của layout theme, KHÔNG có header/footer.
-    Dùng cho các trang đăng nhập/đăng ký. Asset giữ nguyên như theme. %>
+    Dùng cho các trang đăng nhập / đăng ký / quên mật khẩu. %>
 <% content_for :html_lang, "en-US" %>
 <% content_for :theme_head do %>
 	<meta name='robots' content='max-image-preview:large' />
-	<%# CSS preset toàn cục (WP global styles — giữ lại để không lệch màu/spacing mặc định) %>
-	<%= stylesheet_link_tag "theme/wp-global-styles", media: "all" %>
-	<%# === CSS theme Valse (thứ tự giữ nguyên như bản gốc để đúng cascade) === %>
-	<%= stylesheet_link_tag "theme/jkit/elements/main", "theme/template-kit-export", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementor/custom-frontend.min", "theme/elementor/posts/post-8", "theme/elementor/custom/custom-widget-icon-list.min", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementor/widgets/widget-heading.min", "theme/elementor/widgets/widget-text-path.min", "theme/elementor/animations/e-animation-shrink.min", "theme/elementor/animations/fadeInUp.min", "theme/elementor/animations/fadeIn.min", "theme/elementor/widgets/widget-image.min", "theme/elementor/widgets/widget-spacer.min", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementor/animations/slideInUp.min", "theme/elementor/widgets/widget-divider.min", "theme/elementor/custom/custom-widget-icon-box.min", media: "all" %>
-	<%= stylesheet_link_tag "theme/hello-elementor/reset", "theme/hello-elementor/theme", "theme/hello-elementor/header-footer", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementskit/css/widget-styles", "theme/elementskit/css/responsive", media: "all" %>
-	<%# Font: Google Fonts (Playfair Display, Roboto) + Lora tự host %>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap", media: "all" %>
 	<%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap", media: "all" %>
-	<%= stylesheet_link_tag "theme/fonts/lora", media: "all" %>
-	<%= stylesheet_link_tag "theme/jkit/jkiticon/jkiticon", media: "all" %>
-	<%= javascript_include_tag "jquery/jquery.min", id: "jquery-core-js" %>
-	<%= javascript_include_tag "jquery/jquery-migrate.min", id: "jquery-migrate-js" %>
-	<%= javascript_include_tag "theme/template-kit-export-public", id: "template-kit-export-js" %>
 	<meta name="theme-color" content="#FFFFFF">
 	<link rel="icon" href="<%= image_path("favicon-150x150.png") %>" sizes="32x32" />
 	<link rel="icon" href="<%= image_path("favicon-300x300.png") %>" sizes="192x192" />
 	<link rel="apple-touch-icon" href="<%= image_path("favicon-300x300.png") %>" />
 	<meta name="msapplication-TileImage" content="<%= image_path("favicon-300x300.png") %>" />
-	<%= stylesheet_link_tag "theme/jkit/jeg-dynamic-styles", "theme/elementor/posts/post-1683", media: "all" %>
-	<%= stylesheet_link_tag "theme/elementor/posts/post-678", "theme/elementor/widgets/widget-social-icons.min", "theme/elementor/custom/custom-apple-webkit.min", "theme/elementskit/ekiticons/css/ekiticons", media: "all" %>
 <% end %>
-<% content_for :body_attrs do %>class="wp-singular page-template page-template-elementor_header_footer page wp-custom-logo wp-embed-responsive wp-theme-hello-elementor jkit-color-scheme hello-el-default el-default el-template-full-width el-kit-8"<% end %>
+<% content_for :body_attrs do %>class="page color-scheme site-skin"<% end %>
 <%= render template: "layouts/application" %>
