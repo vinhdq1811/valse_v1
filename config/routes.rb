@@ -55,14 +55,11 @@ Rails.application.routes.draw do
   get "blog", to: "posts#index"
 
   get "contact" => "pages#contact"
+  post "contact" => "pages#contact_form_submit"
 
   get "pricing" => "pages#pricing"
 
   get "testimonials" => "pages#testimonials"
-
-  # Endpoint form liên hệ (AJAX từ app/assets/javascripts/forms/app.js)
-  post "api/contact-form/entries/insert/:form_id" => "pages#contact_form_submit"
-  post "api/contact-form/forms/views/:form_id" => "pages#contact_form_view"
 
   # Permalink kiểu WordPress cho bài viết — đặt CUỐI để không che các route khác
   get "/:year/:month/:day/:slug",

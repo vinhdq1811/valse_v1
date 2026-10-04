@@ -61,26 +61,26 @@ guest/pages/pricing
 				</div>
 		<% @plans.each_with_index do |plan, i| %>
 		<% featured = plan.position == 1 %>
-		<div class="block el-<%= featured ? "pricing-plan-featured" : "pricing-plan" %> section-full section-flex anim-pending section section-child" data-id="<%= (featured ? "pricing-plan-featured" : "pricing-plan") + "-p#{plan.id}" %>" data-block-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:<%= 150 + i * 50 %>}">
+		<div class="block <%= featured ? "pricing-plan-featured" : "pricing-plan" %> section-full section-flex anim-pending section section-child" data-id="<%= (featured ? "pricing-plan-featured" : "pricing-plan") + "-p#{plan.id}" %>" data-block-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInUp&quot;,&quot;animation_delay&quot;:<%= 150 + i * 50 %>}">
 				<% if featured %>
 				<div class="block pricing-plan-badge module module-button" data-id="pricing-plan-badge" data-block-type="widget" data-module-type="ui_button.default">
 				<div class="module-body">
 					<div  class="js-widget ui-button  icon-before js-mod-4<%= i %>_valse" ><a href="<%= contact_path %>" class="ui-button-wrapper">Phổ biến nhất</a></div>				</div>
 				</div>
 				<% end %>
-				<div class="block el-<%= featured ? "pricing-plan-featured-name" : "pricing-plan-name" %> module module-heading" data-id="plan-name" data-block-type="widget" data-module-type="heading.default">
+				<div class="block <%= featured ? "pricing-plan-featured-name" : "pricing-plan-name" %> module module-heading" data-id="plan-name" data-block-type="widget" data-module-type="heading.default">
 				<div class="module-body">
 					<p class="module-title size-default"><%= plan.name %></p>				</div>
 				</div>
-				<div class="block el-<%= featured ? "pricing-plan-featured-starting" : "pricing-plan-starting" %> module module-heading" data-id="plan-starting" data-block-type="widget" data-module-type="heading.default">
+				<div class="block <%= featured ? "pricing-plan-featured-starting" : "pricing-plan-starting" %> module module-heading" data-id="plan-starting" data-block-type="widget" data-module-type="heading.default">
 				<div class="module-body">
 					<p class="module-title size-default">Học phí chỉ từ:</p>				</div>
 				</div>
-				<div class="block el-<%= featured ? "pricing-plan-featured-price" : "pricing-plan-price" %> module module-heading" data-id="plan-price" data-block-type="widget" data-module-type="ui_heading.default">
+				<div class="block <%= featured ? "pricing-plan-featured-price" : "pricing-plan-price" %> module module-heading" data-id="plan-price" data-block-type="widget" data-module-type="ui_heading.default">
 				<div class="module-body">
 					<div  class="js-widget ui-heading  align-center align-tablet- align-mobile- ui_module_1461_<%= 5 + i %>_valse" ><div class="heading-section-title  display-inline-block"><h2 class="heading-title"><% if plan.price.present? %><span class="accent"><span><%= number_with_delimiter(plan.price, delimiter: ".") %></span></span>₫ / <%= plan.duration %><% else %>Liên hệ<% end %></h2></div></div>				</div>
 				</div>
-				<div class="block el-<%= featured ? "pricing-plan-featured-cta" : "pricing-plan-cta" %> align-justify module module-button" data-id="plan-cta" data-block-type="widget" data-module-type="button.default">
+				<div class="block <%= featured ? "pricing-plan-featured-cta" : "pricing-plan-cta" %> align-justify module module-button" data-id="plan-cta" data-block-type="widget" data-module-type="button.default">
 				<div class="module-body">
 									<div class="btn-theme-wrapper">
 					<a class="btn-theme btn-theme-link size-sm" href="<%= contact_path %>">
@@ -91,7 +91,7 @@ guest/pages/pricing
 				</div>
 								</div>
 				</div>
-				<div class="block el-<%= featured ? "pricing-plan-featured-divider" : "pricing-plan-divider" %> module-divider-line module module-divider" data-id="plan-divider" data-block-type="widget" data-module-type="divider.default">
+				<div class="block <%= featured ? "pricing-plan-featured-divider" : "pricing-plan-divider" %> module-divider-line module module-divider" data-id="plan-divider" data-block-type="widget" data-module-type="divider.default">
 				<div class="module-body">
 							<div class="divider">
 			<span class="divider-separator">
@@ -99,11 +99,11 @@ guest/pages/pricing
 		</div>
 						</div>
 				</div>
-				<div class="block el-<%= featured ? "pricing-plan-featured-included" : "pricing-plan-included" %> module module-text" data-id="plan-included" data-block-type="widget" data-module-type="text-editor.default">
+				<div class="block <%= featured ? "pricing-plan-featured-included" : "pricing-plan-included" %> module module-text" data-id="plan-included" data-block-type="widget" data-module-type="text-editor.default">
 				<div class="module-body">
 									<p><strong>Gói học bao gồm</strong></p>								</div>
 				</div>
-				<div class="block el-<%= featured ? "pricing-plan-featured-features" : "pricing-plan-features" %> link-list-layout-traditional link-list-fullwidth module module-icon-list" data-id="plan-features" data-block-type="widget" data-module-type="icon-list.default">
+				<div class="block <%= featured ? "pricing-plan-featured-features" : "pricing-plan-features" %> link-list-layout-traditional link-list-fullwidth module module-icon-list" data-id="plan-features" data-block-type="widget" data-module-type="icon-list.default">
 				<div class="module-body">
 							<ul class="link-list">
 							<% plan.features.each do |feature| %>

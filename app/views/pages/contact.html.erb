@@ -1,17 +1,23 @@
 <%# Liên hệ — trích từ docs/design-reference/contact.html (App page 1349).
-    Asset tag được application layout tạo từ danh sách URL bên dưới. %>
+    Form Enquiry là form Rails thường (POST /contact), không còn render bằng
+    React/metform. Markup bên dưới tái tạo y hệt DOM mà React trước giờ render
+    (class .contact-form-content/.contact-form-main/.cf-input-wrapper/...) để
+    CSS trong guest/pages/contact.css áp dụng không đổi. %>
 <% content_for :page_css do %>
 guest/pages/contact
 <% end %>
-<% content_for :page_js do %>
-forms/htm
-vendor/react/react.min
-vendor/react/react-dom.min
-vendor/react/escape-html.min
-vendor/react/element.min
-<script id="contact-form-app-config">var mf = {"postType":"page","restURI":"/api/contact-form/forms/views/","minMsg1":"Minimum length should be ","Msg2":" character long.","maxMsg1":"Maximum length should be ","maxNum":"Maximum number should be ","minNum":"Minimum number should be "};</script>
-forms/app
-<% end %>
+<%# cm: model phục vụ form — nil ở lần GET đầu, có errors khi submit lỗi %>
+<% cm = @contact_message %>
+<% field_error = lambda do |attr|
+     next nil unless cm&.errors&.include?(attr)
+     attr == :email && cm.errors.of_kind?(attr, :invalid) ? "Please enter a valid Email address" : "This field is required."
+   end %>
+<% show_error_alert = cm&.errors&.any? %>
+<%# Text alert gốc của metform là tiếng Anh — gom lỗi về 2 loại message đó %>
+<% error_alerts =
+     show_error_alert ? cm.errors.messages.flat_map { |attr, _msgs|
+       [attr == :email && cm.errors.of_kind?(attr, :invalid) ? "Please enter a valid Email address" : "This field is required."]
+     }.uniq : [] %>
 					<div data-page-type="site-page" data-page-id="1349" class="page-root page-contact">
 				<div class="block contact-hero-section section-flex section-boxed section section-parent" data-id="contact-hero-section" data-block-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="section-inner">
@@ -66,217 +72,160 @@ forms/app
 				<div class="module-body">
 									<p>Semper potenti in sodales diam dictumst aenean habitant, ridiculus urna erat pellentesque   diam natoque.</p>								</div>
 				</div>
-				<div class="block contact-form module module-contact-form" data-id="contact-form" data-block-type="widget" data-module-type="contactform.default">
+		<div class="block contact-form module module-contact-form" data-id="contact-form" data-block-type="widget" data-module-type="contactform.default">
 				<div class="module-body">
 					<div id="form-response-id-1368" data-previous-steps-style="" data-editswitchopen="" data-response_type="alert" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   cf-scroll-top-no">
 		<div class="form-picker form-picker-editable" data-form-key="1368" >
-				
+
 			<div class="cf-widget-container">
-				
-		<div
-			id="contact-form-wrap"
-			class="cf-form-wrapper"
-			data-form-id="1368"
-			data-action="/api/contact-form/entries/insert/1368"
-			data-api-nonce="764d73059a"
-			data-form-nonce="e92c713834"
-			data-quiz-summery = "false"
-			data-save-progress = "false"
-			data-form-type="general-form"
-			data-stop-vertical-effect=""
-			></div>
 
+		<div id="contact-form-wrap" class="cf-form-wrapper">
 
-		<!----------------------------- 
-			* controls_data : find the the props passed indie of data attribute
-			* props.SubmitResponseMarkup : contains the markup of error or success message
-			* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-		--------------------------- -->
+			<%= form_with url: contact_path, method: :post, html: { class: "contact-form-content", novalidate: true } do %>
 
-				<script type="text/mf" class="cf-template">
-			function controls_data (value){
-				let currentWrapper = "form-response-id-1368";
-				let currentEl = document.getElementById(currentWrapper);
-				
-				return currentEl ? currentEl.dataset[value] : false
-			}
+				<%# Thông báo kết quả submit — cùng markup với SubmitResponseMarkup của metform %>
+				<% if flash[:contact_form_success] %>
+		<div class="cf-main-response-wrap   cf-response-msg-wrap" data-show="1">
+			<div class="cf-response-msg">
+				<i class="cf-success-icon fas fa-check"></i>
+				<p><%= flash[:contact_form_success] %></p>
+			</div>
+		</div>
+				<% elsif show_error_alert %>
+		<div class="cf-main-response-wrap   cf-response-msg-wrap cf-error-res" data-show="1">
+			<div class="cf-response-msg">
+				<i class="cf-alert-icon fas fa-exclamation-triangle"></i>
+				<p><%= safe_join(error_alerts.map { |msg| "#{msg} " }) %></p>
+			</div>
+		</div>
+				<% end %>
 
+					<div class="contact-form-main">
+					<div data-page-type="site-post" data-page-id="1368" class="app 1368">
+				<div class="block 4cdaff section-flex section-boxed section section-parent" data-id="4cdaff" data-block-type="container">
+					<div class="section-inner">
+		<div class="block contact-form-name-row section-full section-flex section section-child" data-id="contact-form-name-row" data-block-type="container">
+				<div class="block contact-form-name module module-form-name" data-id="contact-form-name" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-name&quot;}" data-module-type="contact-name.default">
+				<div class="module-body">
 
-			let is_edit_mode = '' ? true : false;
-			let message_position = controls_data('messageposition') || 'top';
+		<div class="cf-input-wrapper">
 
-			
-			let message_successIcon = controls_data('successicon') || '';
-			let message_errorIcon = controls_data('erroricon') || '';
-			let message_editSwitch = controls_data('editswitchopen') === 'yes' ? true : false;
-			let message_proClass = controls_data('editswitchopen') === 'yes' ? 'cf_pro_activated' : '';
-			
-			let is_dummy_markup = is_edit_mode && message_editSwitch ? true : false;
+			<input type="text" class="cf-input " id="cf-input-text-44376e6"
+				name="contact-name"
+				placeholder="Your Name "
+				value="<%= cm.name if cm %>"
+				aria-invalid="<%= field_error.(:name) ? 'true' : 'false' %>"
+				/>
 
-			
-			return html`
-				<form
-					className="contact-form-content"
-					ref=${parent.formContainerRef}
-					onSubmit=${ validation.handleSubmit( parent.handleFormSubmit ) }
-				
-					>
-			
-			
-					${is_dummy_markup ? message_position === 'top' ?  props.ResponseDummyMarkup(message_successIcon, message_proClass) : '' : ''}
-					${is_dummy_markup ? ' ' :  message_position === 'top' ? props.SubmitResponseMarkup`${parent}${state}${message_successIcon}${message_errorIcon}${message_proClass}` : ''}
-
-					<!--------------------------------------------------------
-					*** IMPORTANT / DANGEROUS ***
-					${html``} must be used as in immediate child of "contact-form-main"
-					class otherwise multistep form will not run at all
-					---------------------------------------------------------->
-
-					<div className="contact-form-main" key=${'hide-form-after-submit'} ref=${parent.formRef}>
-					${html`
-								<div data-page-type="site-post" key="2" data-page-id="1368" className="app 1368">
-				<div className="block 4cdaff section-flex section-boxed section section-parent" data-id="4cdaff" data-block-type="container">
-					<div className="section-inner">
-		<div className="block contact-form-name-row section-full section-flex section section-child" data-id="contact-form-name-row" data-block-type="container">
-				<div className="block contact-form-name module module-form-name" data-id="contact-form-name" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-name&quot;}" data-module-type="contact-name.default">
-				<div className="module-body">
-					
-		<div className="cf-input-wrapper">
-			
-			<input type="text" className="cf-input " id="cf-input-text-44376e6" 
-				name="contact-name" 
-				placeholder="${ parent.decodeEntities(`Your Name`) } "
-				onInput=${ parent.handleChange }
-
-									aria-invalid=${validation.errors['contact-name'] ? 'true' : 'false'}
-					ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el) }
-							/>
-
-							<${validation.ErrorMessage}
-					errors=${validation.errors}
-					name="contact-name"
-					as=${html`<span className="cf-error-message"></span>`}
-					/>
+							<% if (name_error = field_error.(:name)) %>
+					<span class="cf-error-message"><%= name_error %></span>
+					<% end %>
 								</div>
 
 						</div>
 				</div>
 				</div>
-		<div className="block contact-form-email-rowd section-full section-flex section section-child" data-id="1a6b6abd" data-block-type="container">
-				<div className="block contact-form-email5 module module-form-email" data-id="314013d5" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-email&quot;}" data-module-type="cf-email.default">
-				<div className="module-body">
-					
-		<div className="cf-input-wrapper">
-			
-			<input 
-				type="email" 
-				 
-				defaultValue="" 
-				className="cf-input " 
-				id="cf-input-email-314013d5" 
-				name="contact-email" 
-				placeholder="${ parent.decodeEntities(`Your Email`) } " 
-				 
-				onBlur=${parent.handleChange} onFocus=${parent.handleChange} aria-invalid=${validation.errors['contact-email'] ? 'true' : 'false' } 
-				ref=${el=> parent.activateValidation({"message":"This field is required.","emailMessage":"Please enter a valid Email address","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el)}
-							/>
+		<div class="block contact-form-email-rowd section-full section-flex section section-child" data-id="1a6b6abd" data-block-type="container">
+				<div class="block contact-form-email5 module module-form-email" data-id="314013d5" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-email&quot;}" data-module-type="cf-email.default">
+				<div class="module-body">
 
-						<${validation.ErrorMessage} 
-				errors=${validation.errors} 
-				name="contact-email" 
-				as=${html`<span className="cf-error-message"></span>`}
-			/>
-			
+		<div class="cf-input-wrapper">
+
+			<input
+				type="email"
+
+				class="cf-input "
+				id="cf-input-email-314013d5"
+				name="contact-email"
+				placeholder="Your Email "
+
+				value="<%= cm.email if cm %>"
+				aria-invalid="<%= field_error.(:email) ? 'true' : 'false' %>"
+				>
+
+						<% if (email_error = field_error.(:email)) %>
+				<span class="cf-error-message"><%= email_error %></span>
+				<% end %>
+
 					</div>
 
 				</div>
 				</div>
 				</div>
-		<div className="block contact-form-phone-row1 section-full section-flex section section-child" data-id="725c7001" data-block-type="container">
-				<div className="block contact-form-phone4 module module-form-phone" data-id="2b225904" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-phone&quot;}" data-module-type="contact-phone.default">
-				<div className="module-body">
-					
-		<div className="cf-input-wrapper">
-			
+		<div class="block contact-form-phone-row1 section-full section-flex section section-child" data-id="725c7001" data-block-type="container">
+				<div class="block contact-form-phone4 module module-form-phone" data-id="2b225904" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-phone&quot;}" data-module-type="contact-phone.default">
+				<div class="module-body">
+
+		<div class="cf-input-wrapper">
+
 			<input
 				type="tel"
-				className="cf-input "
-				id="cf-input-telephone-2b225904" 
+				class="cf-input "
+				id="cf-input-telephone-2b225904"
 				name="contact-phone"
-				placeholder="${ parent.decodeEntities(`Your number`) } "
-									onInput=${parent.handleChange}
-					aria-invalid=${validation.errors['contact-phone'] ? 'true' : 'false'}
-					ref=${el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el)}
-								/>
-			
-							<${validation.ErrorMessage}
-					errors=${validation.errors}
-					name="contact-phone"
-					as=${html`<span className="cf-error-message"></span>`}
-					/>
-			
-			
+				placeholder="Your number "
+				value="<%= cm.phone if cm %>"
+				aria-invalid="<%= field_error.(:phone) ? 'true' : 'false' %>"
+				/>
+
+							<% if (phone_error = field_error.(:phone)) %>
+					<span class="cf-error-message"><%= phone_error %></span>
+					<% end %>
+
+
 		</div>
 
 						</div>
 				</div>
 				</div>
-		<div className="block contact-form-subject-row section-full section-flex section section-child" data-id="contact-form-subject-row" data-block-type="container">
-				<div className="block contact-form-subject module module-form-text" data-id="contact-form-subject" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-subject&quot;}" data-module-type="cf-input-text.default">
-				<div className="module-body">
-					
-		<div className="cf-input-wrapper">
-			
-			<input type="text" className="cf-input " id="cf-input-text-8cb07b5" 
-				name="contact-subject" 
-				placeholder="${ parent.decodeEntities(`Subject`) } "
-				onInput=${ parent.handleChange }
+		<div class="block contact-form-subject-row section-full section-flex section section-child" data-id="contact-form-subject-row" data-block-type="container">
+				<div class="block contact-form-subject module module-form-text" data-id="contact-form-subject" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-subject&quot;}" data-module-type="cf-input-text.default">
+				<div class="module-body">
 
-									aria-invalid=${validation.errors['contact-subject'] ? 'true' : 'false'}
-					ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el) }
-							/>
+		<div class="cf-input-wrapper">
 
-							<${validation.ErrorMessage}
-					errors=${validation.errors}
-					name="contact-subject"
-					as=${html`<span className="cf-error-message"></span>`}
-					/>
+			<input type="text" class="cf-input " id="cf-input-text-8cb07b5"
+				name="contact-subject"
+				placeholder="Subject "
+				value="<%= cm.title if cm %>"
+				aria-invalid="<%= field_error.(:title) ? 'true' : 'false' %>"
+				/>
+
+							<% if (subject_error = field_error.(:title)) %>
+					<span class="cf-error-message"><%= subject_error %></span>
+					<% end %>
 							</div>
 
 					</div>
 				</div>
 				</div>
-		<div className="block contact-form-message-row9 section-full section-flex section section-child" data-id="25a344f9" data-block-type="container">
-				<div className="block contact-form-message4 module module-form-message" data-id="2ea70084" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-message&quot;}" data-module-type="contact-message.default">
-				<div className="module-body">
-					
-		<div className="cf-input-wrapper">
-			
-			<textarea className="cf-input contact-message " id="cf-input-text-area-2ea70084"
-				name="contact-message" 
-				placeholder="${ parent.decodeEntities(`Your enquiry`) } "
-				cols="30" rows="10"
-									onInput=${ parent.handleChange }
-					aria-invalid=${validation.errors['contact-message'] ? 'true' : 'false'}
-					ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":true,"expression":"null"}, el)}
-								></textarea>
+		<div class="block contact-form-message-row9 section-full section-flex section section-child" data-id="25a344f9" data-block-type="container">
+				<div class="block contact-form-message4 module module-form-message" data-id="2ea70084" data-block-type="widget" data-settings="{&quot;cf_input_name&quot;:&quot;contact-message&quot;}" data-module-type="contact-message.default">
+				<div class="module-body">
 
-							<${validation.ErrorMessage}
-					errors=${validation.errors}
-					name="contact-message"
-					as=${html`<span className="cf-error-message"></span>`}
-					/>
+		<div class="cf-input-wrapper">
+
+			<textarea class="cf-input contact-message " id="cf-input-text-area-2ea70084"
+				name="contact-message"
+				placeholder="Your enquiry "
+				cols="30" rows="10"
+				aria-invalid="<%= field_error.(:message) ? 'true' : 'false' %>"
+				><%= cm.message if cm %></textarea>
+
+							<% if (message_error = field_error.(:message)) %>
+					<span class="cf-error-message"><%= message_error %></span>
+					<% end %>
 								</div>
 
 						</div>
 				</div>
 				</div>
-		<div className="block contact-form-submit-row3 section-full section-flex section section-child" data-id="5afeca63" data-block-type="container">
-				<div className="block contact-form-submitb cf-btn--justify cf-btn--tablet-justify cf-btn--mobile-justify module module-form-submit" data-id="64b13deb" data-block-type="widget" data-module-type="cf-button.default">
-				<div className="module-body">
-							<div className="cf-btn-wraper " data-form-conditional-logic="">
-							<button type="submit" className="contact-form-btn contact-form-submit " id="">
-					<span>${ parent.decodeEntities(`Submit`) } </span>
+		<div class="block contact-form-submit-row3 section-full section-flex section section-child" data-id="5afeca63" data-block-type="container">
+				<div class="block contact-form-submitb cf-btn--justify cf-btn--tablet-justify cf-btn--mobile-justify module module-form-submit" data-id="64b13deb" data-block-type="widget" data-module-type="cf-button.default">
+				<div class="module-body">
+							<div class="cf-btn-wraper " data-form-conditional-logic="">
+							<button type="submit" class="contact-form-btn contact-form-submit ">
+					<span>Submit</span>
 				</button>
 			        </div>
         				</div>
@@ -285,20 +234,17 @@ forms/app
 					</div>
 				</div>
 				</div>
-							`}
 					</div>
 
-					${is_dummy_markup ? message_position === 'bottom' ? props.ResponseDummyMarkup(message_successIcon, message_proClass) : '' : ''}
-					${is_dummy_markup ? ' ' : message_position === 'bottom' ? props.SubmitResponseMarkup`${parent}${state}${message_successIcon}${message_errorIcon}${message_proClass}` : ''}
-				
-				</form>
-			`
-		</script>
+			<% end %>
+
+		</div>
 
 					</div>
 		</div>
-		</div>				</div>
+					</div>
 				</div>
+		</div>
 		<div class="block contact-social-section section-full section-flex section section-child" data-id="contact-social-section" data-block-type="container">
 				<div class="block contact-social-title module module-heading" data-id="contact-social-title" data-block-type="widget" data-module-type="heading.default">
 				<div class="module-body">
